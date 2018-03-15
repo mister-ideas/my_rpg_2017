@@ -10,12 +10,4 @@
 
 #include "my.h"
 
-/* fichier1.c */
-
-//fonctions
-
-/* fichier2.c */
-
-//fonctions
-
 #endif
