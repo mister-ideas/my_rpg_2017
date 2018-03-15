@@ -7,7 +7,13 @@
 
 SRC_DIR=	src
 
-SRC=		$(SRC_DIR)/my_rpg.c	\
+SRC=		$(SRC_DIR)/my_rpg.c		\
+		$(SRC_DIR)/linked_list.c	\
+		$(SRC_DIR)/buttons.c		\
+		$(SRC_DIR)/display.c		\
+		$(SRC_DIR)/window.c		\
+		$(SRC_DIR)/scenes.c		\
+		$(SRC_DIR)/end_game.c		\
 
 OBJ=		$(SRC:.c=.o)
 
