@@ -9,15 +9,24 @@
 #include <stdlib.h>
 #include "my_rpg.h"
 
+int init_sounds(game_t *game)
+{
+	/* init sounds here */
+	/* check sounds NULL here */
+	return (0);
+}
+
 int init_game(game_t *game)
 {
 	sfVideoMode video = {1920, 1080, 32};
 
 	init_window(game, video);
 	set_scenes(game);
+	init_sounds(game);
 	game->font = sfFont_createFromFile(FONT_PATH);
 	if (game->font == NULL)
 		return (84);
+	game->current_scene = 0;
 	return (0);
 }
 
@@ -31,6 +40,8 @@ int main(void)
 	if (game == NULL)
 		return (84);
 	if (init_game(game) == 84)
+		return (84);
+	if (display_window(game) == 84)
 		return (84);
 	return (0);
 }

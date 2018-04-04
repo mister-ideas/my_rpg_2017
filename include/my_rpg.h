@@ -21,12 +21,23 @@
 #define ATLAS_PATH "./ressources/img/atlas.png"
 #define FONT_PATH "./ressources/font/XpressiveRegular.ttf"
 
+enum TYPE {
+	BG,
+	MISC,
+	ANIM
+};
+
+enum STATUS {
+	ACTIVE,
+	OFF
+};
+
 typedef struct window
 {
 	sfRenderWindow *window;
 	sfEvent event;
-	sfVideoMode mode;
 	sfVector2i mouse_pos;
+	int click;
 } window_t;
 
 typedef struct scene
@@ -45,10 +56,39 @@ typedef struct game
 	window_t *window;
 } game_t;
 
+typedef struct object
+{
+	enum TYPE type;
+	sfSprite *sprite;
+	sfTexture *texture;
+	sfVector2f pos;
+	sfIntRect rectangle;
+} object_t;
+
+typedef struct button
+{
+	sfVector2f pos;
+	sfVector2f size;
+	sfIntRect rect;
+	sfIntRect push_rect;
+	sfTexture *texture;
+	enum STATUS state;
+	sfRectangleShape *shape;
+	void (*callback)(struct button*, game_t*);
+} button_t;
+
 /* window.c */
 int init_window(game_t *game, sfVideoMode video);
+int display_window(game_t *game);
+int mouse_is_in_area(sfVector2f pos, sfVector2f size, sfVector2i clickPos);
 
 /* scenes.c */
 int set_scenes(game_t *game);
-	
+
+/* display.c */
+int display_game(game_t *game);
+
+/* free.c */
+void quit_game(game_t *game);
+
 #endif

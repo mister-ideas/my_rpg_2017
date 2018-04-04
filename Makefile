@@ -13,10 +13,12 @@ SRC=		$(SRC_DIR)my_rpg.c		\
 		$(SRC_DIR)linked_list.c		\
 		$(SRC_DIR)scenes.c		\
 		$(SRC_DIR)window.c		\
+		$(SRC_DIR)free.c		\
+		$(SRC_DIR)display.c		\
 
 OBJ=		$(SRC:.c=.o)
 
-CFLAGS= 	-Wall -Wextra
+CFLAGS= 	-Wall -Wextra -g3
 
 CPPFLAGS =	-I include
 
