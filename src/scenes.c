@@ -5,20 +5,18 @@
 ** scenes.c
 */
 
+#include <stdio.h>
 #include <stdlib.h>
-#include "my.h"
 #include "my_rpg.h"
 
-scene_t **set_scenes(void)
+int set_scenes(game_t *game)
 {
-	scene_t **scenes = malloc(sizeof(scene_t *) * SCENES_NB);
-	sfImage *atlas = sfImage_create(3840, 3467);
-
-	atlas = sfImage_createFromFile(ATLAS_PATH);
-	if (scenes == NULL || atlas == NULL)
-		return (NULL);
-	//scenes[0] = scene_name(atlas);
-	//if (scenes[0] == NULL)
-		return (NULL);
-	return (scenes);
+	game->scenes = malloc(sizeof(scene_t*) * NB_SCENES);
+	game->atlas = sfImage_create(3840, 3467);
+	game->atlas = sfImage_createFromFile(ATLAS_PATH);
+	if (game->scenes == NULL || game->atlas == NULL)
+		return (84);
+	/* init scenes here */
+	/* check scenes NULL here */
+	return (0);
 }

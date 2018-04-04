@@ -5,38 +5,37 @@
 ## Makefile
 ##
 
-SRC_DIR=	src
+SRC_DIR=	src/
 
-SRC=		$(SRC_DIR)/my_rpg.c		\
-		$(SRC_DIR)/linked_list.c	\
-		$(SRC_DIR)/buttons.c		\
-		$(SRC_DIR)/display.c		\
-		$(SRC_DIR)/window.c		\
-		$(SRC_DIR)/scenes.c		\
-		$(SRC_DIR)/end_game.c		\
+LIB_SRC_DIR=	lib/src/
+
+SRC=		$(SRC_DIR)my_rpg.c		\
+		$(SRC_DIR)linked_list.c		\
+		$(SRC_DIR)scenes.c		\
+		$(SRC_DIR)window.c		\
 
 OBJ=		$(SRC:.c=.o)
 
-CFLAGS= 	-W -Wall -fno-builtin
+CFLAGS= 	-Wall -Wextra
 
 CPPFLAGS =	-I include
 
-LFLAGS=		-l c_graph_prog -L lib/my/ -l my
+LDFLAGS=	-l c_graph_prog -L lib/my/ -l my
 
 NAME=		my_rpg
 
 all:		$(NAME)
 
 $(NAME):	$(OBJ)
-		make -C lib/src/
-		gcc -o $(NAME) $(OBJ) $(LFLAGS)
+		make -C $(LIB_SRC_DIR)
+		gcc -o $(NAME) $(OBJ) $(LDFLAGS)
 
 clean:
-		make clean -C lib/src/
+		make clean -C $(LIB_SRC_DIR)
 		rm -f $(OBJ)
 
 fclean: 	clean
-		make fclean -C lib/src/
+		make fclean -C $(LIB_SRC_DIR)
 		rm -f $(NAME)
 
 re:		fclean all
