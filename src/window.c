@@ -17,9 +17,11 @@ int mouse_is_in_area(sfVector2f pos, sfVector2f size, sfVector2i clickPos)
 
 int init_window(game_t *game, sfVideoMode video)
 {
-	game->window = malloc(sizeof(game->window));
-	if (game->window == NULL)
+	window_t *window = malloc(sizeof(*window));
+	
+	if (window == NULL)
 		return (84);
+	game->window = window;
 	game->window->window = sfRenderWindow_create(video,
 						"RPG", sfClose, NULL);
 	if (game->window->window == NULL)

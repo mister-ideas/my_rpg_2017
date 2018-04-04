@@ -18,7 +18,7 @@ SRC=		$(SRC_DIR)my_rpg.c		\
 
 OBJ=		$(SRC:.c=.o)
 
-CFLAGS= 	-Wall -Wextra -g3
+CFLAGS= 	-Wall -Wextra
 
 CPPFLAGS =	-I include
 
