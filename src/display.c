@@ -17,9 +17,9 @@ void display_but(struct node *button, game_t *game)
 		clicked = mouse_is_in_area(but->pos, but->size,
 					game->window->mouse_pos);
 		if (clicked == 1 && game->window->click == 1)
-			but->callback(but, game);
+			but->callback();
 		if (clicked == 1 && but->state == OFF) {
-			but->callback(but, game);
+			but->callback();
 			but->state = ACTIVE;
 		} else if (clicked == 0 && but->state == ACTIVE) {
 			sfRectangleShape_setTextureRect(but->shape, but->rect);

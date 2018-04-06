@@ -9,6 +9,8 @@
 #include <stdlib.h>
 #include "my_rpg.h"
 
+const sfIntRect atlas_rect = {0, 0, 3840, 4547};
+
 int init_sounds(game_t *game)
 {
 	/* init sounds here */

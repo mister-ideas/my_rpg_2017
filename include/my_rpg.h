@@ -15,7 +15,7 @@
 #include <SFML/Window.h>
 #include "linked_list.h"
 
-#define NB_SCENES 0
+#define NB_SCENES 1
 #define NB_SOUNDS 0
 
 #define ATLAS_PATH "./ressources/img/atlas.png"
@@ -62,7 +62,7 @@ typedef struct object
 	sfSprite *sprite;
 	sfTexture *texture;
 	sfVector2f pos;
-	sfIntRect rectangle;
+	sfIntRect rect;
 } object_t;
 
 typedef struct button
@@ -74,8 +74,10 @@ typedef struct button
 	sfTexture *texture;
 	enum STATUS state;
 	sfRectangleShape *shape;
-	void (*callback)(struct button*, game_t*);
+	void (*callback)();
 } button_t;
+
+extern const sfIntRect atlas_rect;
 
 /* window.c */
 int init_window(game_t *game, sfVideoMode video);
@@ -85,10 +87,27 @@ int mouse_is_in_area(sfVector2f pos, sfVector2f size, sfVector2i clickPos);
 /* scenes.c */
 int set_scenes(game_t *game);
 
+/* menu_scene.c */
+scene_t *menu_scene(sfImage *atlas);
+
 /* display.c */
 int display_game(game_t *game);
 
 /* free.c */
 void quit_game(game_t *game);
+
+/* linked_list.c */
+dll_t *list_init(void);
+dll_t *put_end_list(dll_t *list, void *new);
+
+/* buttons.c */
+button_t *create_button(button_t *new, sfImage *img);
+
+/* objects.c */
+object_t *create_object(object_t *new, sfImage *img);
+
+/* buttons_functions */
+void play_button(void);
+void quit_button(void);
 
 #endif

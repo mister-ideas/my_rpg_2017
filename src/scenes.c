@@ -16,7 +16,8 @@ int set_scenes(game_t *game)
 	game->atlas = sfImage_createFromFile(ATLAS_PATH);
 	if (game->scenes == NULL || game->atlas == NULL)
 		return (84);
-	/* init scenes here */
-	/* check scenes NULL here */
+	game->scenes[0] = menu_scene(game->atlas);
+	if (game->scenes[0] == NULL)
+		return (84);
 	return (0);
 }

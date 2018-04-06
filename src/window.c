@@ -18,7 +18,7 @@ int mouse_is_in_area(sfVector2f pos, sfVector2f size, sfVector2i clickPos)
 int init_window(game_t *game, sfVideoMode video)
 {
 	window_t *window = malloc(sizeof(*window));
-	
+
 	if (window == NULL)
 		return (84);
 	game->window = window;
@@ -26,6 +26,7 @@ int init_window(game_t *game, sfVideoMode video)
 						"RPG", sfClose, NULL);
 	if (game->window->window == NULL)
 		return (84);
+	game->window->click = 0;
 	return (0);
 }
 
@@ -53,8 +54,8 @@ int display_window(game_t *game)
 	while (sfRenderWindow_isOpen(game->window->window)) {
 		game_events(game);
 		sfRenderWindow_clear(game->window->window, sfBlack);
-		/* if (display_game(game) == 84) */
-		/* return (84); */
+		if (display_game(game) == 84)
+			return (84);
 		sfRenderWindow_display(game->window->window);
 	}
 	quit_game(game);
