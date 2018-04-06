@@ -12,7 +12,7 @@ LIB_SRC_DIR=	lib/src/
 SRC=		$(SRC_DIR)my_rpg.c			\
 		$(SRC_DIR)linked_list.c			\
 		$(SRC_DIR)scenes.c			\
-		$(SRC_DIR)window.c			\	
+		$(SRC_DIR)window.c			\
 		$(SRC_DIR)free.c			\
 		$(SRC_DIR)display.c			\
 		$(SRC_DIR)buttons.c			\
