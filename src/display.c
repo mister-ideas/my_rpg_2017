@@ -17,7 +17,8 @@ void display_but(struct node *button, game_t *game)
 		in_area = mouse_is_in_area(but->pos, but->size,
 					game->window->mouse_pos);
 		if (in_area == 1)
-			sfRectangleShape_setTextureRect(but->shape, but->push_rect);
+			sfRectangleShape_setTextureRect(but->shape,
+							but->push_rect);
 		else if (in_area == 0)
 			sfRectangleShape_setTextureRect(but->shape, but->rect);
 		if (in_area == 1 && game->window->click == 1)
