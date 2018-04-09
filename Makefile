@@ -19,12 +19,11 @@ SRC=		$(SRC_DIR)my_rpg.c			\
 		$(SRC_DIR)buttons_functions.c   	\
 		$(SRC_DIR)objects.c			\
 		$(SRC_DIR)menu_scene.c          	\
-		$(SRC_DIR)menu_scene_buttons_1.c   	\
-		$(SRC_DIR)menu_scene_buttons_2.c	\
+		$(SRC_DIR)menu_scene_buttons.c   	\
 
 OBJ=		$(SRC:.c=.o)
 
-CFLAGS= 	-Wall -Wextra
+CFLAGS= 	-Wall -Wextra -g3
 
 CPPFLAGS =	-I include
 

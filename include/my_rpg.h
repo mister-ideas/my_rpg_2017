@@ -90,6 +90,10 @@ int set_scenes(game_t *game);
 /* menu_scene.c */
 scene_t *menu_scene(sfImage *atlas);
 
+/* menu_scene_buttons.c */
+button_t *menu_scene_play(void);
+button_t *menu_scene_quit(void);
+
 /* display.c */
 int display_game(game_t *game);
 

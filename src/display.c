@@ -10,21 +10,18 @@
 void display_but(struct node *button, game_t *game)
 {
 	button_t *but;
-	int clicked = 0;
+	int in_area = 0;
 
 	for (; button != NULL; button = button->next) {
 		but = (button_t *)button->data;
-		clicked = mouse_is_in_area(but->pos, but->size,
+		in_area = mouse_is_in_area(but->pos, but->size,
 					game->window->mouse_pos);
-		if (clicked == 1 && game->window->click == 1)
-			but->callback();
-		if (clicked == 1 && but->state == OFF) {
-			but->callback();
-			but->state = ACTIVE;
-		} else if (clicked == 0 && but->state == ACTIVE) {
+		if (in_area == 1)
+			sfRectangleShape_setTextureRect(but->shape, but->push_rect);
+		else if (in_area == 0)
 			sfRectangleShape_setTextureRect(but->shape, but->rect);
-			but->state = OFF;
-		}
+		if (in_area == 1 && game->window->click == 1)
+			but->callback();
 		sfRenderWindow_drawRectangleShape(game->window->window,
 						but->shape, NULL);
 	}
