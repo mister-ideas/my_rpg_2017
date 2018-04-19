@@ -9,6 +9,19 @@
 #include <stdlib.h>
 #include "my_rpg.h"
 
+int menu_scene_init_buttons(button_t *play, button_t *quit, button_t *htp)
+{
+	if (play == NULL || quit == NULL || htp == NULL)
+		return (84);
+	play->pos.x = 0;
+	play->pos.y = 0;
+	quit->pos.x = 0;
+	quit->pos.y = 0;
+	htp->pos.x = 0;
+	htp->pos.y = 0;
+	return (0);
+}
+
 object_t *menu_scene_background(void)
 {
 	object_t *background = malloc(sizeof(*background));
@@ -25,38 +38,39 @@ object_t *menu_scene_background(void)
 	return (background);
 }
 
-scene_t *menu_scene_lists(scene_t *menu, object_t *background,
+int menu_scene_lists(scene_t *menu, object_t *background,
 		button_t *play, button_t *quit)
 {
 	menu->buttons = list_init();
 	menu->objects = list_init();
 	if (menu->buttons == NULL || menu->objects == NULL)
-		return (NULL);
+		return (84);
 	put_end_list(menu->buttons, play);
 	put_end_list(menu->buttons, quit);
 	put_end_list(menu->objects, background);
-	return (menu);
+	return (0);
 }
 
 scene_t *menu_scene(sfImage *atlas)
 {
 	scene_t *menu = malloc(sizeof(*menu));
-	button_t *play;
-	button_t *quit;
 	object_t *background;
+	button_t *play = play_button();
+	button_t *quit = quit_button();
+	button_t *htp = htp_button();
 
 	if (menu == NULL)
 		return (NULL);
-	play = play_button();
-	quit = quit_button();
-	background = menu_scene_background();
-	if (play == NULL || quit == NULL || background == NULL)
+	if (menu_scene_init_buttons(play, quit, htp) == 84)
 		return (NULL);
+	background = menu_scene_background();
+	background = create_object(background, atlas);
 	play = create_button(play, atlas);
 	quit = create_button(quit, atlas);
-	background = create_object(background, atlas);
-	if (play == NULL || quit == NULL || background == NULL)
+	htp = create_button(htp, atlas);
+	if (play == NULL || quit == NULL || htp == NULL || background == NULL)
 		return (NULL);
-	menu_scene_lists(menu, background, play, quit);
+	if (menu_scene_lists(menu, background, play, quit) == 84)
+		return (NULL);
 	return (menu);
 }

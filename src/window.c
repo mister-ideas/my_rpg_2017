@@ -24,7 +24,7 @@ int init_window(game_t *game, sfVideoMode video)
 		return (84);
 	game->window = window;
 	game->window->window = sfRenderWindow_create(video,
-						"RPG", sfClose, NULL);
+					"Initiation Quest", sfClose, NULL);
 	if (game->window->window == NULL)
 		return (84);
 	game->window->mouse_pos = mouse_pos;
