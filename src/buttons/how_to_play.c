@@ -16,19 +16,19 @@ void htp_function(void)
 
 button_t *htp_button_active(button_t *htp)
 {
-	htp->active.height = 0;
+	htp->active.height = 85;
 	htp->active.left = 0;
-	htp->active.top = 0;
-	htp->active.width = 0;
+	htp->active.top = 2982;
+	htp->active.width = 235;
 	return (htp);
 }
 
 button_t *htp_button_hover(button_t *htp)
 {
-	htp->hover.height = 0;
+	htp->hover.height = 85;
 	htp->hover.left = 0;
-	htp->hover.top = 0;
-	htp->hover.width = 0;
+	htp->hover.top = 2896;
+	htp->hover.width = 235;
 	return (htp);
 }
 
@@ -40,10 +40,10 @@ button_t *htp_button(void)
 		return (NULL);
 	htp->size.x = 235;
 	htp->size.y = 85;
-	htp->rect.height = 0;
+	htp->rect.height = 85;
 	htp->rect.left = 0;
-	htp->rect.top = 0;
-	htp->rect.width = 0;
+	htp->rect.top = 2810;
+	htp->rect.width = 235;
 	htp = htp_button_hover(htp);
 	htp = htp_button_active(htp);
 	htp->callback = &(htp_function);

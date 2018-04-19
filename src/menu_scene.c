@@ -17,8 +17,8 @@ int menu_scene_init_buttons(button_t *play, button_t *quit, button_t *htp)
 	play->pos.y = 0;
 	quit->pos.x = 0;
 	quit->pos.y = 0;
-	htp->pos.x = 0;
-	htp->pos.y = 0;
+	htp->pos.x = 843;
+	htp->pos.y = 454;
 	return (0);
 }
 
@@ -38,8 +38,8 @@ object_t *menu_scene_background(void)
 	return (background);
 }
 
-int menu_scene_lists(scene_t *menu, object_t *background,
-		button_t *play, button_t *quit)
+int menu_scene_lists(scene_t *menu, button_t *play,
+		button_t *quit, button_t *htp)
 {
 	menu->buttons = list_init();
 	menu->objects = list_init();
@@ -47,7 +47,7 @@ int menu_scene_lists(scene_t *menu, object_t *background,
 		return (84);
 	put_end_list(menu->buttons, play);
 	put_end_list(menu->buttons, quit);
-	put_end_list(menu->objects, background);
+	put_end_list(menu->buttons, htp);
 	return (0);
 }
 
@@ -70,7 +70,8 @@ scene_t *menu_scene(sfImage *atlas)
 	htp = create_button(htp, atlas);
 	if (play == NULL || quit == NULL || htp == NULL || background == NULL)
 		return (NULL);
-	if (menu_scene_lists(menu, background, play, quit) == 84)
+	if (menu_scene_lists(menu, play, quit, htp) == 84)
 		return (NULL);
+	put_end_list(menu->objects, background);
 	return (menu);
 }
