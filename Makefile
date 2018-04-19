@@ -9,21 +9,23 @@ SRC_DIR=	src/
 
 LIB_SRC_DIR=	lib/src/
 
-SRC=		$(SRC_DIR)my_rpg.c			\
-		$(SRC_DIR)linked_list.c			\
-		$(SRC_DIR)scenes.c			\
-		$(SRC_DIR)window.c			\
-		$(SRC_DIR)free.c			\
-		$(SRC_DIR)display.c			\
-		$(SRC_DIR)buttons.c			\
-		$(SRC_DIR)buttons_functions.c   	\
-		$(SRC_DIR)objects.c			\
-		$(SRC_DIR)menu_scene.c          	\
-		$(SRC_DIR)menu_scene_buttons.c   	\
+SRC=		$(SRC_DIR)my_rpg.c				\
+		$(SRC_DIR)linked_list.c				\
+		$(SRC_DIR)scenes.c				\
+		$(SRC_DIR)window.c				\
+		$(SRC_DIR)free.c				\
+		$(SRC_DIR)display.c				\
+		$(SRC_DIR)buttons.c				\
+		$(SRC_DIR)objects.c				\
+		$(SRC_DIR)menu_scene.c				\
+		$(SRC_DIR)buttons/play.c   			\
+		$(SRC_DIR)buttons/quit.c             		\
+		$(SRC_DIR)buttons/how_to_play.c      		\
+		$(SRC_DIR)buttons/resume.c			\
 
 OBJ=		$(SRC:.c=.o)
 
-CFLAGS= 	-Wall -Wextra -g3
+CFLAGS= 	-Wall -Wextra
 
 CPPFLAGS =	-I include
 

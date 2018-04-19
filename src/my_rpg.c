@@ -13,8 +13,6 @@ const sfIntRect atlas_rect = {0, 0, 3840, 4547};
 
 int init_sounds(game_t *game)
 {
-	/* init sounds here */
-	/* check sounds NULL here */
 	return (0);
 }
 

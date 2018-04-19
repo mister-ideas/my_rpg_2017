@@ -70,7 +70,8 @@ typedef struct button
 	sfVector2f pos;
 	sfVector2f size;
 	sfIntRect rect;
-	sfIntRect push_rect;
+	sfIntRect hover;
+	sfIntRect active;
 	sfTexture *texture;
 	enum STATUS state;
 	sfRectangleShape *shape;
@@ -90,9 +91,11 @@ int set_scenes(game_t *game);
 /* menu_scene.c */
 scene_t *menu_scene(sfImage *atlas);
 
-/* menu_scene_buttons.c */
-button_t *menu_scene_play(void);
-button_t *menu_scene_quit(void);
+/* buttons */
+button_t *play_button(void);
+button_t *quit_button(void);
+button_t *htp_button(void);
+button_t *resume_button(void);
 
 /* display.c */
 int display_game(game_t *game);
@@ -109,9 +112,5 @@ button_t *create_button(button_t *new, sfImage *img);
 
 /* objects.c */
 object_t *create_object(object_t *new, sfImage *img);
-
-/* buttons_functions */
-void play_button(void);
-void quit_button(void);
 
 #endif

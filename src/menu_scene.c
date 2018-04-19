@@ -25,6 +25,19 @@ object_t *menu_scene_background(void)
 	return (background);
 }
 
+scene_t *menu_scene_lists(scene_t *menu, object_t *background,
+		button_t *play, button_t *quit)
+{
+	menu->buttons = list_init();
+	menu->objects = list_init();
+	if (menu->buttons == NULL || menu->objects == NULL)
+		return (NULL);
+	put_end_list(menu->buttons, play);
+	put_end_list(menu->buttons, quit);
+	put_end_list(menu->objects, background);
+	return (menu);
+}
+
 scene_t *menu_scene(sfImage *atlas)
 {
 	scene_t *menu = malloc(sizeof(*menu));
@@ -34,8 +47,8 @@ scene_t *menu_scene(sfImage *atlas)
 
 	if (menu == NULL)
 		return (NULL);
-	play = menu_scene_play();
-	quit = menu_scene_quit();
+	play = play_button();
+	quit = quit_button();
 	background = menu_scene_background();
 	if (play == NULL || quit == NULL || background == NULL)
 		return (NULL);
@@ -44,12 +57,6 @@ scene_t *menu_scene(sfImage *atlas)
 	background = create_object(background, atlas);
 	if (play == NULL || quit == NULL || background == NULL)
 		return (NULL);
-	menu->buttons = list_init();
-	menu->objects = list_init();
-	if (menu->buttons == NULL || menu->objects == NULL)
-		return (NULL);
-	put_end_list(menu->buttons, play);
-	put_end_list(menu->buttons, quit);
-	put_end_list(menu->objects, background);
+	menu_scene_lists(menu, background, play, quit);
 	return (menu);
 }

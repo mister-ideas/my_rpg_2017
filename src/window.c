@@ -28,7 +28,7 @@ int init_window(game_t *game, sfVideoMode video)
 	if (game->window->window == NULL)
 		return (84);
 	game->window->mouse_pos = mouse_pos;
-	game->window->click = 0;
+	game->window->click = 2;
 	return (0);
 }
 

@@ -7,6 +7,22 @@
 
 #include "my_rpg.h"
 
+void check_button_state(button_t *but, game_t *game, int in_area)
+{
+	if (in_area == 1)
+		sfRectangleShape_setTextureRect(but->shape,
+						but->hover);
+	else if (in_area == 0)
+		sfRectangleShape_setTextureRect(but->shape, but->rect);
+	if (in_area == 1 && game->window->click == 1)
+		sfRectangleShape_setTextureRect(but->shape,
+						but->active);
+	else if (in_area == 1 && game->window->click == 0) {
+		but->callback();
+		game->window->click = 2;
+	}
+}
+
 void display_but(struct node *button, game_t *game)
 {
 	button_t *but;
@@ -16,13 +32,7 @@ void display_but(struct node *button, game_t *game)
 		but = (button_t *)button->data;
 		in_area = mouse_is_in_area(but->pos, but->size,
 					game->window->mouse_pos);
-		if (in_area == 1)
-			sfRectangleShape_setTextureRect(but->shape,
-							but->push_rect);
-		else if (in_area == 0)
-			sfRectangleShape_setTextureRect(but->shape, but->rect);
-		if (in_area == 1 && game->window->click == 1)
-			but->callback();
+		check_button_state(but, game, in_area);
 		sfRenderWindow_drawRectangleShape(game->window->window,
 						but->shape, NULL);
 	}
@@ -30,12 +40,12 @@ void display_but(struct node *button, game_t *game)
 
 void display_obj(struct node *obj, game_t *game)
 {
-	object_t *ok;
+	object_t *data;
 
 	for (; obj != NULL; obj = obj->next) {
-		ok = (object_t *)obj->data;
+		data = (object_t *)obj->data;
 		sfRenderWindow_drawSprite(game->window->window,
-					ok->sprite, NULL);
+					data->sprite, NULL);
 	}
 }
 

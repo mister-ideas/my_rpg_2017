@@ -10,8 +10,6 @@
 
 void quit_game(game_t *game)
 {
-	for (int i = 0; i < NB_SCENES; i++)
-		/* destroy_scene(game->scenes[i]); */
 	for (int i = 0; i < NB_SOUNDS; i++)
 		sfMusic_destroy(game->sounds[i]);
 	free(game->scenes);
