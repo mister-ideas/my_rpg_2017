@@ -11,18 +11,12 @@
 
 const sfIntRect atlas_rect = {0, 0, 3840, 4547};
 
-int init_sounds(game_t *game)
-{
-	return (0);
-}
-
 int init_game(game_t *game)
 {
 	sfVideoMode video = {1920, 1080, 32};
 
 	init_window(game, video);
 	set_scenes(game);
-	init_sounds(game);
 	game->font = sfFont_createFromFile(FONT_PATH);
 	if (game->font == NULL)
 		return (84);

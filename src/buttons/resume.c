@@ -9,7 +9,7 @@
 #include <stdlib.h>
 #include "my_rpg.h"
 
-void resume_function(void)
+void resume_function(game_t *game)
 {
 	my_putstr("resume\n");
 }
@@ -32,7 +32,7 @@ button_t *resume_button_hover(button_t *resume)
 	return (resume);
 }
 
-button_t *resume_button(void)
+button_t *resume_button(game_t *game)
 {
 	button_t *resume = malloc(sizeof(*resume));
 

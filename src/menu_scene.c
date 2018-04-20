@@ -13,10 +13,10 @@ int menu_scene_init_buttons(button_t *play, button_t *quit, button_t *htp)
 {
 	if (play == NULL || quit == NULL || htp == NULL)
 		return (84);
-	play->pos.x = 0;
-	play->pos.y = 0;
-	quit->pos.x = 0;
-	quit->pos.y = 0;
+	play->pos.x = 664;
+	play->pos.y = 585;
+	quit->pos.x = 1016;
+	quit->pos.y = 585;
 	htp->pos.x = 843;
 	htp->pos.y = 454;
 	return (0);
@@ -51,23 +51,23 @@ int menu_scene_lists(scene_t *menu, button_t *play,
 	return (0);
 }
 
-scene_t *menu_scene(sfImage *atlas)
+scene_t *menu_scene(game_t *game)
 {
 	scene_t *menu = malloc(sizeof(*menu));
 	object_t *background;
-	button_t *play = play_button();
-	button_t *quit = quit_button();
-	button_t *htp = htp_button();
+	button_t *play = play_button(game);
+	button_t *quit = quit_button(game);
+	button_t *htp = htp_button(game);
 
 	if (menu == NULL)
 		return (NULL);
 	if (menu_scene_init_buttons(play, quit, htp) == 84)
 		return (NULL);
 	background = menu_scene_background();
-	background = create_object(background, atlas);
-	play = create_button(play, atlas);
-	quit = create_button(quit, atlas);
-	htp = create_button(htp, atlas);
+	background = create_object(background, game->atlas);
+	play = create_button(play, game->atlas);
+	quit = create_button(quit, game->atlas);
+	htp = create_button(htp, game->atlas);
 	if (play == NULL || quit == NULL || htp == NULL || background == NULL)
 		return (NULL);
 	if (menu_scene_lists(menu, play, quit, htp) == 84)

@@ -9,30 +9,30 @@
 #include <stdlib.h>
 #include "my_rpg.h"
 
-void quit_function(void)
+void quit_function(game_t *game)
 {
-	my_putstr("quit\n");
+	sfRenderWindow_close(game->window->window);
 }
 
 button_t *quit_button_active(button_t *quit)
 {
-	quit->active.height = 0;
+	quit->active.height = 85;
 	quit->active.left = 0;
-	quit->active.top = 0;
-	quit->active.width = 0;
+	quit->active.top = 3240;
+	quit->active.width = 235;
 	return (quit);
 }
 
 button_t *quit_button_hover(button_t *quit)
 {
-	quit->hover.height = 0;
+	quit->hover.height = 85;
 	quit->hover.left = 0;
-	quit->hover.top = 0;
-	quit->hover.width = 0;
+	quit->hover.top = 3154;
+	quit->hover.width = 235;
 	return (quit);
 }
 
-button_t *quit_button(void)
+button_t *quit_button(game_t *game)
 {
 	button_t *quit = malloc(sizeof(*quit));
 
@@ -40,10 +40,10 @@ button_t *quit_button(void)
 		return (NULL);
 	quit->size.x = 235;
 	quit->size.y = 85;
-	quit->rect.height = 0;
+	quit->rect.height = 85;
 	quit->rect.left = 0;
-	quit->rect.top = 0;
-	quit->rect.width = 0;
+	quit->rect.top = 3068;
+	quit->rect.width = 235;
 	quit = quit_button_hover(quit);
 	quit = quit_button_active(quit);
 	quit->callback = &(quit_function);

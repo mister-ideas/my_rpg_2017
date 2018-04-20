@@ -75,7 +75,7 @@ typedef struct button
 	sfTexture *texture;
 	enum STATUS state;
 	sfRectangleShape *shape;
-	void (*callback)();
+	void (*callback)(game_t *game);
 } button_t;
 
 extern const sfIntRect atlas_rect;
@@ -89,13 +89,13 @@ int mouse_is_in_area(sfVector2f pos, sfVector2f size, sfVector2i clickPos);
 int set_scenes(game_t *game);
 
 /* menu_scene.c */
-scene_t *menu_scene(sfImage *atlas);
+scene_t *menu_scene(game_t *game);
 
 /* buttons */
-button_t *play_button(void);
-button_t *quit_button(void);
-button_t *htp_button(void);
-button_t *resume_button(void);
+button_t *play_button(game_t *game);
+button_t *quit_button(game_t *game);
+button_t *htp_button(game_t *game);
+button_t *resume_button(game_t *game);
 
 /* display.c */
 int display_game(game_t *game);

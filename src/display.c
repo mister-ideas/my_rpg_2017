@@ -18,7 +18,7 @@ void check_button_state(button_t *but, game_t *game, int in_area)
 		sfRectangleShape_setTextureRect(but->shape,
 						but->active);
 	else if (in_area == 1 && game->window->click == 0) {
-		but->callback();
+		but->callback(game);
 		game->window->click = 2;
 	}
 }
