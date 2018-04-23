@@ -11,7 +11,7 @@
 
 void return_function(game_t *game)
 {
-	my_putstr("return\n");
+	game->current_scene = 0;
 }
 
 button_t *return_button_active(button_t *back)

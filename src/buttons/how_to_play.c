@@ -11,7 +11,7 @@
 
 void htp_function(game_t *game)
 {
-	my_putstr("htp\n");
+	game->current_scene = 1;
 }
 
 button_t *htp_button_active(button_t *htp)

@@ -2,27 +2,25 @@
 ** EPITECH PROJECT, 2018
 ** my_rpg
 ** File description:
-** menu_scene.c
+** htp_scene.c
 */
 
 #include <stdio.h>
 #include <stdlib.h>
 #include "my_rpg.h"
 
-int menu_scene_init_buttons(button_t *play, button_t *quit, button_t *htp)
+int htp_scene_init_buttons(button_t *play, button_t *back)
 {
-	if (play == NULL || quit == NULL || htp == NULL)
+	if (play == NULL || back == NULL)
 		return (84);
-	play->pos.x = 664;
-	play->pos.y = 585;
-	quit->pos.x = 1016;
-	quit->pos.y = 585;
-	htp->pos.x = 843;
-	htp->pos.y = 454;
+	play->pos.x = 1214;
+	play->pos.y = 880;
+	back->pos.x = 1521;
+	back->pos.y = 880;
 	return (0);
 }
 
-object_t *menu_scene_background(void)
+object_t *htp_scene_background(void)
 {
 	object_t *background = malloc(sizeof(*background));
 
@@ -31,47 +29,44 @@ object_t *menu_scene_background(void)
 	background->pos.x = 0;
 	background->pos.y = 0;
 	background->rect.height = 1080;
-	background->rect.left = 0;
+	background->rect.left = 1920;
 	background->rect.top = 0;
 	background->rect.width = 1920;
 	background->type = BG;
 	return (background);
 }
 
-int menu_scene_lists(scene_t *menu, button_t *play,
-		button_t *quit, button_t *htp)
+int htp_scene_lists(scene_t *htp, button_t *play,
+		button_t *back)
 {
-	menu->buttons = list_init();
-	menu->objects = list_init();
-	if (menu->buttons == NULL || menu->objects == NULL)
+	htp->buttons = list_init();
+	htp->objects = list_init();
+	if (htp->buttons == NULL || htp->objects == NULL)
 		return (84);
-	put_end_list(menu->buttons, play);
-	put_end_list(menu->buttons, quit);
-	put_end_list(menu->buttons, htp);
+	put_end_list(htp->buttons, play);
+	put_end_list(htp->buttons, back);
 	return (0);
 }
 
-scene_t *menu_scene(game_t *game)
+scene_t *htp_scene(game_t *game)
 {
-	scene_t *menu = malloc(sizeof(*menu));
+	scene_t *htp = malloc(sizeof(*htp));
 	object_t *background;
 	button_t *play = play_button(game);
-	button_t *quit = quit_button(game);
-	button_t *htp = htp_button(game);
+	button_t *back = return_button(game);
 
-	if (menu == NULL)
+	if (htp == NULL)
 		return (NULL);
-	if (menu_scene_init_buttons(play, quit, htp) == 84)
+	if (htp_scene_init_buttons(play, back) == 84)
 		return (NULL);
-	background = menu_scene_background();
+	background = htp_scene_background();
 	background = create_object(background, game->atlas);
 	play = create_button(play, game->atlas);
-	quit = create_button(quit, game->atlas);
-	htp = create_button(htp, game->atlas);
-	if (play == NULL || quit == NULL || htp == NULL || background == NULL)
+	back = create_button(back, game->atlas);
+	if (play == NULL || back == NULL || background == NULL)
 		return (NULL);
-	if (menu_scene_lists(menu, play, quit, htp) == 84)
+	if (htp_scene_lists(htp, play, back) == 84)
 		return (NULL);
-	put_end_list(menu->objects, background);
-	return (menu);
+	put_end_list(htp->objects, background);
+	return (htp);
 }

@@ -17,7 +17,8 @@ int set_scenes(game_t *game)
 	if (game->scenes == NULL || game->atlas == NULL)
 		return (84);
 	game->scenes[0] = menu_scene(game);
-	if (game->scenes[0] == NULL)
+	game->scenes[1] = htp_scene(game);
+	if (game->scenes[0] == NULL || game->scenes[1] == NULL)
 		return (84);
 	return (0);
 }

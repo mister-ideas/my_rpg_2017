@@ -88,14 +88,16 @@ int mouse_is_in_area(sfVector2f pos, sfVector2f size, sfVector2i clickPos);
 /* scenes.c */
 int set_scenes(game_t *game);
 
-/* menu_scene.c */
+/* scenes */
 scene_t *menu_scene(game_t *game);
+scene_t *htp_scene(game_t *game);
 
 /* buttons */
 button_t *play_button(game_t *game);
 button_t *quit_button(game_t *game);
 button_t *htp_button(game_t *game);
 button_t *resume_button(game_t *game);
+button_t *return_button(game_t *game);
 
 /* display.c */
 int display_game(game_t *game);

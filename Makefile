@@ -18,10 +18,12 @@ SRC=		$(SRC_DIR)my_rpg.c				\
 		$(SRC_DIR)buttons.c				\
 		$(SRC_DIR)objects.c				\
 		$(SRC_DIR)menu_scene.c				\
+		$(SRC_DIR)htp_scene.c				\
 		$(SRC_DIR)buttons/play.c   			\
 		$(SRC_DIR)buttons/quit.c             		\
 		$(SRC_DIR)buttons/how_to_play.c      		\
 		$(SRC_DIR)buttons/resume.c			\
+		$(SRC_DIR)buttons/return.c			\
 
 OBJ=		$(SRC:.c=.o)
 
