@@ -16,19 +16,19 @@ void resume_function(game_t *game)
 
 button_t *resume_button_active(button_t *resume)
 {
-	resume->active.height = 0;
+	resume->active.height = 85;
 	resume->active.left = 0;
-	resume->active.top = 0;
-	resume->active.width = 0;
+	resume->active.top = 3155;
+	resume->active.width = 235;
 	return (resume);
 }
 
 button_t *resume_button_hover(button_t *resume)
 {
-	resume->hover.height = 0;
+	resume->hover.height = 85;
 	resume->hover.left = 0;
-	resume->hover.top = 0;
-	resume->hover.width = 0;
+	resume->hover.top = 3069;
+	resume->hover.width = 235;
 	return (resume);
 }
 
@@ -40,10 +40,10 @@ button_t *resume_button(game_t *game)
 		return (NULL);
 	resume->size.x = 235;
 	resume->size.y = 85;
-	resume->rect.height = 0;
+	resume->rect.height = 85;
 	resume->rect.left = 0;
-	resume->rect.top = 0;
-	resume->rect.width = 0;
+	resume->rect.top = 2983;
+	resume->rect.width = 235;
 	resume = resume_button_hover(resume);
 	resume = resume_button_active(resume);
 	resume->callback = &(resume_function);
