@@ -17,10 +17,9 @@ void check_button_state(button_t *but, game_t *game, int in_area)
 	if (in_area == 1 && game->window->click == 1)
 		sfRectangleShape_setTextureRect(but->shape,
 						but->active);
-	else if (in_area == 1 && game->window->click == 0) {
+	else if (in_area == 1 && game->window->click == 0)
 		but->callback(game);
-		game->window->click = 2;
-	}
+	game->window->click = 2;
 }
 
 void display_but(struct node *button, game_t *game)
