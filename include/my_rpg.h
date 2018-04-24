@@ -15,7 +15,7 @@
 #include <SFML/Window.h>
 #include "linked_list.h"
 
-#define NB_SCENES 3
+#define NB_SCENES 8
 #define NB_SOUNDS 0
 
 #define ATLAS_PATH "./ressources/img/atlas.png"
@@ -92,6 +92,12 @@ int set_scenes(game_t *game);
 scene_t *menu_scene(game_t *game);
 scene_t *htp_scene(game_t *game);
 scene_t *intro_scene(game_t *game);
+scene_t *arena1_scene(game_t *game);
+scene_t *arena2_scene(game_t *game);
+scene_t *arena3_scene(game_t *game);
+scene_t *arena4_scene(game_t *game);
+scene_t *boss_scene(game_t *game);
+
 
 /* buttons */
 button_t *play_button(game_t *game);

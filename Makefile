@@ -20,6 +20,11 @@ SRC=		$(SRC_DIR)my_rpg.c				\
 		$(SRC_DIR)scenes/menu_scene.c			\
 		$(SRC_DIR)scenes/htp_scene.c			\
 		$(SRC_DIR)scenes/intro_scene.c			\
+		$(SRC_DIR)scenes/arena1_scene.c			\
+		$(SRC_DIR)scenes/arena2_scene.c                 \
+		$(SRC_DIR)scenes/arena3_scene.c                 \
+		$(SRC_DIR)scenes/arena4_scene.c                 \
+		$(SRC_DIR)scenes/boss_scene.c                	\
 		$(SRC_DIR)buttons/play.c   			\
 		$(SRC_DIR)buttons/quit.c             		\
 		$(SRC_DIR)buttons/how_to_play.c      		\
@@ -28,7 +33,7 @@ SRC=		$(SRC_DIR)my_rpg.c				\
 
 OBJ=		$(SRC:.c=.o)
 
-CFLAGS= 	-Wall -Wextra -g3
+CFLAGS= 	-Wall -Wextra
 
 CPPFLAGS =	-I include
 

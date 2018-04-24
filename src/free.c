@@ -15,7 +15,8 @@ void destroy_scene(scene_t *scene)
 	if (scene->buttons) {
 		search = scene->buttons->start;
 		for (; search != NULL; search = search->next) {
-			sfRectangleShape_destroy(((button_t *)search->data)->shape);
+			sfRectangleShape_destroy(
+			((button_t *)search->data)->shape);
 			sfTexture_destroy(((button_t *)search->data)->texture);
 			free((button_t *)search->data);
 		}

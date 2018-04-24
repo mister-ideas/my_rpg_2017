@@ -51,10 +51,13 @@ void display_obj(struct node *obj, game_t *game)
 
 int display_game(game_t *game)
 {
-	struct node *button = game->scenes[game->current_scene]->buttons->start;
+	struct node *button;
 	struct node *obj = game->scenes[game->current_scene]->objects->start;
 
-	display_but(button, game);
+	if (game->scenes[game->current_scene]->buttons) {
+		button = game->scenes[game->current_scene]->buttons->start;
+		display_but(button, game);
+	}
 	display_obj(obj, game);
 	return (0);
 }
