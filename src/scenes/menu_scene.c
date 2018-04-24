@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2018
 ** my_rpg
 ** File description:
-** menu_scene.c
+** scenes/menu_scene.c
 */
 
 #include <stdio.h>

@@ -19,6 +19,7 @@ SRC=		$(SRC_DIR)my_rpg.c				\
 		$(SRC_DIR)object.c				\
 		$(SRC_DIR)scenes/menu_scene.c			\
 		$(SRC_DIR)scenes/htp_scene.c			\
+		$(SRC_DIR)scenes/intro_scene.c			\
 		$(SRC_DIR)buttons/play.c   			\
 		$(SRC_DIR)buttons/quit.c             		\
 		$(SRC_DIR)buttons/how_to_play.c      		\

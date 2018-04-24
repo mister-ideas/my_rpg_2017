@@ -15,7 +15,7 @@
 #include <SFML/Window.h>
 #include "linked_list.h"
 
-#define NB_SCENES 2
+#define NB_SCENES 3
 #define NB_SOUNDS 0
 
 #define ATLAS_PATH "./ressources/img/atlas.png"

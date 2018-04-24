@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2018
 ** my_rpg
 ** File description:
-** htp_scene.c
+** scenes/htp_scene.c
 */
 
 #include <stdio.h>
