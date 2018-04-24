@@ -37,7 +37,7 @@ scene_t *intro_scene(game_t *game)
 	if (background == NULL)
 		return (NULL);
 	intro->objects = list_init();
-	if (intro->objects = NULL)
+	if (intro->objects == NULL)
 		return (NULL);
 	put_end_list(intro->objects, background);
 	return (intro);
