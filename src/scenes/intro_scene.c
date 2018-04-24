@@ -40,5 +40,6 @@ scene_t *intro_scene(game_t *game)
 	if (intro->objects == NULL)
 		return (NULL);
 	put_end_list(intro->objects, background);
+	intro->buttons = NULL;
 	return (intro);
 }

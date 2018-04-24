@@ -10,14 +10,17 @@
 
 void destroy_scene(scene_t *scene)
 {
-	struct node *search = scene->buttons->start;
+	struct node *search;
 
-	for (; search != NULL; search = search->next) {
-		sfRectangleShape_destroy(((button_t *)search->data)->shape);
-		sfTexture_destroy(((button_t *)search->data)->texture);
-		free((button_t *)search->data);
+	if (scene->buttons) {
+		search = scene->buttons->start;
+		for (; search != NULL; search = search->next) {
+			sfRectangleShape_destroy(((button_t *)search->data)->shape);
+			sfTexture_destroy(((button_t *)search->data)->texture);
+			free((button_t *)search->data);
+		}
+		free(scene->buttons);
 	}
-	free(scene->buttons);
 	search = scene->objects->start;
 	for (; search != NULL; search = search->next) {
 		sfSprite_destroy(((object_t *)search->data)->sprite);
