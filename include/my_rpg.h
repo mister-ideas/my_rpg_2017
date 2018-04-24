@@ -91,6 +91,7 @@ int set_scenes(game_t *game);
 /* scenes */
 scene_t *menu_scene(game_t *game);
 scene_t *htp_scene(game_t *game);
+scene_t *intro_scene(game_t *game);
 
 /* buttons */
 button_t *play_button(game_t *game);
