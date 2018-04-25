@@ -44,9 +44,6 @@ void display_obj(struct node *obj, game_t *game)
 
 	for (; obj != NULL; obj = obj->next) {
 		data = (object_t *)obj->data;
-		if (data->type == ANIM)
-			sfRectangleShape_setTextureRect(data->sprite,
-							data->rect);
 		sfRenderWindow_drawSprite(game->window->window,
 					data->sprite, NULL);
 	}

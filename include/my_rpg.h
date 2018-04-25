@@ -23,7 +23,7 @@
 
 enum TYPE {
 	BG,
-	ANIM,
+	CHAR,
 	MISC
 };
 
