@@ -23,8 +23,8 @@
 
 enum TYPE {
 	BG,
-	MISC,
-	ANIM
+	CHAR,
+	MISC
 };
 
 enum STATUS {
