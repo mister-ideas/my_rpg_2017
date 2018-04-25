@@ -29,17 +29,22 @@ scene_t *intro_scene(game_t *game)
 {
 	scene_t *intro = malloc(sizeof(*intro));
 	object_t *background;
+	object_t *character;
 
 	if (intro == NULL)
 		return (NULL);
 	background = intro_scene_background();
+	character = character_object();
 	background = create_object(background, game->atlas);
-	if (background == NULL)
+	character = create_object(character, game->atlas);
+	if (background == NULL || character == NULL)
 		return (NULL);
+	game->char_rect = character->rect;
 	intro->objects = list_init();
 	if (intro->objects == NULL)
 		return (NULL);
 	put_end_list(intro->objects, background);
+	put_end_list(intro->objects, character);
 	intro->buttons = NULL;
 	return (intro);
 }

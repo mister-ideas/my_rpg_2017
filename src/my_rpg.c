@@ -21,6 +21,9 @@ int init_game(game_t *game)
 	if (game->font == NULL)
 		return (84);
 	game->current_scene = 0;
+	game->char_clock = init_char_clock();
+	if (game->char_clock == NULL)
+		return (84);
 	return (0);
 }
 

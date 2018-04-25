@@ -46,6 +46,13 @@ typedef struct scene
 	dll_t *objects;
 } scene_t;
 
+typedef struct clock
+{
+	sfClock *clock;
+	sfTime time;
+	float seconds;
+} my_clock_t;
+
 typedef struct game
 {
 	scene_t **scenes;
@@ -97,7 +104,6 @@ scene_t *arena2_scene(game_t *game);
 scene_t *arena3_scene(game_t *game);
 scene_t *arena4_scene(game_t *game);
 scene_t *boss_scene(game_t *game);
-
 
 /* buttons */
 button_t *play_button(game_t *game);
