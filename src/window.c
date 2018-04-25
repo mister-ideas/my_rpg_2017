@@ -55,8 +55,6 @@ int display_window(game_t *game)
 	sfRenderWindow_setFramerateLimit(game->window->window, 60);
 	while (sfRenderWindow_isOpen(game->window->window)) {
 		game_events(game);
-		character_clock(game);
-		sfSprite_setTextureRect(objects->character->sprite, objects->character->rect);
 		sfRenderWindow_clear(game->window->window, sfBlack);
 		if (display_game(game) == 84)
 			return (84);

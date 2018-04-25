@@ -1,5 +1,5 @@
 /*
-** EPITECH PROJECT, 2018
+1;5003;0c** EPITECH PROJECT, 2018
 ** my_rpg
 ** File description:
 ** scenes/intro_scene.c
@@ -29,22 +29,17 @@ scene_t *intro_scene(game_t *game)
 {
 	scene_t *intro = malloc(sizeof(*intro));
 	object_t *background;
-	object_t *character;
 
 	if (intro == NULL)
 		return (NULL);
 	background = intro_scene_background();
-	character = character_object();
 	background = create_object(background, game->atlas);
-	character = create_object(character, game->atlas);
-	if (background == NULL || character == NULL)
+	if (background == NULL)
 		return (NULL);
-	game->char_rect = character->rect;
 	intro->objects = list_init();
 	if (intro->objects == NULL)
 		return (NULL);
 	put_end_list(intro->objects, background);
-	put_end_list(intro->objects, character);
 	intro->buttons = NULL;
 	return (intro);
 }
