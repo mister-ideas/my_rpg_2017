@@ -25,6 +25,7 @@ SRC=		$(SRC_DIR)my_rpg.c				\
 		$(SRC_DIR)scenes/arena3_scene.c                 \
 		$(SRC_DIR)scenes/arena4_scene.c                 \
 		$(SRC_DIR)scenes/boss_scene.c                	\
+		$(SRC_DIR)objects/character.c			\
 		$(SRC_DIR)buttons/play.c   			\
 		$(SRC_DIR)buttons/quit.c             		\
 		$(SRC_DIR)buttons/how_to_play.c      		\

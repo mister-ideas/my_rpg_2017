@@ -36,6 +36,8 @@ void quit_game(game_t *game)
 	for (int i = 0; i < NB_SCENES; i++)
 		destroy_scene(game->scenes[i]);
 	free(game->scenes);
+	sfClock_destroy(game->char_clock->clock);
+	free(game->char_clock);
 	sfRenderWindow_destroy(game->window->window);
 	free(game->window);
 	sfImage_destroy(game->atlas);

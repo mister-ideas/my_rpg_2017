@@ -61,6 +61,7 @@ typedef struct game
 	sfMusic *sounds[NB_SOUNDS];
 	sfImage *atlas;
 	window_t *window;
+	my_clock_t *char_clock;
 } game_t;
 
 typedef struct object
@@ -111,6 +112,11 @@ button_t *quit_button(game_t *game);
 button_t *htp_button(game_t *game);
 button_t *resume_button(game_t *game);
 button_t *return_button(game_t *game);
+
+/* objects/character.c */
+object_t *character_init(void);
+my_clock_t *character_clock_init(void);
+void character_clock(object_t *character, my_clock_t *char_clock);
 
 /* display.c */
 int display_game(game_t *game);
