@@ -14,9 +14,9 @@ int pause_scene_init_buttons(button_t *resume, button_t *quit)
 	if (resume == NULL || quit == NULL)
 		return (84);
 	resume->pos.x = 589;
-	resume->pos.y = 454;
-	quit->pos.x = 1099;
-	quit->pos.y = 454;
+	resume->pos.y = 451;
+	quit->pos.x = 1100;
+	quit->pos.y = 451;
 	return (0);
 }
 

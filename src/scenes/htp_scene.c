@@ -14,9 +14,9 @@ int htp_scene_init_buttons(button_t *play, button_t *back)
 	if (play == NULL || back == NULL)
 		return (84);
 	play->pos.x = 1214;
-	play->pos.y = 880;
+	play->pos.y = 877;
 	back->pos.x = 1521;
-	back->pos.y = 880;
+	back->pos.y = 877;
 	return (0);
 }
 

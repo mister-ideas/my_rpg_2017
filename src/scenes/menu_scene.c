@@ -14,11 +14,11 @@ int menu_scene_init_buttons(button_t *play, button_t *quit, button_t *htp)
 	if (play == NULL || quit == NULL || htp == NULL)
 		return (84);
 	play->pos.x = 664;
-	play->pos.y = 585;
+	play->pos.y = 582;
 	quit->pos.x = 1016;
-	quit->pos.y = 585;
+	quit->pos.y = 582;
 	htp->pos.x = 843;
-	htp->pos.y = 454;
+	htp->pos.y = 451;
 	return (0);
 }
 
