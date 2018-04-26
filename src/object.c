@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2018
 ** my_rpg
 ** File description:
-** objects.c
+** object.c
 */
 
 #include <stdio.h>

@@ -11,7 +11,7 @@
 
 void resume_function(game_t *game)
 {
-	my_putstr("resume\n");
+	game->current_scene = game->last_scene;
 }
 
 button_t *resume_button_active(button_t *resume)

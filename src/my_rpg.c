@@ -9,7 +9,7 @@
 #include <stdlib.h>
 #include "my_rpg.h"
 
-const sfIntRect atlas_rect = {0, 0, 3840, 4547};
+const sfIntRect atlas_rect = {0, 0, 7680, 4364};
 
 int init_game(game_t *game)
 {

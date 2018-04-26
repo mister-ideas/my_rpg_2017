@@ -15,7 +15,7 @@
 #include <SFML/Window.h>
 #include "linked_list.h"
 
-#define NB_SCENES 8
+#define NB_SCENES 9
 #define NB_SOUNDS 0
 
 #define ATLAS_PATH "./ressources/img/atlas.png"
@@ -57,6 +57,7 @@ typedef struct game
 {
 	scene_t **scenes;
 	int current_scene;
+	int last_scene;
 	sfFont *font;
 	sfMusic *sounds[NB_SOUNDS];
 	sfImage *atlas;
@@ -100,6 +101,7 @@ int set_scenes(game_t *game);
 scene_t *menu_scene(game_t *game);
 scene_t *htp_scene(game_t *game);
 scene_t *intro_scene(game_t *game);
+scene_t *pause_scene(game_t *game);
 scene_t *arena1_scene(game_t *game);
 scene_t *arena2_scene(game_t *game);
 scene_t *arena3_scene(game_t *game);

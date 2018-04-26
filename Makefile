@@ -20,6 +20,7 @@ SRC=		$(SRC_DIR)my_rpg.c				\
 		$(SRC_DIR)scenes/menu_scene.c			\
 		$(SRC_DIR)scenes/htp_scene.c			\
 		$(SRC_DIR)scenes/intro_scene.c			\
+		$(SRC_DIR)scenes/pause_scene.c			\
 		$(SRC_DIR)scenes/arena1_scene.c			\
 		$(SRC_DIR)scenes/arena2_scene.c                 \
 		$(SRC_DIR)scenes/arena3_scene.c                 \
