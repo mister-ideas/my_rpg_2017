@@ -15,14 +15,9 @@
 
 
 typedef struct my_text{
-	// »       sfRenderWindow·*window;$ »       sfVideoMode·video_mode; »       sfEvent·event;$    servent juste pour le main 
-
-	sfRenderWindow *window;
-	sfVideoMode video_mode;
 	sfVector2f positionstext;
 	int lvlint;
 	sfFont* font;
-	sfEvent event;
 	sfText* text;
 }text;
 
@@ -35,14 +30,8 @@ void init_text(text *new)
 	sfText_setFont(new->text,new->font);
 }
 
-void initwindow(text *new)
+void init_text(text *new)
 {
-	new->video_mode.width = 1920;
-	new->video_mode.height = 1080;
-	new->video_mode.bitsPerPixel = 32;
-	new->window =sfRenderWindow_create				\
-		(new->video_mode,"MyWindow",sfDefaultStyle,NULL);
-	new->font = sfFont_createFromFile("arial.ttf");
 	new->text = sfText_create();
 	sfText_setCharacterSize(new->text,25);
 	sfText_setFont(new->text,new->font);
@@ -92,25 +81,3 @@ void introtext(text * new)
 	positiondialogue(new,textmenu);
 	sfRenderWindow_drawText(new->window, new->text, NULL);
 }
-
-/*
-
-int main()
-{
-        text new;
-        initwindow(&new);
-	while (sfRenderWindow_isOpen(new.window)) {
-                while (sfRenderWindow_pollEvent(new.window,&new.event)) {
-                        if (new.event.type == sfEvtClosed)
-                                sfRenderWindow_close(new.window);
-                }
-		sfRenderWindow_clear(new.window,sfBlack);
-		 if (new.lvlint > 5)
-			 return (1);
-
-                introtext(&new);
-                sfRenderWindow_display(new.window);
-	}
-        return (0);
-}
-/*
