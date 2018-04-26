@@ -16,8 +16,6 @@
 
 typedef struct my_text{
 	// »       sfRenderWindow·*window;$ »       sfVideoMode·video_mode; »       sfEvent·event;$    servent juste pour le main 
- $
-
 
 	sfRenderWindow *window;
 	sfVideoMode video_mode;
