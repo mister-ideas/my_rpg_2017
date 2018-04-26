@@ -15,11 +15,11 @@ object_t *character_init(void)
 
 	if (character == NULL)
 		return (NULL);
-	character->pos.x = 0;
-	character->pos.y = 0;
+	character->pos.x = 820;
+	character->pos.y = 650;
 	character->rect.height = 120;
 	character->rect.left = 233;
-	character->rect.top = 3575;
+	character->rect.top = 3576;
 	character->rect.width = 130;
 	character->type = CHAR;
 	return (character);
