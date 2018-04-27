@@ -18,7 +18,9 @@ SRC=		$(SRC_DIR)my_rpg.c				\
 		$(SRC_DIR)display.c				\
 		$(SRC_DIR)button.c				\
 		$(SRC_DIR)object.c				\
-		$(SRC_DIR)controls/controls_bow_spell_walk.c  	\
+		$(SRC_DIR)controls/bow_spell_walk.c  		\
+		$(SRC_DIR)controls/spear_walk.c			\
+		$(SRC_DIR)controls/spell_attack.c		\
 		$(SRC_DIR)scenes/menu_scene.c			\
 		$(SRC_DIR)scenes/htp_scene.c			\
 		$(SRC_DIR)scenes/intro_scene.c			\

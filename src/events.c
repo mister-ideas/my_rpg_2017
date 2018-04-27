@@ -42,6 +42,14 @@ static void controls_events(game_t *game)
 	bow_spell_walk_q(game);
 	bow_spell_walk_s(game);
 	bow_spell_walk_d(game);
+	spear_walk_z(game);
+	spear_walk_q(game);
+	spear_walk_s(game);
+	spear_walk_d(game);
+	spell_attack_up(game);
+	spell_attack_left(game);
+	spell_attack_down(game);
+	spell_attack_right(game);
 }
 
 void game_events(game_t *game)
@@ -54,8 +62,8 @@ void game_events(game_t *game)
 			controls_events(game);
 		} else if (game->window->event.type == sfEvtKeyReleased) {
 			game->character->char_obj->rect.top = 4600;
-			game->character->char_obj->rect.left = 230;
-			game->character->clock_max = 230;
+			game->character->char_obj->rect.left = 240;
+			game->character->clock_max = 240;
 			game->character->move.x = 0;
 			game->character->move.y = 0;
 		}

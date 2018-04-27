@@ -127,11 +127,19 @@ button_t *htp_button(game_t *game);
 button_t *resume_button(game_t *game);
 button_t *return_button(game_t *game);
 
-/* controls/controls_bow_spell_walk.c */
+/* controls */
 void bow_spell_walk_z(game_t *game);
 void bow_spell_walk_q(game_t *game);
 void bow_spell_walk_s(game_t *game);
 void bow_spell_walk_d(game_t *game);
+void spear_walk_z(game_t *game);
+void spear_walk_q(game_t *game);
+void spear_walk_s(game_t *game);
+void spear_walk_d(game_t *game);
+void spell_attack_up(game_t *game);
+void spell_attack_left(game_t *game);
+void spell_attack_down(game_t *game);
+void spell_attack_right(game_t *game);
 
 /* objects/character.c */
 int character_init(game_t *game);

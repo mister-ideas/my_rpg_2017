@@ -14,12 +14,12 @@ int character_init(game_t *game)
 	game->character->char_obj->pos.x = 820;
 	game->character->char_obj->pos.y = 650;
 	game->character->char_obj->rect.height = 130;
-	game->character->char_obj->rect.left = 230;
+	game->character->char_obj->rect.left = 240;
 	game->character->char_obj->rect.top = 4600;
 	game->character->char_obj->rect.width = 126;
 	game->character->move.x = 0;
 	game->character->move.y = 0;
-	game->character->clock_max = 230;
+	game->character->clock_max = 240;
 	game->character->char_obj->type = CHAR;
 	game->character->char_clock->clock = sfClock_create();
 	if (game->character->char_clock->clock == NULL)
@@ -37,7 +37,7 @@ void character_clock(game_t *game, character_t *character)
 		if (character->char_obj->rect.left != character->clock_max)
 			character->char_obj->rect.left += 126;
 		else
-			character->char_obj->rect.left = 230;
+			character->char_obj->rect.left = 240;
 		sfSprite_setTextureRect(character->char_obj->sprite,
 					character->char_obj->rect);
 		sfClock_restart(character->char_clock->clock);
