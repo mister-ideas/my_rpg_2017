@@ -36,6 +36,14 @@ static void game_keys_events(game_t *game)
 		game->current_scene = 4;
 }
 
+static void controls_events(game_t *game)
+{
+	bow_spell_walk_z(game);
+	bow_spell_walk_q(game);
+	bow_spell_walk_s(game);
+	bow_spell_walk_d(game);
+}
+
 void game_events(game_t *game)
 {
 	while (sfRenderWindow_pollEvent(game->window->window,
@@ -43,7 +51,7 @@ void game_events(game_t *game)
 		general_events(game);
 		if (game->window->event.type == sfEvtKeyPressed) {
 			game_keys_events(game);
-			bow_spell_walk_z(game);
+			controls_events(game);
 		} else if (game->window->event.type == sfEvtKeyReleased) {
 			game->character->char_obj->rect.top = 4600;
 			game->character->char_obj->rect.left = 230;
