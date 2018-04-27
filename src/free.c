@@ -36,8 +36,10 @@ void quit_game(game_t *game)
 	for (int i = 0; i < NB_SCENES; i++)
 		destroy_scene(game->scenes[i]);
 	free(game->scenes);
-	sfClock_destroy(game->char_clock->clock);
-	free(game->char_clock);
+	sfClock_destroy(game->character->char_clock->clock);
+	sfSprite_destroy(game->character->char_obj->sprite);
+	sfTexture_destroy(game->character->char_obj->texture);
+	free(game->character);
 	sfRenderWindow_destroy(game->window->window);
 	free(game->window);
 	sfImage_destroy(game->atlas);

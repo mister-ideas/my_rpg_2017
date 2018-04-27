@@ -32,36 +32,6 @@ int init_window(game_t *game, sfVideoMode video)
 	return (0);
 }
 
-void game_keys_events(game_t *game)
-{
-	if (game->window->event.type == sfEvtKeyPressed &&
-	    sfKeyboard_isKeyPressed(sfKeyEscape) == sfTrue &&
-	    game->current_scene != 0 && game->current_scene != 1
-	    && game->current_scene != 3) {
-		game->last_scene = game->current_scene;
-		game->current_scene = 3;
-	}
-}
-
-int game_events(game_t *game)
-{
-	while (sfRenderWindow_pollEvent(game->window->window,
-					&(game->window->event))) {
-		if (game->window->event.type == sfEvtClosed)
-			sfRenderWindow_close(game->window->window);
-		if (game->window->event.type == sfEvtMouseMoved)
-			game->window->mouse_pos =
-				sfMouse_getPositionRenderWindow
-				(game->window->window);
-		if (game->window->event.type == sfEvtMouseButtonPressed)
-			game->window->click = 1;
-		if (game->window->event.type == sfEvtMouseButtonReleased)
-			game->window->click = 0;
-		game_keys_events(game);
-	}
-	return (0);
-}
-
 int display_window(game_t *game)
 {
 	sfRenderWindow_setFramerateLimit(game->window->window, 60);

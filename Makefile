@@ -13,10 +13,12 @@ SRC=		$(SRC_DIR)my_rpg.c				\
 		$(SRC_DIR)linked_list.c				\
 		$(SRC_DIR)scene.c				\
 		$(SRC_DIR)window.c				\
+		$(SRC_DIR)events.c				\
 		$(SRC_DIR)free.c				\
 		$(SRC_DIR)display.c				\
 		$(SRC_DIR)button.c				\
 		$(SRC_DIR)object.c				\
+		$(SRC_DIR)controls/controls_arrow_spell_walk.c  \
 		$(SRC_DIR)scenes/menu_scene.c			\
 		$(SRC_DIR)scenes/htp_scene.c			\
 		$(SRC_DIR)scenes/intro_scene.c			\

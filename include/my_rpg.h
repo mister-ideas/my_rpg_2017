@@ -53,18 +53,6 @@ typedef struct clock
 	float seconds;
 } my_clock_t;
 
-typedef struct game
-{
-	scene_t **scenes;
-	int current_scene;
-	int last_scene;
-	sfFont *font;
-	sfMusic *sounds[NB_SOUNDS];
-	sfImage *atlas;
-	window_t *window;
-	my_clock_t *char_clock;
-} game_t;
-
 typedef struct object
 {
 	enum TYPE type;
@@ -73,6 +61,27 @@ typedef struct object
 	sfVector2f pos;
 	sfIntRect rect;
 } object_t;
+
+typedef struct character
+{
+	object_t *char_obj;
+	my_clock_t *char_clock;
+	sfVector2f move;
+	int clock_max;
+} character_t;
+
+typedef struct game
+{
+	scene_t **scenes;
+	int current_scene;
+	int last_scene;
+	int current_weapon;
+	sfFont *font;
+	sfMusic *sounds[NB_SOUNDS];
+	sfImage *atlas;
+	window_t *window;
+	character_t *character;
+} game_t;
 
 typedef struct button
 {
@@ -93,6 +102,9 @@ extern const sfIntRect atlas_rect;
 int init_window(game_t *game, sfVideoMode video);
 int display_window(game_t *game);
 int mouse_is_in_area(sfVector2f pos, sfVector2f size, sfVector2i clickPos);
+
+/* events.c */
+void game_events(game_t *game);
 
 /* scenes.c */
 int set_scenes(game_t *game);
@@ -116,9 +128,8 @@ button_t *resume_button(game_t *game);
 button_t *return_button(game_t *game);
 
 /* objects/character.c */
-object_t *character_init(void);
-my_clock_t *character_clock_init(void);
-void character_clock(object_t *character, my_clock_t *char_clock);
+int character_init(game_t *game);
+void character_clock(game_t *game, character_t *character);
 
 /* display.c */
 int display_game(game_t *game);

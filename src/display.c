@@ -44,10 +44,16 @@ void display_obj(struct node *obj, game_t *game)
 
 	for (; obj != NULL; obj = obj->next) {
 		data = (object_t *)obj->data;
-		if (data->type == CHAR)
-			character_clock(data, game->char_clock);
 		sfRenderWindow_drawSprite(game->window->window,
-					data->sprite, NULL);
+		data->sprite, NULL);
+	}
+	if (game->current_scene != 0 && game->current_scene != 1 &&
+	game->current_scene != 3) {
+		character_clock(game, game->character);
+		sfRenderWindow_drawSprite(game->window->window,
+		game->character->char_obj->sprite, NULL);
+		sfSprite_move(game->character->char_obj->sprite,
+			      game->character->move);
 	}
 }
 
