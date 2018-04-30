@@ -25,31 +25,30 @@ static void general_events(game_t *game)
 
 static void game_keys_events(game_t *game)
 {
-	if (sfKeyboard_isKeyPressed(sfKeyEscape) == sfTrue &&
-	game->current_scene != 0 && game->current_scene != 1
-	&& game->current_scene != 3) {
+	if (game->keys->esc == sfTrue && game->current_scene != 0 &&
+	game->current_scene != 1 && game->current_scene != 3) {
 		game->last_scene = game->current_scene;
 		game->current_scene = 3;
 	}
-	if (sfKeyboard_isKeyPressed(sfKeySpace) == sfTrue &&
-	game->current_scene == 2)
+	if (game->keys->space == sfTrue && game->current_scene == 2)
 		game->current_scene = 4;
 }
 
 static void controls_events(game_t *game)
 {
-	bow_spell_walk_z(game);
-	bow_spell_walk_q(game);
-	bow_spell_walk_s(game);
-	bow_spell_walk_d(game);
-	spear_walk_z(game);
-	spear_walk_q(game);
-	spear_walk_s(game);
-	spear_walk_d(game);
-	spell_attack_up(game);
-	spell_attack_left(game);
-	spell_attack_down(game);
-	spell_attack_right(game);
+	if (game->current_scene != 0 && game->current_scene != 1 &&
+	game->current_scene != 3) {
+		if (game->current_weapon == 0 || game->current_weapon == 1)
+			bow_spell_walk(game);
+		if (game->current_weapon == 2) {
+			spear_walk(game);
+			spear_attack(game);
+		}
+		if (game->current_weapon == 0)
+			spell_attack(game);
+		if (game->current_weapon == 1)
+			bow_attack(game);
+	}
 }
 
 void game_events(game_t *game)
@@ -57,10 +56,16 @@ void game_events(game_t *game)
 	while (sfRenderWindow_pollEvent(game->window->window,
 					&(game->window->event))) {
 		general_events(game);
-		if (game->window->event.type == sfEvtKeyPressed) {
-			game_keys_events(game);
-			controls_events(game);
-		} else if (game->window->event.type == sfEvtKeyReleased) {
+		if (game->window->event.type == sfEvtKeyPressed)
+			check_pressed_keys(game);
+		if (game->window->event.type == sfEvtKeyReleased)
+			check_released_keys(game);
+		game_keys_events(game);
+		controls_events(game);
+		if (game->keys->z == sfFalse && game->keys->q == sfFalse &&
+		game->keys->s == sfFalse && game->keys->d == sfFalse &&
+		game->keys->up == sfFalse && game->keys->left == sfFalse &&
+		game->keys->down == sfFalse && game->keys->right == sfFalse) {
 			game->character->char_obj->rect.top = 4600;
 			game->character->char_obj->rect.left = 240;
 			game->character->clock_max = 240;

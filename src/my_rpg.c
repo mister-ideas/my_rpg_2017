@@ -13,14 +13,15 @@ const sfIntRect atlas_rect = {0, 0, 7680, 4885};
 
 int init_game(game_t *game)
 {
-	character_t *character = malloc(sizeof(*character));
 	object_t *char_obj = malloc(sizeof(*char_obj));
 	my_clock_t *char_clock = malloc(sizeof(*char_clock));
 	sfVideoMode video = {1920, 1080, 32};
 
-	if (character == NULL || char_obj == NULL || char_clock == NULL)
+	game->character = malloc(sizeof(*game->character));
+	game->keys = malloc(sizeof(*game->keys));
+	if (game->keys == NULL || game->character == NULL ||
+	char_obj == NULL || char_clock == NULL)
 		return (84);
-	game->character = character;
 	game->character->char_obj = char_obj;
 	game->character->char_clock = char_clock;
 	init_window(game, video);

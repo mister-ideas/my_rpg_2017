@@ -70,6 +70,20 @@ typedef struct character
 	int clock_max;
 } character_t;
 
+typedef struct keys
+{
+	sfBool z;
+	sfBool q;
+	sfBool s;
+	sfBool d;
+	sfBool up;
+	sfBool left;
+	sfBool down;
+	sfBool right;
+	sfBool esc;
+	sfBool space;
+} keys_t;
+
 typedef struct game
 {
 	scene_t **scenes;
@@ -81,6 +95,7 @@ typedef struct game
 	sfImage *atlas;
 	window_t *window;
 	character_t *character;
+	keys_t *keys;
 } game_t;
 
 typedef struct button
@@ -128,18 +143,11 @@ button_t *resume_button(game_t *game);
 button_t *return_button(game_t *game);
 
 /* controls */
-void bow_spell_walk_z(game_t *game);
-void bow_spell_walk_q(game_t *game);
-void bow_spell_walk_s(game_t *game);
-void bow_spell_walk_d(game_t *game);
-void spear_walk_z(game_t *game);
-void spear_walk_q(game_t *game);
-void spear_walk_s(game_t *game);
-void spear_walk_d(game_t *game);
-void spell_attack_up(game_t *game);
-void spell_attack_left(game_t *game);
-void spell_attack_down(game_t *game);
-void spell_attack_right(game_t *game);
+void bow_spell_walk(game_t *game);
+void spear_walk(game_t *game);
+void spell_attack(game_t *game);
+void spear_attack(game_t *game);
+void bow_attack(game_t *game);
 
 /* objects/character.c */
 int character_init(game_t *game);

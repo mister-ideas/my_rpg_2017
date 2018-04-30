@@ -5,53 +5,44 @@
 ** controls/spell_attack.c
 */
 
-#include "my.h"
 #include "my_rpg.h"
 
-void spell_attack_up(game_t *game)
+static void spell_attack_up(game_t *game)
 {
-	if (sfKeyboard_isKeyPressed(sfKeyUp) == sfTrue &&
-	game->current_scene != 0 && game->current_scene != 1 &&
-	game->current_scene != 3 && game->current_weapon == 0) {
+	if (game->keys->up == sfTrue) {
 		game->character->char_obj->rect.top = 2185;
 		game->character->clock_max = 996;
-		game->character->move.x = 0;
-		game->character->move.y = -3;
 	}
 }
 
-void spell_attack_left(game_t *game)
+static void spell_attack_left(game_t *game)
 {
-	if (sfKeyboard_isKeyPressed(sfKeyLeft) == sfTrue &&
-	game->current_scene != 0 && game->current_scene != 1 &&
-	game->current_scene != 3 && game->current_weapon == 0) {
+	if (game->keys->left == sfTrue) {
 		game->character->char_obj->rect.top = 2310;
 		game->character->clock_max = 996;
-		game->character->move.x = -3;
-		game->character->move.y = 0;
 	}
 }
 
-void spell_attack_down(game_t *game)
+static void spell_attack_down(game_t *game)
 {
-	if (sfKeyboard_isKeyPressed(sfKeyDown) == sfTrue &&
-	game->current_scene != 0 && game->current_scene != 1 &&
-	game->current_scene != 3 && game->current_weapon == 0) {
+	if (game->keys->down == sfTrue) {
 		game->character->char_obj->rect.top = 2430;
 		game->character->clock_max = 996;
-		game->character->move.x = 0;
-		game->character->move.y = 3;
 	}
 }
 
-void spell_attack_right(game_t *game)
+static void spell_attack_right(game_t *game)
 {
-	if (sfKeyboard_isKeyPressed(sfKeyRight) == sfTrue &&
-	game->current_scene != 0 && game->current_scene != 1 &&
-	game->current_scene != 3 && game->current_weapon == 0) {
+	if (game->keys->right == sfTrue) {
 		game->character->char_obj->rect.top = 2560;
 		game->character->clock_max = 996;
-		game->character->move.x = 3;
-		game->character->move.y = 0;
 	}
+}
+
+void spell_attack(game_t *game)
+{
+	spell_attack_up(game);
+	spell_attack_left(game);
+	spell_attack_down(game);
+	spell_attack_right(game);
 }

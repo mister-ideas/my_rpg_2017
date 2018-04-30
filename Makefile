@@ -14,6 +14,8 @@ SRC=		$(SRC_DIR)my_rpg.c				\
 		$(SRC_DIR)scene.c				\
 		$(SRC_DIR)window.c				\
 		$(SRC_DIR)events.c				\
+		$(SRC_DIR)pressed_keys.c			\
+		$(SRC_DIR)released_keys.c			\
 		$(SRC_DIR)free.c				\
 		$(SRC_DIR)display.c				\
 		$(SRC_DIR)button.c				\
@@ -21,6 +23,8 @@ SRC=		$(SRC_DIR)my_rpg.c				\
 		$(SRC_DIR)controls/bow_spell_walk.c  		\
 		$(SRC_DIR)controls/spear_walk.c			\
 		$(SRC_DIR)controls/spell_attack.c		\
+		$(SRC_DIR)controls/spear_attack.c		\
+		$(SRC_DIR)controls/bow_attack.c			\
 		$(SRC_DIR)scenes/menu_scene.c			\
 		$(SRC_DIR)scenes/htp_scene.c			\
 		$(SRC_DIR)scenes/intro_scene.c			\
