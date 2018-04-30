@@ -9,7 +9,8 @@
 #include <stdlib.h>
 #include "my_rpg.h"
 
-static int menu_scene_init_buttons(button_t *play, button_t *quit, button_t *htp)
+static int menu_scene_init_buttons(button_t *play,
+				button_t *quit, button_t *htp)
 {
 	if (play == NULL || quit == NULL || htp == NULL)
 		return (84);

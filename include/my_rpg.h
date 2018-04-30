@@ -63,6 +63,7 @@ typedef struct character
 	object_t *char_obj;
 	my_clock_t *char_clock;
 	sfVector2f move;
+	sfVector2f cur_pos;
 	int clock_max;
 } character_t;
 
@@ -87,6 +88,7 @@ typedef struct game
 	int current_scene;
 	int last_scene;
 	int current_weapon;
+	int walls;
 	sfFont *font;
 	sfMusic *sounds[NB_SOUNDS];
 	sfImage *atlas;
@@ -152,7 +154,9 @@ void spear_attack(game_t *game);
 void bow_attack(game_t *game);
 
 /* objects */
+void default_character(game_t *game);
 int init_character(game_t *game);
+void check_walls(game_t *game);
 void character_clock(game_t *game, character_t *character);
 void init_weapons(game_t *game);
 void check_weapon(game_t *game);

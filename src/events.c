@@ -81,17 +81,17 @@ void game_events(game_t *game)
 			check_pressed_keys(game);
 		if (game->window->event.type == sfEvtKeyReleased)
 			check_released_keys(game);
+		game->walls = 0;
+		game->character->cur_pos =
+			sfSprite_getPosition(game->character->char_obj->sprite);
+		check_walls(game);
 		game_keys_events(game);
-		controls_events(game);
+		if (game->walls == 0)
+			controls_events(game);
 		if (game->keys->z == sfFalse && game->keys->q == sfFalse &&
 		game->keys->s == sfFalse && game->keys->d == sfFalse &&
 		game->keys->up == sfFalse && game->keys->left == sfFalse &&
-		game->keys->down == sfFalse && game->keys->right == sfFalse) {
-			game->character->char_obj->rect.top = 4600;
-			game->character->char_obj->rect.left = 240;
-			game->character->clock_max = 240;
-			game->character->move.x = 0;
-			game->character->move.y = 0;
-		}
+		game->keys->down == sfFalse && game->keys->right == sfFalse)
+			default_character(game);
 	}
 }
