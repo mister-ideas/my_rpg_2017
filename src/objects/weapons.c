@@ -31,7 +31,7 @@ void init_weapons(game_t *game)
 	game->weapons->pos.x = 340;
 	game->weapons->pos.y = 910;
 	game->weapons->rect.height = 90;
-	game->weapons->rect.left = 1340;
+	game->weapons->rect.left = 1350;
 	game->weapons->rect.top = 2252;
 	game->weapons->rect.width = 257;
 	game->weapons->type = WEAPONS;
