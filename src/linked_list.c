@@ -5,8 +5,8 @@
 ** linked_list.c
 */
 
-#include "linked_list.h"
 #include <stdlib.h>
+#include "linked_list.h"
 
 dll_t *list_init(void)
 {

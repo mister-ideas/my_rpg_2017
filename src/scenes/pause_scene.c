@@ -9,7 +9,7 @@
 #include <stdlib.h>
 #include "my_rpg.h"
 
-int pause_scene_init_buttons(button_t *resume, button_t *quit)
+static int pause_scene_init_buttons(button_t *resume, button_t *quit)
 {
 	if (resume == NULL || quit == NULL)
 		return (84);
@@ -20,7 +20,7 @@ int pause_scene_init_buttons(button_t *resume, button_t *quit)
 	return (0);
 }
 
-object_t *pause_scene_background(void)
+static object_t *pause_scene_background(void)
 {
 	object_t *background = malloc(sizeof(*background));
 
@@ -36,7 +36,7 @@ object_t *pause_scene_background(void)
 	return (background);
 }
 
-int pause_scene_lists(scene_t *pause, button_t *resume,
+static int pause_scene_lists(scene_t *pause, button_t *resume,
 		button_t *quit)
 {
 	pause->buttons = list_init();

@@ -8,7 +8,7 @@
 #include <stdlib.h>
 #include "my_rpg.h"
 
-void destroy_scene(scene_t *scene)
+static void destroy_scene(scene_t *scene)
 {
 	struct node *search;
 
@@ -42,6 +42,7 @@ void quit_game(game_t *game)
 	free(game->character);
 	sfRenderWindow_destroy(game->window->window);
 	free(game->window);
+	free(game->keys);
 	sfImage_destroy(game->atlas);
 	free(game);
 }

@@ -9,7 +9,7 @@
 #include <stdlib.h>
 #include "my_rpg.h"
 
-object_t *arena3_scene_background(void)
+static object_t *arena3_scene_background(void)
 {
 	object_t *background = malloc(sizeof(*background));
 

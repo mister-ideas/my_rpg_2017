@@ -14,7 +14,7 @@ void play_function(game_t *game)
 	game->current_scene = 2;
 }
 
-button_t *play_button_active(button_t *play)
+static button_t *play_button_active(button_t *play)
 {
 	play->active.height = 85;
 	play->active.left = 0;
@@ -23,7 +23,7 @@ button_t *play_button_active(button_t *play)
 	return (play);
 }
 
-button_t *play_button_hover(button_t *play)
+static button_t *play_button_hover(button_t *play)
 {
 	play->hover.height = 85;
 	play->hover.left = 0;
@@ -47,6 +47,5 @@ button_t *play_button(game_t *game)
 	play = play_button_hover(play);
 	play = play_button_active(play);
 	play->callback = &(play_function);
-	play->state = OFF;
 	return (play);
 }

@@ -14,7 +14,7 @@ void resume_function(game_t *game)
 	game->current_scene = game->last_scene;
 }
 
-button_t *resume_button_active(button_t *resume)
+static button_t *resume_button_active(button_t *resume)
 {
 	resume->active.height = 85;
 	resume->active.left = 0;
@@ -23,7 +23,7 @@ button_t *resume_button_active(button_t *resume)
 	return (resume);
 }
 
-button_t *resume_button_hover(button_t *resume)
+static button_t *resume_button_hover(button_t *resume)
 {
 	resume->hover.height = 85;
 	resume->hover.left = 0;
@@ -47,6 +47,5 @@ button_t *resume_button(game_t *game)
 	resume = resume_button_hover(resume);
 	resume = resume_button_active(resume);
 	resume->callback = &(resume_function);
-	resume->state = OFF;
 	return (resume);
 }

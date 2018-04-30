@@ -14,7 +14,7 @@ void htp_function(game_t *game)
 	game->current_scene = 1;
 }
 
-button_t *htp_button_active(button_t *htp)
+static button_t *htp_button_active(button_t *htp)
 {
 	htp->active.height = 85;
 	htp->active.left = 0;
@@ -23,7 +23,7 @@ button_t *htp_button_active(button_t *htp)
 	return (htp);
 }
 
-button_t *htp_button_hover(button_t *htp)
+static button_t *htp_button_hover(button_t *htp)
 {
 	htp->hover.height = 85;
 	htp->hover.left = 0;
@@ -47,6 +47,5 @@ button_t *htp_button(game_t *game)
 	htp = htp_button_hover(htp);
 	htp = htp_button_active(htp);
 	htp->callback = &(htp_function);
-	htp->state = OFF;
 	return (htp);
 }

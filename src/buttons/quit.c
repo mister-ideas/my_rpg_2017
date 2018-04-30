@@ -14,7 +14,7 @@ void quit_function(game_t *game)
 	sfRenderWindow_close(game->window->window);
 }
 
-button_t *quit_button_active(button_t *quit)
+static button_t *quit_button_active(button_t *quit)
 {
 	quit->active.height = 85;
 	quit->active.left = 0;
@@ -23,7 +23,7 @@ button_t *quit_button_active(button_t *quit)
 	return (quit);
 }
 
-button_t *quit_button_hover(button_t *quit)
+static button_t *quit_button_hover(button_t *quit)
 {
 	quit->hover.height = 85;
 	quit->hover.left = 0;
@@ -47,6 +47,5 @@ button_t *quit_button(game_t *game)
 	quit = quit_button_hover(quit);
 	quit = quit_button_active(quit);
 	quit->callback = &(quit_function);
-	quit->state = OFF;
 	return (quit);
 }

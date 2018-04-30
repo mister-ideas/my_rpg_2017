@@ -14,7 +14,7 @@ void return_function(game_t *game)
 	game->current_scene = 0;
 }
 
-button_t *return_button_active(button_t *back)
+static button_t *return_button_active(button_t *back)
 {
 	back->active.height = 85;
 	back->active.left = 0;
@@ -23,7 +23,7 @@ button_t *return_button_active(button_t *back)
 	return (back);
 }
 
-button_t *return_button_hover(button_t *back)
+static button_t *return_button_hover(button_t *back)
 {
 	back->hover.height = 85;
 	back->hover.left = 0;
@@ -47,6 +47,5 @@ button_t *return_button(game_t *game)
 	back = return_button_hover(back);
 	back = return_button_active(back);
 	back->callback = &(return_function);
-	back->state = OFF;
 	return (back);
 }

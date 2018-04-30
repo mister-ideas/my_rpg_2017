@@ -11,7 +11,7 @@
 
 const sfIntRect atlas_rect = {0, 0, 7680, 4885};
 
-int init_game(game_t *game)
+static int init_game(game_t *game)
 {
 	object_t *char_obj = malloc(sizeof(*char_obj));
 	my_clock_t *char_clock = malloc(sizeof(*char_clock));

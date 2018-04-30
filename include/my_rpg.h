@@ -27,11 +27,6 @@ enum TYPE {
 	MISC
 };
 
-enum STATUS {
-	ACTIVE,
-	OFF
-};
-
 typedef struct window
 {
 	sfRenderWindow *window;
@@ -141,6 +136,10 @@ button_t *quit_button(game_t *game);
 button_t *htp_button(game_t *game);
 button_t *resume_button(game_t *game);
 button_t *return_button(game_t *game);
+
+/* keys */
+void check_pressed_keys(game_t *game);
+void check_released_keys(game_t *game);
 
 /* controls */
 void bow_spell_walk(game_t *game);

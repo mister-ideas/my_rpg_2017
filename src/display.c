@@ -7,7 +7,7 @@
 
 #include "my_rpg.h"
 
-void check_button_state(button_t *but, game_t *game, int in_area)
+static void check_button_state(button_t *but, game_t *game, int in_area)
 {
 	if (in_area == 1)
 		sfRectangleShape_setTextureRect(but->shape,
@@ -23,7 +23,7 @@ void check_button_state(button_t *but, game_t *game, int in_area)
 	}
 }
 
-void display_but(struct node *button, game_t *game)
+static void display_but(struct node *button, game_t *game)
 {
 	button_t *but;
 	int in_area = 0;
@@ -38,7 +38,7 @@ void display_but(struct node *button, game_t *game)
 	}
 }
 
-void display_obj(struct node *obj, game_t *game)
+static void display_obj(struct node *obj, game_t *game)
 {
 	object_t *data;
 

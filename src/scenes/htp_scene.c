@@ -9,7 +9,7 @@
 #include <stdlib.h>
 #include "my_rpg.h"
 
-int htp_scene_init_buttons(button_t *play, button_t *back)
+static int htp_scene_init_buttons(button_t *play, button_t *back)
 {
 	if (play == NULL || back == NULL)
 		return (84);
@@ -20,7 +20,7 @@ int htp_scene_init_buttons(button_t *play, button_t *back)
 	return (0);
 }
 
-object_t *htp_scene_background(void)
+static object_t *htp_scene_background(void)
 {
 	object_t *background = malloc(sizeof(*background));
 
@@ -36,7 +36,7 @@ object_t *htp_scene_background(void)
 	return (background);
 }
 
-int htp_scene_lists(scene_t *htp, button_t *play,
+static int htp_scene_lists(scene_t *htp, button_t *play,
 		button_t *back)
 {
 	htp->buttons = list_init();
