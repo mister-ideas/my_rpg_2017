@@ -38,8 +38,11 @@ void quit_game(game_t *game)
 	free(game->scenes);
 	sfClock_destroy(game->character->char_clock->clock);
 	sfSprite_destroy(game->character->char_obj->sprite);
+	sfSprite_destroy(game->weapons->sprite);
 	sfTexture_destroy(game->character->char_obj->texture);
+	sfTexture_destroy(game->weapons->texture);
 	free(game->character);
+	free(game->weapons);
 	sfRenderWindow_destroy(game->window->window);
 	free(game->window);
 	free(game->keys);

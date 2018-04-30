@@ -23,6 +23,21 @@ static void general_events(game_t *game)
 		game->window->click = 0;
 }
 
+void init_keys(game_t *game)
+{
+	game->keys->z = sfFalse;
+	game->keys->q = sfFalse;
+	game->keys->s = sfFalse;
+	game->keys->d = sfFalse;
+	game->keys->up = sfFalse;
+	game->keys->left = sfFalse;
+	game->keys->down = sfFalse;
+	game->keys->right = sfFalse;
+	game->keys->esc = sfFalse;
+	game->keys->space = sfFalse;
+	game->keys->shift = sfFalse;
+}
+
 static void game_keys_events(game_t *game)
 {
 	if (game->keys->esc == sfTrue && game->current_scene != 0 &&
@@ -32,6 +47,12 @@ static void game_keys_events(game_t *game)
 	}
 	if (game->keys->space == sfTrue && game->current_scene == 2)
 		game->current_scene = 4;
+	if (game->keys->shift == sfTrue) {
+		if (game->current_weapon != 2)
+			game->current_weapon++;
+		else
+			game->current_weapon = 0;
+	}
 }
 
 static void controls_events(game_t *game)

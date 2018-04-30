@@ -9,7 +9,7 @@
 #include <stdlib.h>
 #include "my_rpg.h"
 
-int character_init(game_t *game)
+int init_character(game_t *game)
 {
 	game->character->char_obj->pos.x = 820;
 	game->character->char_obj->pos.y = 650;

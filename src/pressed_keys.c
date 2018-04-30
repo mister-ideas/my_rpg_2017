@@ -37,6 +37,8 @@ static void check_pressed_other_keys(game_t *game)
 		game->keys->esc = sfTrue;
 	if (game->window->event.key.code == sfKeySpace)
 		game->keys->space = sfTrue;
+	if (game->window->event.key.code == sfKeyLShift)
+		game->keys->shift = sfTrue;
 }
 
 void check_pressed_keys(game_t *game)

@@ -24,6 +24,7 @@
 enum TYPE {
 	BG,
 	CHAR,
+	WEAPONS,
 	MISC
 };
 
@@ -77,6 +78,7 @@ typedef struct keys
 	sfBool right;
 	sfBool esc;
 	sfBool space;
+	sfBool shift;
 } keys_t;
 
 typedef struct game
@@ -90,6 +92,7 @@ typedef struct game
 	sfImage *atlas;
 	window_t *window;
 	character_t *character;
+	object_t *weapons;
 	keys_t *keys;
 } game_t;
 
@@ -101,7 +104,6 @@ typedef struct button
 	sfIntRect hover;
 	sfIntRect active;
 	sfTexture *texture;
-	enum STATUS state;
 	sfRectangleShape *shape;
 	void (*callback)(game_t *game);
 } button_t;
@@ -138,6 +140,7 @@ button_t *resume_button(game_t *game);
 button_t *return_button(game_t *game);
 
 /* keys */
+void init_keys(game_t *game);
 void check_pressed_keys(game_t *game);
 void check_released_keys(game_t *game);
 
@@ -148,9 +151,11 @@ void spell_attack(game_t *game);
 void spear_attack(game_t *game);
 void bow_attack(game_t *game);
 
-/* objects/character.c */
-int character_init(game_t *game);
+/* objects */
+int init_character(game_t *game);
 void character_clock(game_t *game, character_t *character);
+void init_weapons(game_t *game);
+void check_weapon(game_t *game);
 
 /* display.c */
 int display_game(game_t *game);

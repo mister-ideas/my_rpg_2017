@@ -37,6 +37,8 @@ static void check_released_other_keys(game_t *game)
 		game->keys->esc = sfFalse;
 	if (game->window->event.key.code == sfKeySpace)
 		game->keys->space = sfFalse;
+	if (game->window->event.key.code == sfKeyLShift)
+		game->keys->shift = sfFalse;
 }
 
 void check_released_keys(game_t *game)

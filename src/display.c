@@ -49,6 +49,9 @@ static void display_obj(struct node *obj, game_t *game)
 	}
 	if (game->current_scene != 0 && game->current_scene != 1 &&
 	game->current_scene != 3) {
+		check_weapon(game);
+		sfRenderWindow_drawSprite(game->window->window,
+		game->weapons->sprite, NULL);
 		character_clock(game, game->character);
 		sfRenderWindow_drawSprite(game->window->window,
 		game->character->char_obj->sprite, NULL);
