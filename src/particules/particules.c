@@ -81,7 +81,7 @@ void update_part_buffer(partBuffer *this)
 	for (uint id = 0; id < this->size; id += 1) {
 		if (this->info[id].life <= 0)
 			continue;
-		this->info[id].life -= 1/120.;
+		this->info[id].life -= 1 / 120;
 		if (this->info[id].life <= 0) {
 			memset(this ->vertex +
 			(id * 4), 0, sizeof(sfVertex) * 4);

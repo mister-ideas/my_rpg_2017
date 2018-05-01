@@ -42,6 +42,7 @@ static int init_game(game_t *game)
 	set_scenes(game);
 	game->current_scene = 0;
 	game->current_weapon = 0;
+	game->current_text = 1;
 	if (init_objects(game) == 84)
 		return (84);
 	game->character->char_obj =

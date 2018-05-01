@@ -49,8 +49,9 @@ int particules_init(int type)
 			{250 + (rand() %150 - 75), 250 + (rand() % 150 - 75)});
 		if (type == 2)
 			set_part_v2(buffer, i, (sfVector2f){250 + (rand()
-			% 150 - 75), 250 + (rand() % 150 - 75)},(sfColor){rand()
-			% 255, rand()% 255, rand() % 255, 255});
+			% 150 - 75), 250 + (rand() % 150 - 75)},
+			(sfColor){rand() % 255, rand()% 255,
+			rand() % 255, 255});
 	}
 	return (1);
 }

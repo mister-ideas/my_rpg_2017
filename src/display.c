@@ -38,25 +38,20 @@ static void display_but(struct node *button, game_t *game)
 	}
 }
 
-static void display_obj(struct node *obj, game_t *game)
+static void display_special_obj(game_t *game)
 {
-	object_t *data;
-
-	for (; obj != NULL; obj = obj->next) {
-		data = (object_t *)obj->data;
-		sfRenderWindow_drawSprite(game->window->window,
-		data->sprite, NULL);
-	}
 	if (game->current_scene != 0 && game->current_scene != 1 &&
-	game->current_scene != 2) {
-		check_weapon(game);
-		sfRenderWindow_drawSprite(game->window->window,
-		game->weapons->sprite, NULL);
+	    game->current_scene != 2) {
+		if (game->current_scene != 3) {
+			check_weapon(game);
+			sfRenderWindow_drawSprite(game->window->window,
+			game->weapons->sprite, NULL);
+		}
 		character_clock(game->character);
 		sfRenderWindow_drawSprite(game->window->window,
 		game->character->char_obj->sprite, NULL);
 		sfSprite_move(game->character->char_obj->sprite,
-			      game->character->move);
+		game->character->move);
 	}
 }
 
@@ -64,11 +59,20 @@ int display_game(game_t *game)
 {
 	struct node *button;
 	struct node *obj = game->scenes[game->current_scene]->objects->start;
+	object_t *data;
 
 	if (game->scenes[game->current_scene]->buttons) {
 		button = game->scenes[game->current_scene]->buttons->start;
 		display_but(button, game);
 	}
-	display_obj(obj, game);
+	for (; obj != NULL; obj = obj->next) {
+		data = (object_t *)obj->data;
+		if (data->type == TEXT && game->current_text < 10)
+			data->rect.top = 2625 + game->current_text / 2 * 40;
+		sfSprite_setTextureRect(data->sprite, data->rect);
+		sfRenderWindow_drawSprite(game->window->window,
+		data->sprite, NULL);
+	}
+	display_special_obj(game);
 	return (0);
 }

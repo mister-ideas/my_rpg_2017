@@ -41,8 +41,10 @@ static void spell_attack_right(game_t *game)
 
 void spell_attack(game_t *game)
 {
-	spell_attack_up(game);
-	spell_attack_left(game);
-	spell_attack_down(game);
-	spell_attack_right(game);
+	if (game->current_scene != 3) {
+		spell_attack_up(game);
+		spell_attack_left(game);
+		spell_attack_down(game);
+		spell_attack_right(game);
+	}
 }

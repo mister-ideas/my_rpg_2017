@@ -41,6 +41,16 @@ static void check_released_other_keys(game_t *game)
 		game->keys->shift = sfFalse;
 }
 
+int check_all_keys_released(game_t *game)
+{
+	if (game->keys->z == sfFalse && game->keys->q == sfFalse &&
+	game->keys->s == sfFalse && game->keys->d == sfFalse &&
+	game->keys->up == sfFalse && game->keys->left == sfFalse &&
+	game->keys->down == sfFalse && game->keys->right == sfFalse)
+		return (1);
+	return (0);
+}
+
 void check_released_keys(game_t *game)
 {
 	check_released_move_keys(game);

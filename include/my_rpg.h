@@ -23,8 +23,7 @@
 
 enum TYPE {
 	BG,
-	CHAR,
-	WEAPONS,
+	TEXT,
 	MISC
 };
 
@@ -88,6 +87,7 @@ typedef struct game
 	int current_scene;
 	int last_scene;
 	int current_weapon;
+	int current_text;
 	int doors;
 	sfFont *font;
 	sfMusic *sounds[NB_SOUNDS];
@@ -146,6 +146,7 @@ button_t *return_button(void);
 void init_keys(game_t *game);
 void check_pressed_keys(game_t *game);
 void check_released_keys(game_t *game);
+int check_all_keys_released(game_t *game);
 
 /* controls */
 void bow_spell_walk(game_t *game);

@@ -34,5 +34,5 @@ void init_weapons(game_t *game)
 	game->weapons->rect.left = 1350;
 	game->weapons->rect.top = 2252;
 	game->weapons->rect.width = 257;
-	game->weapons->type = WEAPONS;
+	game->weapons->type = MISC;
 }

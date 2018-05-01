@@ -46,8 +46,15 @@ static void game_keys_events(game_t *game)
 		game->current_scene = 2;
 	}
 	if (game->keys->space == sfTrue && game->current_scene == 3)
+		game->current_text++;
+	if (game->keys->shift == sfTrue && game->current_scene == 3) {
 		game->current_scene = 4;
-	if (game->keys->shift == sfTrue) {
+		game->character->char_obj->pos.x = 285;
+		game->character->char_obj->pos.y = 455;
+		sfSprite_setPosition(game->character->char_obj->sprite,
+		game->character->char_obj->pos);
+	}
+	if (game->keys->shift == sfTrue && game->current_scene != 3) {
 		if (game->current_weapon != 2)
 			game->current_weapon++;
 		else
@@ -89,10 +96,7 @@ void game_events(game_t *game)
 			check_walls(game);
 		game_keys_events(game);
 		controls_events(game);
-		if (game->keys->z == sfFalse && game->keys->q == sfFalse &&
-		game->keys->s == sfFalse && game->keys->d == sfFalse &&
-		game->keys->up == sfFalse && game->keys->left == sfFalse &&
-		game->keys->down == sfFalse && game->keys->right == sfFalse)
+		if (check_all_keys_released(game) == 1)
 			default_character(game);
 	}
 }

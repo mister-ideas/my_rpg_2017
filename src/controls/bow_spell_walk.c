@@ -72,8 +72,10 @@ static void bow_spell_walk_d(game_t *game)
 
 void bow_spell_walk(game_t *game)
 {
-	bow_spell_walk_z(game);
+	if (game->current_scene != 3) {
+		bow_spell_walk_z(game);
+		bow_spell_walk_s(game);
+	}
 	bow_spell_walk_q(game);
-	bow_spell_walk_s(game);
 	bow_spell_walk_d(game);
 }
