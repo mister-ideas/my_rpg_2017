@@ -34,6 +34,6 @@ void set_part_v1(partBuffer *this , uint id , sfVector2f  pos);
 void set_part_v2(partBuffer *this , uint id , sfVector2f  pos, sfColor  color);
 void draw_part_buffer(partBuffer *this , sfRenderWindow *window);
 int particules_init(int type);
-void particules (int type);
+int particules_type(int type);
 void update_part_buffer(partBuffer *this);
 void update_part_buffer_set(partBuffer *this,uint id);
