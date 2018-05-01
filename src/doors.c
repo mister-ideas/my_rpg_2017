@@ -11,7 +11,7 @@ static void left_doors(game_t *game)
 {
 	if (game->current_scene != 3 && game->current_scene != 4 &&
 	game->current_scene != 7 && game->character->cur_pos.x < 275 &&
-	(game->character->cur_pos.y >= 455 &&
+	(game->character->cur_pos.y >= 435 &&
 	game->character->cur_pos.y <= 545)) {
 		game->doors = 1;
 		game->current_scene -= 1;
@@ -26,7 +26,7 @@ static void right_doors(game_t *game)
 {
 	if (game->current_scene != 6 && game->current_scene != 7 &&
 	game->character->cur_pos.x > 1515 &&
-	(game->character->cur_pos.y >= 455 &&
+	(game->character->cur_pos.y >= 435 &&
 	game->character->cur_pos.y <= 545)) {
 		game->doors = 1;
 		game->current_scene += 1;
@@ -41,7 +41,7 @@ static void up_doors(game_t *game)
 {
 	if (game->current_scene != 3 && game->current_scene != 4 &&
 	game->current_scene != 5 && game->character->cur_pos.y < 120 &&
-	(game->character->cur_pos.x >= 885 &&
+	(game->character->cur_pos.x >= 865 &&
 	game->character->cur_pos.x <= 960)) {
 		game->doors = 1;
 		if (game->current_scene == 6)
@@ -60,7 +60,7 @@ static void down_doors(game_t *game)
 	if (game->current_scene != 3 && game->current_scene != 4 &&
 	game->current_scene != 6 && game->current_scene != 7 &&
 	game->character->cur_pos.y > 760 &&
-	(game->character->cur_pos.x >= 885 &&
+	(game->character->cur_pos.x >= 865 &&
 	game->character->cur_pos.x <= 960)) {
 		game->doors = 1;
 		if (game->current_scene == 5)
