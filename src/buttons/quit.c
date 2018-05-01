@@ -32,7 +32,7 @@ static button_t *quit_button_hover(button_t *quit)
 	return (quit);
 }
 
-button_t *quit_button(game_t *game)
+button_t *quit_button(void)
 {
 	button_t *quit = malloc(sizeof(*quit));
 

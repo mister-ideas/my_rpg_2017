@@ -1,5 +1,5 @@
 /*
-** EPITECH PROJECT, 2018
+1;5003;0c** EPITECH PROJECT, 2018
 ** my_rpg
 ** File description:
 ** scenes/htp_scene.c
@@ -52,8 +52,8 @@ scene_t *htp_scene(game_t *game)
 {
 	scene_t *htp = malloc(sizeof(*htp));
 	object_t *background;
-	button_t *play = play_button(game);
-	button_t *back = return_button(game);
+	button_t *play = play_button();
+	button_t *back = return_button();
 
 	if (htp == NULL)
 		return (NULL);

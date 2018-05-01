@@ -64,7 +64,7 @@ void check_walls(game_t *game)
 	}
 }
 
-void character_clock(game_t *game, character_t *character)
+void character_clock(character_t *character)
 {
 	character->char_clock->time =
 		sfClock_getElapsedTime(character->char_clock->clock);

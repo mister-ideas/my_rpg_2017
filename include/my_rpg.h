@@ -135,11 +135,11 @@ scene_t *arena4_scene(game_t *game);
 scene_t *boss_scene(game_t *game);
 
 /* buttons */
-button_t *play_button(game_t *game);
-button_t *quit_button(game_t *game);
-button_t *htp_button(game_t *game);
-button_t *resume_button(game_t *game);
-button_t *return_button(game_t *game);
+button_t *play_button(void);
+button_t *quit_button(void);
+button_t *htp_button(void);
+button_t *resume_button(void);
+button_t *return_button(void);
 
 /* keys */
 void init_keys(game_t *game);
@@ -157,7 +157,7 @@ void bow_attack(game_t *game);
 void default_character(game_t *game);
 int init_character(game_t *game);
 void check_walls(game_t *game);
-void character_clock(game_t *game, character_t *character);
+void character_clock(character_t *character);
 void init_weapons(game_t *game);
 void check_weapon(game_t *game);
 

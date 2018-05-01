@@ -52,7 +52,7 @@ static void display_obj(struct node *obj, game_t *game)
 		check_weapon(game);
 		sfRenderWindow_drawSprite(game->window->window,
 		game->weapons->sprite, NULL);
-		character_clock(game, game->character);
+		character_clock(game->character);
 		sfRenderWindow_drawSprite(game->window->window,
 		game->character->char_obj->sprite, NULL);
 		sfSprite_move(game->character->char_obj->sprite,

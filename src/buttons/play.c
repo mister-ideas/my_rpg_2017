@@ -32,7 +32,7 @@ static button_t *play_button_hover(button_t *play)
 	return (play);
 }
 
-button_t *play_button(game_t *game)
+button_t *play_button(void)
 {
 	button_t *play = malloc(sizeof(*play));
 

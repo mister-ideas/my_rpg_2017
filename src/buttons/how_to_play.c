@@ -32,7 +32,7 @@ static button_t *htp_button_hover(button_t *htp)
 	return (htp);
 }
 
-button_t *htp_button(game_t *game)
+button_t *htp_button(void)
 {
 	button_t *htp = malloc(sizeof(*htp));
 

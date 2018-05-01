@@ -56,9 +56,9 @@ scene_t *menu_scene(game_t *game)
 {
 	scene_t *menu = malloc(sizeof(*menu));
 	object_t *background;
-	button_t *play = play_button(game);
-	button_t *quit = quit_button(game);
-	button_t *htp = htp_button(game);
+	button_t *play = play_button();
+	button_t *quit = quit_button();
+	button_t *htp = htp_button();
 
 	if (menu == NULL)
 		return (NULL);

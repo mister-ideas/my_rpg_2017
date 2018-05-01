@@ -52,8 +52,8 @@ scene_t *pause_scene(game_t *game)
 {
 	scene_t *pause = malloc(sizeof(*pause));
 	object_t *background;
-	button_t *resume = resume_button(game);
-	button_t *quit = quit_button(game);
+	button_t *resume = resume_button();
+	button_t *quit = quit_button();
 
 	if (pause == NULL)
 		return (NULL);

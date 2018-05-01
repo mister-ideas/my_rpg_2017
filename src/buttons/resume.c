@@ -32,7 +32,7 @@ static button_t *resume_button_hover(button_t *resume)
 	return (resume);
 }
 
-button_t *resume_button(game_t *game)
+button_t *resume_button(void)
 {
 	button_t *resume = malloc(sizeof(*resume));
 
