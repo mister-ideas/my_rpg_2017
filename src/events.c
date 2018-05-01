@@ -41,11 +41,11 @@ void init_keys(game_t *game)
 static void game_keys_events(game_t *game)
 {
 	if (game->keys->esc == sfTrue && game->current_scene != 0 &&
-	game->current_scene != 1 && game->current_scene != 3) {
+	game->current_scene != 1 && game->current_scene != 2) {
 		game->last_scene = game->current_scene;
-		game->current_scene = 3;
+		game->current_scene = 2;
 	}
-	if (game->keys->space == sfTrue && game->current_scene == 2)
+	if (game->keys->space == sfTrue && game->current_scene == 3)
 		game->current_scene = 4;
 	if (game->keys->shift == sfTrue) {
 		if (game->current_weapon != 2)
@@ -58,7 +58,7 @@ static void game_keys_events(game_t *game)
 static void controls_events(game_t *game)
 {
 	if (game->current_scene != 0 && game->current_scene != 1 &&
-	game->current_scene != 3) {
+	game->current_scene != 2) {
 		if (game->current_weapon == 0 || game->current_weapon == 1)
 			bow_spell_walk(game);
 		if (game->current_weapon == 2) {
@@ -81,13 +81,14 @@ void game_events(game_t *game)
 			check_pressed_keys(game);
 		if (game->window->event.type == sfEvtKeyReleased)
 			check_released_keys(game);
-		game->walls = 0;
 		game->character->cur_pos =
 			sfSprite_getPosition(game->character->char_obj->sprite);
-		check_walls(game);
+		game->doors = 0;
+		check_doors(game);
+		if (game->doors == 0)
+			check_walls(game);
 		game_keys_events(game);
-		if (game->walls == 0)
-			controls_events(game);
+		controls_events(game);
 		if (game->keys->z == sfFalse && game->keys->q == sfFalse &&
 		game->keys->s == sfFalse && game->keys->d == sfFalse &&
 		game->keys->up == sfFalse && game->keys->left == sfFalse &&

@@ -14,6 +14,7 @@ SRC=		$(SRC_DIR)my_rpg.c				\
 		$(SRC_DIR)scene.c				\
 		$(SRC_DIR)window.c				\
 		$(SRC_DIR)events.c				\
+		$(SRC_DIR)doors.c				\
 		$(SRC_DIR)pressed_keys.c			\
 		$(SRC_DIR)released_keys.c			\
 		$(SRC_DIR)free.c				\

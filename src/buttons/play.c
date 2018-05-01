@@ -11,7 +11,7 @@
 
 void play_function(game_t *game)
 {
-	game->current_scene = 2;
+	game->current_scene = 3;
 }
 
 static button_t *play_button_active(button_t *play)

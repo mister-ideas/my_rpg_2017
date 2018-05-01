@@ -88,7 +88,7 @@ typedef struct game
 	int current_scene;
 	int last_scene;
 	int current_weapon;
-	int walls;
+	int doors;
 	sfFont *font;
 	sfMusic *sounds[NB_SOUNDS];
 	sfImage *atlas;
@@ -119,6 +119,7 @@ int mouse_is_in_area(sfVector2f pos, sfVector2f size, sfVector2i clickPos);
 
 /* events.c */
 void game_events(game_t *game);
+void check_doors(game_t *game);
 
 /* scenes.c */
 int set_scenes(game_t *game);
