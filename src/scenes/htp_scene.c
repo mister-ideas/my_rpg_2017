@@ -1,5 +1,5 @@
 /*
-1;5003;0c** EPITECH PROJECT, 2018
+** EPITECH PROJECT, 2018
 ** my_rpg
 ** File description:
 ** scenes/htp_scene.c
