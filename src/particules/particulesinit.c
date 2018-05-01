@@ -34,8 +34,6 @@ static uint newPart(partBuffer *this)
 
 int init(int type)
 {
-	int w = 500;
-	int h = 500;
 	int nb_particule = 1000;
 
 	if (window == NULL)
