@@ -58,7 +58,7 @@ void character_clock(character_t *character)
 	character->char_clock->seconds =
 		character->char_clock->time.microseconds / 1000000.0;
 	if (character->char_clock->seconds > 0.1) {
-		if (character->char_obj->rect.left != character->clock_max)
+		if (character->char_obj->rect.left < character->clock_max)
 			character->char_obj->rect.left += 126;
 		else
 			character->char_obj->rect.left = 240;
