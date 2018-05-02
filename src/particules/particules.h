@@ -25,14 +25,13 @@ typedef  struct   s_partBuffer
 } partBuffer;
 
 partBuffer   *buffer;
-sfRenderWindow   *window;
 
 static uint newPart(partBuffer *this);
 partBuffer *newPartBuffer(int  size);
 void setPartv1(partBuffer *this , uint id , sfVector2f  pos);
 void setPartv2(partBuffer *this , uint id , sfVector2f  pos, sfColor  color);
 void drawPartBufer(partBuffer *this , sfRenderWindow *window);
-int init(int type,game_t *game);
+int init(int type);
 void particule (int type,game_t *game);
 void updatePartBuffer(partBuffer *this);
 void updatepartbufferset(partBuffer *this,uint id);

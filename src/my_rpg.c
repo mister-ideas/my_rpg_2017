@@ -33,11 +33,13 @@ static int init_objects(game_t *game)
 static int init_game(game_t *game)
 {
 	sfVideoMode video = {1920, 1080, 32};
+	int type = 1;
 
 	game->keys = malloc(sizeof(*game->keys));
 	if (game->keys == NULL)
 		return (84);
 	init_keys(game);
+	init(type,game);
 	init_window(game, video);
 	set_scenes(game);
 	game->current_scene = 0;
@@ -58,7 +60,7 @@ int main(void)
 {
 	extern char **environ;
 	game_t *game = malloc(sizeof(*game));
-
+		    
 	if (environ[0] == NULL)
 		return (84);
 	if (game == NULL)

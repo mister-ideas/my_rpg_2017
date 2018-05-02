@@ -8,6 +8,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "my_rpg.h"
+#include "particules.h"
 
 int mouse_is_in_area(sfVector2f pos, sfVector2f size, sfVector2i clickPos)
 {
@@ -40,6 +41,7 @@ int display_window(game_t *game)
 		sfRenderWindow_clear(game->window->window, sfBlack);
 		if (display_game(game) == 84)
 			return (84);
+		particule(1, game);
 		sfRenderWindow_display(game->window->window);
 	}
 	quit_game(game);

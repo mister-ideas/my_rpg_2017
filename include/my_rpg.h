@@ -95,6 +95,7 @@ typedef struct game
 	window_t *window;
 	character_t *character;
 	object_t *weapons;
+	void *freeparticule;
 	keys_t *keys;
 } game_t;
 

@@ -33,7 +33,7 @@ static uint newPart(partBuffer *this)
 	return ((uint)(-1));
 }
 
-int init(int type,game_t *game)
+int init(int type)
 {
 	int nb_particule = 1000;
 	//int w = 500;
@@ -47,13 +47,12 @@ int init(int type,game_t *game)
 	buffer = newPartBuffer (nb_particule);
 	if (buffer  == NULL)
 		return  (0);
-	for (uint i = 0; i < nb_particule; i += 1) {
+	for (uint i = 0; i <= nb_particule; i += 1) {
 		if (type == 1)
-			setPartv1(buffer , i,(sfVector2f)
-			{250-1000+(rand() %150-75), 250+(rand() % 150 -75)});
+			setPartv1(buffer , i , (sfVector2f){10, 10});
 		if (type == 2)
 			setPartv2(buffer , i, (sfVector2f){250+(rand()
-			% 150-75),250+(rand() % 150 -75)},(sfColor){rand()
+			% 75),250+(rand() % 150 -75)},(sfColor){rand()
 			% 255,rand()% 255, rand() % 255, 255});
 	}
 	return (1);
@@ -68,7 +67,7 @@ void particule (int type,game_t *game)
 		if (id == (uint)(-1))
 			break;
 		if(type == 1)
-			setPartv1(buffer , id , (sfVector2f){800, 800});
+			setPartv1(buffer , id , (sfVector2f){10, 10});
 		if(type == 2)
 			setPartv2(buffer , id , (sfVector2f){250, 250},
 				(sfColor){rand() % 255, rand()
