@@ -38,19 +38,6 @@ int init_character(game_t *game)
 	return (0);
 }
 
-void check_walls(game_t *game)
-{
-	if (game->character->cur_pos.y < 120 ||
-	game->character->cur_pos.y > 760 ||
-	game->character->cur_pos.x < 275 ||
-	game->character->cur_pos.x > 1515) {
-		game->character->char_obj->pos.x = 890;
-		game->character->char_obj->pos.y = 460;
-		sfSprite_setPosition(game->character->char_obj->sprite,
-		game->character->char_obj->pos);
-	}
-}
-
 void character_clock(character_t *character)
 {
 	character->char_clock->time =
