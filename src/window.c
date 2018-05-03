@@ -8,7 +8,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "my_rpg.h"
-#include "particules.h"
 
 int mouse_is_in_area(sfVector2f pos, sfVector2f size, sfVector2i clickPos)
 {
@@ -33,7 +32,7 @@ int init_window(game_t *game, sfVideoMode video)
 	return (0);
 }
 
-int display_window(game_t *game)
+int display_window(game_t *game, particules_t *particules)
 {
 	sfRenderWindow_setFramerateLimit(game->window->window, 60);
 	while (sfRenderWindow_isOpen(game->window->window)) {
@@ -41,9 +40,9 @@ int display_window(game_t *game)
 		sfRenderWindow_clear(game->window->window, sfBlack);
 		if (display_game(game) == 84)
 			return (84);
-		particule(1, game);
+		particules_display(particules, game, 1);
 		sfRenderWindow_display(game->window->window);
 	}
-	quit_game(game);
+	quit_game(game, particules);
 	return (0);
 }

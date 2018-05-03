@@ -1,79 +1,75 @@
 /*
 ** EPITECH PROJECT, 2018
-** particuleinit
+** my_rpg
 ** File description:
-** particuleinit.c
+** particules_init.c
 */
 
-#include"my_rpg.h"
-#include"particules.h"
+#include "my_rpg.h"
 
-partBuffer *newPartBuffer(int  size)
+partBuffer_t *partbuffer_init(int size)
 {
-	partBuffer     *this;
-	const  size_t   size_m = (sizeof(partBuffer) +
-				  sizeof(sfVertex) * size * 4 +
-				  sizeof(t_info) * size);
-	void *ptn = malloc(size_m);
-	if (ptn == NULL)
+	partBuffer_t *this;
+	const size_t size_m = (sizeof(partBuffer_t) +
+	sizeof(sfVertex) * size * 4 +
+	sizeof(info_t) * size);
+	void *ptr = malloc(size_m);
+
+	if (ptr == NULL)
 		return (NULL);
-	memset(ptn , 0, size_m);
-	this = (partBuffer *)(ptn);
-	this ->size = size;
-	this ->vertex = (sfVertex *)(ptn + sizeof(partBuffer));
-	this ->info = (t_info *)(this ->vertex + (size * 4));
+	memset(ptr, 0, size_m);
+	this = (partBuffer_t *)(ptr);
+	this->size = size;
+	this->vertex = (sfVertex *)(ptr + sizeof(partBuffer_t));
+	this->info = (info_t *)(this->vertex + (size * 4));
 	return (this);
 }
 
-static uint newPart(partBuffer *this)
+uint new_part(partBuffer_t *this)
 {
-	for (uint id = this ->size - 1; id != 0; id  -= 1)
-		if (this ->info[id].life  <= 0)
-			return  (id);
+	for (uint id = this->size - 1; id; id -= 1)
+		if (this->info[id].life <= 0)
+			return (id);
 	return ((uint)(-1));
 }
 
-int init(int type)
+int particules_init(particules_t *particules, int type)
 {
-	int nb_particule = 1000;
-	//int w = 500;
-	//int h = 500;
+	int part_nb = 100;
 
-	//window = sfRenderWindow_create (( sfVideoMode){w, h, 32},
-	//                            "Test", sfResize | sfClose , NULL);
-	//if (window == NULL)
-	//	return (0);
-	//sfRenderWindow_setFramerateLimit(window , 120);
-	buffer = newPartBuffer (nb_particule);
-	if (buffer  == NULL)
-		return  (0);
-	for (uint i = 0; i <= nb_particule; i += 1) {
+	particules->buffer = partbuffer_init(part_nb);
+	if (particules->buffer == NULL)
+		return (1);
+	for (int i = 0; i <= part_nb; i += 1) {
 		if (type == 1)
-			setPartv1(buffer , i , (sfVector2f){10, 10});
+			set_part_type1(particules->buffer, i,
+			(sfVector2f){10, 10});
 		if (type == 2)
-			setPartv2(buffer , i, (sfVector2f){250+(rand()
-			% 75),250+(rand() % 150 -75)},(sfColor){rand()
-			% 255,rand()% 255, rand() % 255, 255});
+			set_part_type2(particules->buffer, i,
+			(sfVector2f){250, 250},
+			(sfColor){rand() % 255, rand() % 255,
+			rand() % 255, 255});
 	}
-	return (1);
+	return (0);
 }
 
-void particule (int type,game_t *game)
+void particules_display(particules_t *particules, game_t *game, int type)
 {
-	updatePartBuffer(buffer);
-	for (int i = 0; i < 10; i += 1)
-	{
-		uint id = newPart(buffer);
+	uint id;
+
+	update_partbuffer(particules->buffer);
+	for (int i = 0; i < 10; i += 1) {
+		id = new_part(particules->buffer);
 		if (id == (uint)(-1))
 			break;
-		if(type == 1)
-			setPartv1(buffer , id , (sfVector2f){10, 10});
-		if(type == 2)
-			setPartv2(buffer , id , (sfVector2f){250, 250},
-				(sfColor){rand() % 255, rand()
-				% 255, rand() % 255, 255});
+		if (type == 1)
+			set_part_type1(particules->buffer, id,
+			(sfVector2f){10, 10});
+		if (type == 2)
+			set_part_type2(particules->buffer, id,
+			(sfVector2f){250, 250},
+			(sfColor){rand() % 255, rand() % 255,
+			rand() % 255, 255});
 	}
-	//sfRenderWindow_clear(game->window->window , sfBlack);
-	drawPartBufer(buffer , game->window->window);
-	sfRenderWindow_display(game->window->window);
+	draw_partbuffer(particules->buffer, game->window->window);
 }

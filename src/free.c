@@ -7,7 +7,6 @@
 
 #include <stdlib.h>
 #include "my_rpg.h"
-#include "particules.h"
 
 static void destroy_scene(scene_t *scene)
 {
@@ -32,7 +31,7 @@ static void destroy_scene(scene_t *scene)
 	free(scene->objects);
 }
 
-void quit_game(game_t *game)
+void quit_game(game_t *game, particules_t *particules)
 {
 	for (int i = 0; i < NB_SCENES; i++)
 		destroy_scene(game->scenes[i]);
@@ -49,5 +48,6 @@ void quit_game(game_t *game)
 	free(game->keys);
 	sfImage_destroy(game->atlas);
 	free(game);
-	free(buffer);
+	free(particules->buffer);
+	free(particules);
 }

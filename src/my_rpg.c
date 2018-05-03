@@ -30,16 +30,15 @@ static int init_objects(game_t *game)
 	return (0);
 }
 
-static int init_game(game_t *game)
+static int init_game(game_t *game, particules_t *particules)
 {
 	sfVideoMode video = {1920, 1080, 32};
-	int type = 1;
 
 	game->keys = malloc(sizeof(*game->keys));
 	if (game->keys == NULL)
 		return (84);
 	init_keys(game);
-	init(type,game);
+	particules_init(particules, 1);
 	init_window(game, video);
 	set_scenes(game);
 	game->current_scene = 0;
@@ -60,14 +59,15 @@ int main(void)
 {
 	extern char **environ;
 	game_t *game = malloc(sizeof(*game));
-		    
+	particules_t *particules = malloc(sizeof(*particules));
+
 	if (environ[0] == NULL)
 		return (84);
-	if (game == NULL)
+	if (game == NULL || particules == NULL)
 		return (84);
-	if (init_game(game) == 84)
+	if (init_game(game, particules) == 84)
 		return (84);
-	if (display_window(game) == 84)
+	if (display_window(game, particules) == 84)
 		return (84);
 	return (0);
 }

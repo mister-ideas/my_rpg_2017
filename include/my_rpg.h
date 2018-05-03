@@ -13,6 +13,7 @@
 #include <SFML/Graphics.h>
 #include <SFML/System.h>
 #include <SFML/Window.h>
+#include "particules.h"
 #include "linked_list.h"
 
 #define NB_SCENES 9
@@ -115,7 +116,7 @@ extern const sfIntRect atlas_rect;
 
 /* window.c */
 int init_window(game_t *game, sfVideoMode video);
-int display_window(game_t *game);
+int display_window(game_t *game, particules_t *particules);
 int mouse_is_in_area(sfVector2f pos, sfVector2f size, sfVector2i clickPos);
 
 /* events.c */
@@ -143,6 +144,10 @@ button_t *htp_button(void);
 button_t *resume_button(void);
 button_t *return_button(void);
 
+/* particules */
+int particules_init(particules_t *particules, int type);
+void particules_display(particules_t *particules, game_t *game, int type);
+
 /* keys */
 void init_keys(game_t *game);
 void check_pressed_keys(game_t *game);
@@ -168,7 +173,7 @@ void check_weapon(game_t *game);
 int display_game(game_t *game);
 
 /* free.c */
-void quit_game(game_t *game);
+void quit_game(game_t *game, particules_t *particules);
 
 /* linked_list.c */
 dll_t *list_init(void);

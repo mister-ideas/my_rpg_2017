@@ -5,10 +5,9 @@
 ** particules.h
 */
 
-#pragma once
-#include <SFML/Graphics.h>
 #include <string.h>
 #include <stdlib.h>
+#include <SFML/Graphics.h>
 
 typedef unsigned int uint;
 
@@ -16,24 +15,24 @@ typedef struct info
 {
 	float life;
 	sfVector2f speed;
-} t_info;
+} info_t;
 
-typedef struct s_partBuffer
+typedef struct partBuffer
 {
 	sfVertex *vertex;
 	uint size;
-	t_info *info;
-} partBuffer;
+	info_t *info;
+} partBuffer_t;
 
-partBuffer *buffer;
-sfRenderWindow *window;
+typedef struct particules
+{
+	partBuffer_t *buffer;
+} particules_t;
 
-uint new_part(partBuffer *this);
-partBuffer *new_part_buffer(int  size);
-void set_part_v1(partBuffer *this, uint id, sfVector2f pos);
-void set_part_v2(partBuffer *this, uint id, sfVector2f pos, sfColor color);
-void draw_part_buffer(partBuffer *this, sfRenderWindow *window);
-int particules_init(int type);
-int particules_type(int type);
-void update_part_buffer(partBuffer *this);
-void update_part_buffer_set(partBuffer *this, uint id);
+uint new_part(partBuffer_t *this);
+partBuffer_t *partbuffer_init(int size);
+void set_part_type1(partBuffer_t *this, uint id, sfVector2f pos);
+void set_part_type2(partBuffer_t *this, uint id, sfVector2f pos, sfColor color);
+void draw_partbuffer(partBuffer_t *this, sfRenderWindow *window);
+void update_partbuffer(partBuffer_t *this);
+void update_partbuffer_set(partBuffer_t *this, uint id);
