@@ -40,7 +40,6 @@ int display_window(game_t *game, particules_t *particules)
 		sfRenderWindow_clear(game->window->window, sfBlack);
 		if (display_game(game) == 84)
 			return (84);
-		particules_display(particules, game, 1);
 		sfRenderWindow_display(game->window->window);
 	}
 	quit_game(game, particules);
