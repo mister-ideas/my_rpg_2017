@@ -23,23 +23,7 @@ static void general_events(game_t *game)
 		game->window->click = 0;
 }
 
-void init_keys(game_t *game)
-{
-	game->keys->z = sfFalse;
-	game->keys->q = sfFalse;
-	game->keys->s = sfFalse;
-	game->keys->d = sfFalse;
-	game->keys->up = sfFalse;
-	game->keys->left = sfFalse;
-	game->keys->down = sfFalse;
-	game->keys->right = sfFalse;
-	game->keys->esc = sfFalse;
-	game->keys->space = sfFalse;
-	game->keys->shift = sfFalse;
-	game->keys->alt = sfFalse;
-}
-
-static void game_keys_events(game_t *game)
+static void esc_alt_events(game_t *game)
 {
 	if (game->keys->esc == sfTrue && game->current_scene != 0 &&
 	game->current_scene != 1 && game->current_scene != 2 &&
@@ -56,6 +40,10 @@ static void game_keys_events(game_t *game)
 		game->current_scene = 4;
 	} else if (game->keys->alt == sfFalse && game->current_scene == 4)
 		game->current_scene = game->last_scene;
+}
+
+static void space_shift_events(game_t *game)
+{
 	if (game->keys->space == sfTrue && game->current_scene == 3)
 		game->current_text++;
 	if (game->keys->shift == sfTrue && game->current_scene == 3) {
@@ -104,7 +92,8 @@ void game_events(game_t *game)
 		check_doors(game);
 		if (game->doors == 0)
 			check_walls(game);
-		game_keys_events(game);
+		esc_alt_events(game);
+		space_shift_events(game);
 		controls_events(game);
 		if (check_all_keys_released(game) == 1)
 			default_character(game);

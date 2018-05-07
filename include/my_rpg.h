@@ -154,7 +154,6 @@ int particules_init(particules_t *particules, int type);
 void particules_display(particules_t *particules, game_t *game, int type);
 
 /* keys */
-void init_keys(game_t *game);
 void check_pressed_keys(game_t *game);
 void check_released_keys(game_t *game);
 int check_all_keys_released(game_t *game);

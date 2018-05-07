@@ -66,8 +66,6 @@ all:		$(NAME)
 $(NAME):	$(OBJ)
 		$(MAKE) -C $(LIB_SRC_DIR)
 		$(CC) -o $(NAME) $(OBJ) $(LDFLAGS)
-		tar -zxvf ressources/img/atlas.tar.gz
-		mv atlas.png ressources/img/
 
 clean:
 		$(MAKE) clean -C $(LIB_SRC_DIR)
@@ -76,7 +74,6 @@ clean:
 fclean: 	clean
 		make fclean -C $(LIB_SRC_DIR)
 		$(RM) $(NAME)
-		$(RM) ressources/img/atlas.png
 
 re:		fclean all
 

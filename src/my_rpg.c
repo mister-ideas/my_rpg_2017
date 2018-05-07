@@ -11,6 +11,22 @@
 
 const sfIntRect atlas_rect = {0, 0, 7680, 4885};
 
+static void init_keys(game_t *game)
+{
+	game->keys->z = sfFalse;
+	game->keys->q = sfFalse;
+	game->keys->s = sfFalse;
+	game->keys->d = sfFalse;
+	game->keys->up = sfFalse;
+	game->keys->left = sfFalse;
+	game->keys->down = sfFalse;
+	game->keys->right = sfFalse;
+	game->keys->esc = sfFalse;
+	game->keys->space = sfFalse;
+	game->keys->shift = sfFalse;
+	game->keys->alt = sfFalse;
+}
+
 static int init_objects(game_t *game)
 {
 	object_t *char_obj = malloc(sizeof(*char_obj));
