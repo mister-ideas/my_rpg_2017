@@ -30,7 +30,10 @@ static void right_doors(game_t *game)
 	(game->character->cur_pos.y >= 435 &&
 	game->character->cur_pos.y <= 545)) {
 		game->doors = 1;
-		game->current_scene += 1;
+		if (game->current_scene == 3)
+			game->current_scene = 7;
+		else
+			game->current_scene += 1;
 		game->character->char_obj->pos.x = 285;
 		game->character->char_obj->pos.y = 455;
 		sfSprite_setPosition(game->character->char_obj->sprite,

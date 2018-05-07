@@ -39,6 +39,8 @@ static void check_released_other_keys(game_t *game)
 		game->keys->space = sfFalse;
 	if (game->window->event.key.code == sfKeyLShift)
 		game->keys->shift = sfFalse;
+	if (game->window->event.key.code == sfKeyLAlt)
+		game->keys->alt = sfFalse;
 }
 
 int check_all_keys_released(game_t *game)

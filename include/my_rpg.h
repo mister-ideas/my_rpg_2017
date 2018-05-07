@@ -81,6 +81,7 @@ typedef struct keys
 	sfBool esc;
 	sfBool space;
 	sfBool shift;
+	sfBool alt;
 } keys_t;
 
 typedef struct game

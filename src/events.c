@@ -36,15 +36,26 @@ void init_keys(game_t *game)
 	game->keys->esc = sfFalse;
 	game->keys->space = sfFalse;
 	game->keys->shift = sfFalse;
+	game->keys->alt = sfFalse;
 }
 
 static void game_keys_events(game_t *game)
 {
 	if (game->keys->esc == sfTrue && game->current_scene != 0 &&
-	game->current_scene != 1 && game->current_scene != 2) {
+	game->current_scene != 1 && game->current_scene != 2 &&
+	game->current_scene != 4 && game->current_scene != 5 &&
+	game->current_scene != 6) {
 		game->last_scene = game->current_scene;
 		game->current_scene = 2;
 	}
+	if (game->keys->alt == sfTrue && game->current_scene != 0 &&
+	game->current_scene != 1 && game->current_scene != 2 &&
+	game->current_scene != 4 && game->current_scene != 5 &&
+	game->current_scene != 6) {
+		game->last_scene = game->current_scene;
+		game->current_scene = 4;
+	} else if (game->keys->alt == sfFalse && game->current_scene == 4)
+		game->current_scene = game->last_scene;
 	if (game->keys->space == sfTrue && game->current_scene == 3)
 		game->current_text++;
 	if (game->keys->shift == sfTrue && game->current_scene == 3) {
@@ -53,8 +64,7 @@ static void game_keys_events(game_t *game)
 		game->character->char_obj->pos.y = 455;
 		sfSprite_setPosition(game->character->char_obj->sprite,
 		game->character->char_obj->pos);
-	}
-	if (game->keys->shift == sfTrue && game->current_scene != 3) {
+	} else if (game->keys->shift == sfTrue && game->current_scene != 3) {
 		if (game->current_weapon != 2)
 			game->current_weapon++;
 		else
