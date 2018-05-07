@@ -16,7 +16,7 @@
 #include "particules.h"
 #include "linked_list.h"
 
-#define NB_SCENES 9
+#define NB_SCENES 12
 #define NB_SOUNDS 0
 
 #define ATLAS_PATH "./ressources/img/atlas.png"
@@ -25,6 +25,7 @@
 enum TYPE {
 	BG,
 	TEXT,
+	SLOT,
 	MISC
 };
 
@@ -131,11 +132,14 @@ scene_t *menu_scene(game_t *game);
 scene_t *htp_scene(game_t *game);
 scene_t *intro_scene(game_t *game);
 scene_t *pause_scene(game_t *game);
+scene_t *stats_inv_scene(game_t *game);
+scene_t *win_scene(game_t *game);
+scene_t *lose_scene(game_t *game);
 scene_t *arena1_scene(game_t *game);
 scene_t *arena2_scene(game_t *game);
 scene_t *arena3_scene(game_t *game);
 scene_t *arena4_scene(game_t *game);
-scene_t *boss_scene(game_t *game);
+scene_t *bossarena_scene(game_t *game);
 
 /* buttons */
 button_t *play_button(void);

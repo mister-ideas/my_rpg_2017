@@ -10,7 +10,8 @@
 static void left_doors(game_t *game)
 {
 	if (game->current_scene != 3 && game->current_scene != 4 &&
-	game->current_scene != 7 && game->character->cur_pos.x < 275 &&
+	game->current_scene != 10 && game->current_scene != 11 &&
+	game->character->cur_pos.x < 275 &&
 	(game->character->cur_pos.y >= 435 &&
 	game->character->cur_pos.y <= 545)) {
 		game->doors = 1;
@@ -24,8 +25,8 @@ static void left_doors(game_t *game)
 
 static void right_doors(game_t *game)
 {
-	if (game->current_scene != 6 && game->current_scene != 7 &&
-	game->character->cur_pos.x > 1515 &&
+	if (game->current_scene != 9 && game->current_scene != 10 &&
+	game->current_scene != 11 && game->character->cur_pos.x > 1515 &&
 	(game->character->cur_pos.y >= 435 &&
 	game->character->cur_pos.y <= 545)) {
 		game->doors = 1;
@@ -39,15 +40,15 @@ static void right_doors(game_t *game)
 
 static void up_doors(game_t *game)
 {
-	if (game->current_scene != 3 && game->current_scene != 4 &&
-	game->current_scene != 5 && game->character->cur_pos.y < 120 &&
+	if (game->current_scene != 7 && game->current_scene != 8 &&
+	game->current_scene != 11 && game->character->cur_pos.y < 120 &&
 	(game->character->cur_pos.x >= 865 &&
 	game->character->cur_pos.x <= 960)) {
 		game->doors = 1;
-		if (game->current_scene == 6)
+		if (game->current_scene == 9)
+			game->current_scene = 11;
+		else if (game->current_scene == 10)
 			game->current_scene = 8;
-		else if (game->current_scene == 7)
-			game->current_scene = 5;
 		game->character->char_obj->pos.x = 890;
 		game->character->char_obj->pos.y = 750;
 		sfSprite_setPosition(game->character->char_obj->sprite,
@@ -57,16 +58,15 @@ static void up_doors(game_t *game)
 
 static void down_doors(game_t *game)
 {
-	if (game->current_scene != 3 && game->current_scene != 4 &&
-	game->current_scene != 6 && game->current_scene != 7 &&
-	game->character->cur_pos.y > 760 &&
+	if (game->current_scene != 7 && game->current_scene != 9 &&
+	game->current_scene != 10 && game->character->cur_pos.y > 760 &&
 	(game->character->cur_pos.x >= 865 &&
 	game->character->cur_pos.x <= 960)) {
 		game->doors = 1;
-		if (game->current_scene == 5)
-			game->current_scene = 7;
-		else if (game->current_scene == 8)
-			game->current_scene = 6;
+		if (game->current_scene == 8)
+			game->current_scene = 10;
+		else if (game->current_scene == 11)
+			game->current_scene = 9;
 		game->character->char_obj->pos.x = 890;
 		game->character->char_obj->pos.y = 130;
 		sfSprite_setPosition(game->character->char_obj->sprite,

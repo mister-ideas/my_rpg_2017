@@ -48,7 +48,7 @@ static void game_keys_events(game_t *game)
 	if (game->keys->space == sfTrue && game->current_scene == 3)
 		game->current_text++;
 	if (game->keys->shift == sfTrue && game->current_scene == 3) {
-		game->current_scene = 4;
+		game->current_scene = 7;
 		game->character->char_obj->pos.x = 285;
 		game->character->char_obj->pos.y = 455;
 		sfSprite_setPosition(game->character->char_obj->sprite,

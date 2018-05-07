@@ -41,8 +41,9 @@ static void display_but(struct node *button, game_t *game)
 static void display_special_obj(game_t *game)
 {
 	if (game->current_scene != 0 && game->current_scene != 1 &&
-	    game->current_scene != 2) {
-		if (game->current_scene != 3) {
+	game->current_scene != 2 && game->current_scene != 4 &&
+	game->current_scene != 5 && game->current_scene != 6) {
+		if (game->current_scene >= 7 && game->current_scene <= 11) {
 			check_weapon(game);
 			sfRenderWindow_drawSprite(game->window->window,
 			game->weapons->sprite, NULL);

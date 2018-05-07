@@ -9,6 +9,8 @@ SRC_DIR=	src/
 
 LIB_SRC_DIR=	lib/src/
 
+CC=		gcc
+
 SRC=		$(SRC_DIR)my_rpg.c				\
 		$(SRC_DIR)linked_list.c				\
 		$(SRC_DIR)scene.c				\
@@ -33,11 +35,14 @@ SRC=		$(SRC_DIR)my_rpg.c				\
 		$(SRC_DIR)scenes/htp_scene.c			\
 		$(SRC_DIR)scenes/intro_scene.c			\
 		$(SRC_DIR)scenes/pause_scene.c			\
+		$(SRC_DIR)scenes/stats_inv_scene.c		\
+		$(SRC_DIR)scenes/win_scene.c			\
+		$(SRC_DIR)scenes/lose_scene.c			\
 		$(SRC_DIR)scenes/arena1_scene.c			\
 		$(SRC_DIR)scenes/arena2_scene.c                 \
 		$(SRC_DIR)scenes/arena3_scene.c                 \
 		$(SRC_DIR)scenes/arena4_scene.c                 \
-		$(SRC_DIR)scenes/boss_scene.c                	\
+		$(SRC_DIR)scenes/bossarena_scene.c		\
 		$(SRC_DIR)objects/character.c			\
 		$(SRC_DIR)objects/weapons.c			\
 		$(SRC_DIR)buttons/play.c   			\
@@ -59,16 +64,16 @@ NAME=		my_rpg
 all:		$(NAME)
 
 $(NAME):	$(OBJ)
-		make -C $(LIB_SRC_DIR)
-		gcc -o $(NAME) $(OBJ) $(LDFLAGS)
+		$(MAKE) -C $(LIB_SRC_DIR)
+		$(CC) -o $(NAME) $(OBJ) $(LDFLAGS)
 
 clean:
-		make clean -C $(LIB_SRC_DIR)
-		rm -f $(OBJ)
+		$(MAKE) clean -C $(LIB_SRC_DIR)
+		$(RM) $(OBJ)
 
 fclean: 	clean
 		make fclean -C $(LIB_SRC_DIR)
-		rm -f $(NAME)
+		$(RM) $(NAME)
 
 re:		fclean all
 
