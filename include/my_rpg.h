@@ -87,18 +87,17 @@ typedef struct keys
 typedef struct game
 {
 	scene_t **scenes;
+	sfMusic *sounds[NB_SOUNDS];
 	int current_scene;
 	int last_scene;
 	int current_weapon;
 	int current_text;
 	int doors;
 	sfFont *font;
-	sfMusic *sounds[NB_SOUNDS];
 	sfImage *atlas;
 	window_t *window;
 	character_t *character;
 	object_t *weapons;
-	void *freeparticule;
 	keys_t *keys;
 } game_t;
 
