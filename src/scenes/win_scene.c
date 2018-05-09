@@ -55,12 +55,13 @@ scene_t *win_scene(game_t *game)
 	if (win_scene_init_buttons(quit) == 84)
 		return (NULL);
 	background = win_scene_background();
-	background = create_object(background, game->atlas);
-	quit = create_button(quit, game->atlas);
+	background = create_object(background, game);
+	quit = create_button(quit, game);
 	if (quit == NULL || background == NULL)
 		return (NULL);
 	if (win_scene_lists(win, quit) == 84)
 		return (NULL);
 	put_end_list(win->objects, background);
+	win->mobs_nb = 0;
 	return (win);
 }

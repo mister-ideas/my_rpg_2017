@@ -11,20 +11,20 @@
 
 typedef unsigned int uint;
 
-typedef struct info
+typedef struct info_s
 {
 	float life;
 	sfVector2f speed;
 } info_t;
 
-typedef struct partBuffer
+typedef struct partBuffer_s
 {
 	sfVertex *vertex;
 	uint size;
 	info_t *info;
 } partBuffer_t;
 
-typedef struct particules
+typedef struct particules_s
 {
 	partBuffer_t *buffer;
 } particules_t;

@@ -19,28 +19,6 @@ void update_text(game_t *game, sfText *text, char str[], sfVector2f pos)
 	text, NULL);
 }
 
-void int_to_text(int num, char str[])
-{
-	int rem;
-	int len = 0;
-	int n;
-	int i;
-
-	n = num;
-	while (n) {
-		len++;
-		n /= 10;
-	}
-	if (n == 0)
-		len = 1;
-	for (i = 0; i < len; i++) {
-		rem = num % 10;
-		num = num / 10;
-		str[len - (i + 1)] = rem + '0';
-	}
-	str[len] = '\0';
-}
-
 int init_texts(game_t *game)
 {
 	game->texts->health = sfText_create();

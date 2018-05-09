@@ -7,35 +7,28 @@
 
 #include "my_rpg.h"
 
-static void check_button_state(button_t *but, game_t *game, int in_area)
+static void display_but(struct node *but, game_t *game)
 {
-	if (in_area == 1)
-		sfRectangleShape_setTextureRect(but->shape,
-						but->hover);
-	else if (in_area == 0)
-		sfRectangleShape_setTextureRect(but->shape, but->rect);
-	if (in_area == 1 && game->window->click == 1)
-		sfRectangleShape_setTextureRect(but->shape,
-						but->active);
-	else if (in_area == 1 && game->window->click == 0) {
-		but->callback(game);
-		game->window->click = 2;
+	button_t *button;
+	int in_area = 0;
+
+	for (; but != NULL; but = but->next) {
+		button = (button_t *)but->data;
+		in_area = mouse_is_in_area(button->pos, button->size,
+		game->window->mouse_pos);
+		check_button_state(button, game, in_area);
+		sfRenderWindow_drawRectangleShape(game->window->window,
+		button->shape, NULL);
 	}
 }
 
-static void display_but(struct node *button, game_t *game)
+static void display_mob(mob_t *mob, game_t *game)
 {
-	button_t *but;
-	int in_area = 0;
-
-	for (; button != NULL; button = button->next) {
-		but = (button_t *)button->data;
-		in_area = mouse_is_in_area(but->pos, but->size,
-		game->window->mouse_pos);
-		check_button_state(but, game, in_area);
-		sfRenderWindow_drawRectangleShape(game->window->window,
-		but->shape, NULL);
-	}
+	mob_clock(mob);
+	sfRenderWindow_drawSprite(game->window->window,
+	mob->mob_obj->sprite, NULL);
+	sfSprite_move(mob->mob_obj->sprite,
+	mob->move);
 }
 
 static void display_special_obj(game_t *game)
@@ -54,6 +47,9 @@ static void display_special_obj(game_t *game)
 		game->character->char_obj->sprite, NULL);
 		sfSprite_move(game->character->char_obj->sprite,
 		game->character->move);
+		for (int i = 0; i < game->scenes
+		[game->current_scene]->mobs_nb; i++)
+			display_mob(game->mobs[i], game);
 	}
 }
 
@@ -75,24 +71,25 @@ static void display_texts(game_t *game)
 	(sfVector2f){965, 560});
 	int_to_text(game->character->level, str);
 	update_text(game, game->texts->level, str,
-	(sfVector2f){965, 630});
+	(sfVector2f){965, 635});
 }
 
 void display_game(game_t *game)
 {
-	struct node *button;
+	struct node *but;
 	struct node *obj = game->scenes[game->current_scene]->objects->start;
 	object_t *data;
 
 	if (game->scenes[game->current_scene]->buttons) {
-		button = game->scenes[game->current_scene]->buttons->start;
-		display_but(button, game);
+		but = game->scenes[game->current_scene]->buttons->start;
+		display_but(but, game);
 	}
 	for (; obj != NULL; obj = obj->next) {
 		data = (object_t *)obj->data;
-		if (data->type == TEXT && game->current_text < 10)
+		if (data->type == TEXT && game->current_text < 10) {
 			data->rect.top = 2625 + game->current_text / 2 * 40;
-		sfSprite_setTextureRect(data->sprite, data->rect);
+			sfSprite_setTextureRect(data->sprite, data->rect);
+		}
 		sfRenderWindow_drawSprite(game->window->window,
 		data->sprite, NULL);
 	}

@@ -9,12 +9,6 @@
 #include <stdlib.h>
 #include "my_rpg.h"
 
-int mouse_is_in_area(sfVector2f pos, sfVector2f size, sfVector2i clickPos)
-{
-	return (clickPos.x < pos.x + size.x && clickPos.x > pos.x &&
-		clickPos.y < pos.y + size.y && clickPos.y > pos.y);
-}
-
 int init_window(game_t *game, sfVideoMode video)
 {
 	window_t *window = malloc(sizeof(*window));

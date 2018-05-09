@@ -51,8 +51,8 @@ scene_t *stats_inv_scene(game_t *game)
 		return (NULL);
 	background = stats_inv_scene_background();
 	slot = stats_inv_scene_slot();
-	background = create_object(background, game->atlas);
-	slot = create_object(slot, game->atlas);
+	background = create_object(background, game);
+	slot = create_object(slot, game);
 	if (background == NULL || slot == NULL)
 		return (NULL);
 	stats_inv->objects = list_init();
@@ -61,5 +61,6 @@ scene_t *stats_inv_scene(game_t *game)
 	put_end_list(stats_inv->objects, background);
 	put_end_list(stats_inv->objects, slot);
 	stats_inv->buttons = NULL;
+	stats_inv->mobs_nb = 0;
 	return (stats_inv);
 }

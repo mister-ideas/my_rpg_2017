@@ -60,13 +60,14 @@ scene_t *pause_scene(game_t *game)
 	if (pause_scene_init_buttons(resume, quit) == 84)
 		return (NULL);
 	background = pause_scene_background();
-	background = create_object(background, game->atlas);
-	resume = create_button(resume, game->atlas);
-	quit = create_button(quit, game->atlas);
+	background = create_object(background, game);
+	resume = create_button(resume, game);
+	quit = create_button(quit, game);
 	if (resume == NULL || quit == NULL || background == NULL)
 		return (NULL);
 	if (pause_scene_lists(pause, resume, quit) == 84)
 		return (NULL);
 	put_end_list(pause->objects, background);
+	pause->mobs_nb = 0;
 	return (pause);
 }

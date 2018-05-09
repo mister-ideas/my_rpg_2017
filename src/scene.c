@@ -30,6 +30,7 @@ int set_scenes(game_t *game)
 	game->scenes = malloc(sizeof(scene_t*) * NB_SCENES);
 	game->atlas = sfImage_create(3840, 3467);
 	game->atlas = sfImage_createFromFile(ATLAS_PATH);
+	game->texture = sfTexture_createFromImage(game->atlas, &atlas_rect);
 	if (game->scenes == NULL || game->atlas == NULL)
 		return (84);
 	init_scenes(game);

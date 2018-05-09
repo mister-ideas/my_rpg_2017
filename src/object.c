@@ -9,10 +9,10 @@
 #include <stdlib.h>
 #include "my_rpg.h"
 
-object_t *create_object(object_t *new, sfImage *img)
+object_t *create_object(object_t *new, game_t *game)
 {
-	new->texture = sfTexture_createFromImage(img, &(atlas_rect));
-	if ((new->sprite = sfSprite_create()) == NULL || new->texture == NULL)
+	new->texture = game->texture;
+	if ((new->sprite = sfSprite_create()) == NULL)
 		return (NULL);
 	sfSprite_setTexture(new->sprite, new->texture, sfTrue);
 	sfSprite_setTextureRect(new->sprite, new->rect);

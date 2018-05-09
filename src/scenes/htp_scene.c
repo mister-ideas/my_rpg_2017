@@ -60,13 +60,14 @@ scene_t *htp_scene(game_t *game)
 	if (htp_scene_init_buttons(play, back) == 84)
 		return (NULL);
 	background = htp_scene_background();
-	background = create_object(background, game->atlas);
-	play = create_button(play, game->atlas);
-	back = create_button(back, game->atlas);
+	background = create_object(background, game);
+	play = create_button(play, game);
+	back = create_button(back, game);
 	if (play == NULL || back == NULL || background == NULL)
 		return (NULL);
 	if (htp_scene_lists(htp, play, back) == 84)
 		return (NULL);
 	put_end_list(htp->objects, background);
+	htp->mobs_nb = 0;
 	return (htp);
 }

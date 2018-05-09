@@ -9,11 +9,9 @@
 #include <stdlib.h>
 #include "my_rpg.h"
 
-button_t *create_button(button_t *new, sfImage *img)
+button_t *create_button(button_t *new, game_t *game)
 {
-	new->texture = sfTexture_createFromImage(img, &atlas_rect);
-	if (new->texture == NULL)
-		return (NULL);
+	new->texture = game->texture;
 	if ((new->shape = sfRectangleShape_create()) == NULL)
 		return (NULL);
 	sfRectangleShape_setTexture(new->shape, new->texture, sfTrue);

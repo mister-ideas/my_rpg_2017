@@ -14,6 +14,8 @@ CC=		gcc
 SRC=		$(SRC_DIR)my_rpg.c				\
 		$(SRC_DIR)linked_list.c				\
 		$(SRC_DIR)scene.c				\
+		$(SRC_DIR)mob.c					\
+		$(SRC_DIR)tools.c				\
 		$(SRC_DIR)window.c				\
 		$(SRC_DIR)events.c				\
 		$(SRC_DIR)doors.c				\
@@ -46,6 +48,7 @@ SRC=		$(SRC_DIR)my_rpg.c				\
 		$(SRC_DIR)objects/character.c			\
 		$(SRC_DIR)objects/weapons.c			\
 		$(SRC_DIR)objects/texts.c			\
+		$(SRC_DIR)objects/mob.c				\
 		$(SRC_DIR)buttons/play.c   			\
 		$(SRC_DIR)buttons/quit.c             		\
 		$(SRC_DIR)buttons/how_to_play.c      		\

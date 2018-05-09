@@ -65,14 +65,14 @@ scene_t *menu_scene(game_t *game)
 	if (menu_scene_init_buttons(play, quit, htp) == 84)
 		return (NULL);
 	background = menu_scene_background();
-	background = create_object(background, game->atlas);
-	play = create_button(play, game->atlas);
-	quit = create_button(quit, game->atlas);
-	htp = create_button(htp, game->atlas);
-	if (play == NULL || quit == NULL || htp == NULL || background == NULL)
-		return (NULL);
-	if (menu_scene_lists(menu, play, quit, htp) == 84)
+	background = create_object(background, game);
+	play = create_button(play, game);
+	quit = create_button(quit, game);
+	htp = create_button(htp, game);
+	if (play == NULL || quit == NULL || htp == NULL || background == NULL ||
+	menu_scene_lists(menu, play, quit, htp) == 84)
 		return (NULL);
 	put_end_list(menu->objects, background);
+	menu->mobs_nb = 0;
 	return (menu);
 }

@@ -33,7 +33,7 @@ scene_t *bossarena_scene(game_t *game)
 	if (bossarena == NULL)
 		return (NULL);
 	background = bossarena_scene_background();
-	background = create_object(background, game->atlas);
+	background = create_object(background, game);
 	if (background == NULL)
 		return (NULL);
 	bossarena->objects = list_init();
@@ -41,5 +41,6 @@ scene_t *bossarena_scene(game_t *game)
 		return (NULL);
 	put_end_list(bossarena->objects, background);
 	bossarena->buttons = NULL;
+	bossarena->mobs_nb = 0;
 	return (bossarena);
 }

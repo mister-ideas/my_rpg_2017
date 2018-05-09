@@ -33,7 +33,7 @@ scene_t *arena3_scene(game_t *game)
 	if (arena3 == NULL)
 		return (NULL);
 	background = arena3_scene_background();
-	background = create_object(background, game->atlas);
+	background = create_object(background, game);
 	if (background == NULL)
 		return (NULL);
 	arena3->objects = list_init();
@@ -41,5 +41,6 @@ scene_t *arena3_scene(game_t *game)
 		return (NULL);
 	put_end_list(arena3->objects, background);
 	arena3->buttons = NULL;
+	arena3->mobs_nb = 2;
 	return (arena3);
 }

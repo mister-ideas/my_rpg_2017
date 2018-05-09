@@ -55,12 +55,13 @@ scene_t *lose_scene(game_t *game)
 	if (lose_scene_init_buttons(quit) == 84)
 		return (NULL);
 	background = lose_scene_background();
-	background = create_object(background, game->atlas);
-	quit = create_button(quit, game->atlas);
+	background = create_object(background, game);
+	quit = create_button(quit, game);
 	if (quit == NULL || background == NULL)
 		return (NULL);
 	if (lose_scene_lists(lose, quit) == 84)
 		return (NULL);
 	put_end_list(lose->objects, background);
+	lose->mobs_nb = 0;
 	return (lose);
 }

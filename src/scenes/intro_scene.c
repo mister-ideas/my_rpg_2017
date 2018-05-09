@@ -53,7 +53,6 @@ static object_t *intro_scene_master(void)
 	master->rect.left = 1175;
 	master->rect.top = 2315;
 	master->rect.width = 140;
-	master->type = MISC;
 	return (master);
 }
 
@@ -81,13 +80,14 @@ scene_t *intro_scene(game_t *game)
 	background = intro_scene_background();
 	text = intro_scene_text();
 	master = intro_scene_master();
-	background = create_object(background, game->atlas);
-	text = create_object(text, game->atlas);
-	master = create_object(master, game->atlas);
+	background = create_object(background, game);
+	text = create_object(text, game);
+	master = create_object(master, game);
 	if (background == NULL || text == NULL || master == NULL)
 		return (NULL);
 	if (intro_scene_lists(intro, background, text, master) == 84)
 		return (NULL);
 	intro->buttons = NULL;
+	intro->mobs_nb = 0;
 	return (intro);
 }

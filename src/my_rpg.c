@@ -30,21 +30,22 @@ static void init_keys(game_t *game)
 static int init_objects(game_t *game)
 {
 	object_t *char_obj = malloc(sizeof(*char_obj));
-	object_t *weapons = malloc(sizeof(*weapons));
 	my_clock_t *char_clock = malloc(sizeof(*char_clock));
+	object_t *weapons = malloc(sizeof(*weapons));
 
 	game->character = malloc(sizeof(*game->character));
 	game->texts = malloc(sizeof(*game->texts));
 	if (game->character == NULL || game->texts == NULL ||
-	char_obj == NULL || weapons == NULL || char_clock == NULL)
+	char_obj == NULL || char_clock == NULL ||
+	weapons == NULL)
 		return (84);
 	game->character->char_obj = char_obj;
 	game->character->char_clock = char_clock;
 	game->weapons = weapons;
-	if (init_character(game) == 84)
+	if (init_character(game) == 84 || init_texts(game) == 84)
 		return (84);
 	game->font = sfFont_createFromFile(FONT_PATH);
-	if (game->font == NULL || init_texts(game) == 84)
+	if (game->font == NULL)
 		return (84);
 	init_weapons(game);
 	return (0);
@@ -60,17 +61,17 @@ static int init_game(game_t *game, particules_t *particules)
 	init_keys(game);
 	particules_init(particules, 1);
 	init_window(game, video);
-	set_scenes(game);
 	game->current_scene = 0;
 	game->current_weapon = 0;
 	game->current_text = 1;
 	if (init_objects(game) == 84)
 		return (84);
 	game->character->char_obj =
-		create_object(game->character->char_obj, game->atlas);
+		create_object(game->character->char_obj, game);
 	game->weapons =
-		create_object(game->weapons, game->atlas);
-	if (game->character->char_obj == NULL || game->weapons == NULL)
+		create_object(game->weapons, game);
+	if (game->character->char_obj == NULL ||
+	game->weapons == NULL)
 		return (84);
 	return (0);
 }
@@ -84,6 +85,8 @@ int main(void)
 	if (environ[0] == NULL)
 		return (84);
 	if (game == NULL || particules == NULL)
+		return (84);
+	if (set_scenes(game) == 84 || set_mobs(game) == 84)
 		return (84);
 	if (init_game(game, particules) == 84)
 		return (84);
