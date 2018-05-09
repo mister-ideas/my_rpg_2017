@@ -25,6 +25,7 @@
 enum TYPE {
 	BG,
 	TEXT,
+	SFTEXT,
 	SLOT,
 	MISC
 };
@@ -63,10 +64,25 @@ typedef struct character
 {
 	object_t *char_obj;
 	my_clock_t *char_clock;
+	int clock_max;
 	sfVector2f move;
 	sfVector2f cur_pos;
-	int clock_max;
+	int health;
+	int attack;
+	int defense;
+	int speed;
+	int level;
+	int exp;
 } character_t;
+
+typedef struct texts
+{
+	sfText *health;
+	sfText *attack;
+	sfText *defense;
+	sfText *speed;
+	sfText *level;
+} texts_t;
 
 typedef struct keys
 {
@@ -98,6 +114,7 @@ typedef struct game
 	window_t *window;
 	character_t *character;
 	object_t *weapons;
+	texts_t *texts;
 	keys_t *keys;
 } game_t;
 
@@ -171,9 +188,12 @@ void check_walls(game_t *game);
 void character_clock(character_t *character);
 void init_weapons(game_t *game);
 void check_weapon(game_t *game);
+int init_texts(game_t *game);
+void int_to_text(int num, char str[]);
+void update_text(game_t *game, sfText *text, char str[], sfVector2f pos);
 
 /* display.c */
-int display_game(game_t *game);
+void display_game(game_t *game);
 
 /* free.c */
 void quit_game(game_t *game, particules_t *particules);

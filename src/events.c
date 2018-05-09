@@ -34,8 +34,8 @@ static void esc_alt_events(game_t *game)
 	}
 	if (game->keys->alt == sfTrue && game->current_scene != 0 &&
 	game->current_scene != 1 && game->current_scene != 2 &&
-	game->current_scene != 4 && game->current_scene != 5 &&
-	game->current_scene != 6) {
+	game->current_scene != 3 && game->current_scene != 4 &&
+	game->current_scene != 5 && game->current_scene != 6) {
 		game->last_scene = game->current_scene;
 		game->current_scene = 4;
 	} else if (game->keys->alt == sfFalse && game->current_scene == 4)

@@ -38,8 +38,7 @@ int display_window(game_t *game, particules_t *particules)
 	while (sfRenderWindow_isOpen(game->window->window)) {
 		game_events(game);
 		sfRenderWindow_clear(game->window->window, sfBlack);
-		if (display_game(game) == 84)
-			return (84);
+		display_game(game);
 		sfRenderWindow_display(game->window->window);
 	}
 	quit_game(game, particules);

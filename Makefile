@@ -45,6 +45,7 @@ SRC=		$(SRC_DIR)my_rpg.c				\
 		$(SRC_DIR)scenes/bossarena_scene.c		\
 		$(SRC_DIR)objects/character.c			\
 		$(SRC_DIR)objects/weapons.c			\
+		$(SRC_DIR)objects/texts.c			\
 		$(SRC_DIR)buttons/play.c   			\
 		$(SRC_DIR)buttons/quit.c             		\
 		$(SRC_DIR)buttons/how_to_play.c      		\

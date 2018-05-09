@@ -31,10 +31,10 @@ static void display_but(struct node *button, game_t *game)
 	for (; button != NULL; button = button->next) {
 		but = (button_t *)button->data;
 		in_area = mouse_is_in_area(but->pos, but->size,
-					game->window->mouse_pos);
+		game->window->mouse_pos);
 		check_button_state(but, game, in_area);
 		sfRenderWindow_drawRectangleShape(game->window->window,
-						but->shape, NULL);
+		but->shape, NULL);
 	}
 }
 
@@ -43,11 +43,12 @@ static void display_special_obj(game_t *game)
 	if (game->current_scene != 0 && game->current_scene != 1 &&
 	game->current_scene != 2 && game->current_scene != 4 &&
 	game->current_scene != 5 && game->current_scene != 6) {
-		if (game->current_scene >= 7 && game->current_scene <= 11) {
-			check_weapon(game);
+		check_weapon(game);
+		sfSprite_setTextureRect(game->weapons->sprite,
+		game->weapons->rect);
+		if (game->current_scene >= 7 && game->current_scene <= 11)
 			sfRenderWindow_drawSprite(game->window->window,
 			game->weapons->sprite, NULL);
-		}
 		character_clock(game->character);
 		sfRenderWindow_drawSprite(game->window->window,
 		game->character->char_obj->sprite, NULL);
@@ -56,7 +57,28 @@ static void display_special_obj(game_t *game)
 	}
 }
 
-int display_game(game_t *game)
+static void display_texts(game_t *game)
+{
+	char str[12];
+
+	int_to_text(game->character->health, str);
+	update_text(game, game->texts->health, str,
+	(sfVector2f){965, 300});
+	int_to_text(game->character->attack, str);
+	update_text(game, game->texts->attack, str,
+	(sfVector2f){965, 385});
+	int_to_text(game->character->defense, str);
+	update_text(game, game->texts->defense, str,
+	(sfVector2f){965, 475});
+	int_to_text(game->character->speed, str);
+	update_text(game, game->texts->speed, str,
+	(sfVector2f){965, 560});
+	int_to_text(game->character->level, str);
+	update_text(game, game->texts->level, str,
+	(sfVector2f){965, 630});
+}
+
+void display_game(game_t *game)
 {
 	struct node *button;
 	struct node *obj = game->scenes[game->current_scene]->objects->start;
@@ -75,5 +97,6 @@ int display_game(game_t *game)
 		data->sprite, NULL);
 	}
 	display_special_obj(game);
-	return (0);
+	if (game->current_scene == 4)
+		display_texts(game);
 }

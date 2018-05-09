@@ -34,13 +34,17 @@ static int init_objects(game_t *game)
 	my_clock_t *char_clock = malloc(sizeof(*char_clock));
 
 	game->character = malloc(sizeof(*game->character));
-	if (game->character == NULL || char_obj == NULL ||
-	weapons == NULL || char_clock == NULL)
+	game->texts = malloc(sizeof(*game->texts));
+	if (game->character == NULL || game->texts == NULL ||
+	char_obj == NULL || weapons == NULL || char_clock == NULL)
 		return (84);
 	game->character->char_obj = char_obj;
 	game->character->char_clock = char_clock;
 	game->weapons = weapons;
 	if (init_character(game) == 84)
+		return (84);
+	game->font = sfFont_createFromFile(FONT_PATH);
+	if (game->font == NULL || init_texts(game) == 84)
 		return (84);
 	init_weapons(game);
 	return (0);
