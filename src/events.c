@@ -86,12 +86,6 @@ void game_events(game_t *game)
 			check_pressed_keys(game);
 		if (game->window->event.type == sfEvtKeyReleased)
 			check_released_keys(game);
-		game->character->cur_pos =
-			sfSprite_getPosition(game->character->char_obj->sprite);
-		game->doors = 0;
-		check_doors(game);
-		if (game->doors == 0)
-			check_walls(game);
 		esc_alt_events(game);
 		space_shift_events(game);
 		controls_events(game);

@@ -33,7 +33,7 @@ uint new_part(partBuffer_t *this)
 	return ((uint)(-1));
 }
 
-int particules_init(particules_t *particules, int type)
+int init_particules(particules_t *particules, int type)
 {
 	int part_nb = 100;
 
@@ -53,7 +53,7 @@ int particules_init(particules_t *particules, int type)
 	return (0);
 }
 
-void particules_display(particules_t *particules, game_t *game, int type)
+void display_particules(particules_t *particules, game_t *game, int type)
 {
 	uint id;
 

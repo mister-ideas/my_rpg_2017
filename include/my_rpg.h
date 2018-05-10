@@ -82,6 +82,7 @@ typedef struct mob_s
 	object_t *mob_obj;
 	my_clock_t *mob_clock;
 	sfVector2f move;
+	sfVector2f cur_pos;
 	int health;
 } mob_t;
 
@@ -119,7 +120,6 @@ typedef struct game_s
 	int last_scene;
 	int current_weapon;
 	int current_text;
-	int doors;
 	sfFont *font;
 	sfImage *atlas;
 	sfTexture *texture;
@@ -185,8 +185,8 @@ button_t *resume_button(void);
 button_t *return_button(void);
 
 /* particules */
-int particules_init(particules_t *particules, int type);
-void particules_display(particules_t *particules, game_t *game, int type);
+int init_particules(particules_t *particules, int type);
+void display_particules(particules_t *particules, game_t *game, int type);
 
 /* keys */
 void check_pressed_keys(game_t *game);
@@ -213,6 +213,7 @@ int init_texts(game_t *game);
 void update_text(game_t *game, sfText *text, char str[], sfVector2f pos);
 
 mob_t *init_mob(mob_t *mob);
+void check_mobs(game_t *game);
 void mob_clock(mob_t *mob);
 
 /* display.c */

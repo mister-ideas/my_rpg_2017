@@ -53,6 +53,7 @@ static object_t *intro_scene_master(void)
 	master->rect.left = 1175;
 	master->rect.top = 2315;
 	master->rect.width = 140;
+	master->type = MISC;
 	return (master);
 }
 

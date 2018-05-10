@@ -31,6 +31,11 @@ int display_window(game_t *game, particules_t *particules)
 	sfRenderWindow_setFramerateLimit(game->window->window, 60);
 	while (sfRenderWindow_isOpen(game->window->window)) {
 		game_events(game);
+		game->character->cur_pos =
+			sfSprite_getPosition(game->character->char_obj->sprite);
+		check_doors(game);
+		check_walls(game);
+		check_mobs(game);
 		sfRenderWindow_clear(game->window->window, sfBlack);
 		display_game(game);
 		sfRenderWindow_display(game->window->window);

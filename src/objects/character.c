@@ -34,6 +34,7 @@ int init_character(game_t *game)
 	game->character->level = 0;
 	game->character->clock_max = 240;
 	game->character->char_clock->clock = sfClock_create();
+	game->character->char_obj->type = MISC;
 	if (game->character->char_clock->clock == NULL)
 		return (84);
 	return (0);

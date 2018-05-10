@@ -25,13 +25,35 @@ mob_t *init_mob(mob_t *mob)
 	mob->mob_obj->rect.left = 2082;
 	mob->mob_obj->rect.top = 2202;
 	mob->mob_obj->rect.width = 65;
-	mob->move.x = 0;
-	mob->move.y = 0;
+	mob->move.x = rand() % 3;
+	mob->move.y = rand() % 3;
 	mob->health = 4;
 	mob->mob_clock->clock = sfClock_create();
 	if (mob->mob_clock->clock == NULL)
 		return (NULL);
 	return (mob);
+}
+
+void check_mobs(game_t *game)
+{
+	for (int i = 0; i < NB_MOBS; i++) {
+		game->mobs[i]->cur_pos =
+			sfSprite_getPosition(game->mobs[i]->mob_obj->sprite);
+		if (game->mobs[i]->cur_pos.x < 275) {
+			game->mobs[i]->move.x = rand() % 2 + 1;
+			game->mobs[i]->move.y = (rand() % 2 - rand() % 4) + 1;
+		} else if (game->mobs[i]->cur_pos.x > 1570) {
+			game->mobs[i]->move.x = (rand() % 2 + 1) * -1;
+			game->mobs[i]->move.y = (rand() % 2 - rand() % 4) + 1;
+		}
+		if (game->mobs[i]->cur_pos.y < 160) {
+			game->mobs[i]->move.x = (rand() % 2 - rand() % 4) + 1;
+			game->mobs[i]->move.y = rand() % 2 + 1;
+		} else if (game->mobs[i]->cur_pos.y > 840) {
+			game->mobs[i]->move.x = (rand() % 2 - rand() % 4) + 1;
+			game->mobs[i]->move.y = (rand() % 2 + 1) * -1;
+		}
+	}
 }
 
 void mob_clock(mob_t *mob)

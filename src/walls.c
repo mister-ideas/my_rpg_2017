@@ -9,8 +9,8 @@
 
 static void left_wall(game_t *game)
 {
-	if (game->character->cur_pos.x < 275) {
-		game->character->char_obj->pos.x = 285;
+	if (game->character->cur_pos.x < 245) {
+		game->character->char_obj->pos.x = 255;
 		game->character->char_obj->pos.y = game->character->cur_pos.y;
 		sfSprite_setPosition(game->character->char_obj->sprite,
 		game->character->char_obj->pos);
@@ -19,8 +19,8 @@ static void left_wall(game_t *game)
 
 static void right_wall(game_t *game)
 {
-	if (game->character->cur_pos.x > 1515) {
-		game->character->char_obj->pos.x = 1505;
+	if (game->character->cur_pos.x > 1550) {
+		game->character->char_obj->pos.x = 1540;
 		game->character->char_obj->pos.y = game->character->cur_pos.y;
 		sfSprite_setPosition(game->character->char_obj->sprite,
 		game->character->char_obj->pos);
@@ -29,9 +29,9 @@ static void right_wall(game_t *game)
 
 static void up_wall(game_t *game)
 {
-	if (game->character->cur_pos.y < 120) {
+	if (game->character->cur_pos.y < 160) {
 		game->character->char_obj->pos.x = game->character->cur_pos.x;
-		game->character->char_obj->pos.y = 130;
+		game->character->char_obj->pos.y = 170;
 		sfSprite_setPosition(game->character->char_obj->sprite,
 		game->character->char_obj->pos);
 	}
@@ -39,9 +39,9 @@ static void up_wall(game_t *game)
 
 static void down_wall(game_t *game)
 {
-	if (game->character->cur_pos.y > 760) {
+	if (game->character->cur_pos.y > 790) {
 		game->character->char_obj->pos.x = game->character->cur_pos.x;
-		game->character->char_obj->pos.y = 750;
+		game->character->char_obj->pos.y = 780;
 		sfSprite_setPosition(game->character->char_obj->sprite,
 		game->character->char_obj->pos);
 	}

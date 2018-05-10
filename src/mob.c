@@ -28,6 +28,7 @@ int set_mobs(game_t *game)
 		return (84);
 	init_mobs(game);
 	for (int i = 0; i < NB_MOBS; i++) {
+		game->mobs[i]->mob_obj->type = MISC;
 		if (game->mobs[i] == NULL)
 			return (84);
 	}
