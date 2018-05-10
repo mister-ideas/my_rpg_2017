@@ -33,7 +33,19 @@ static void destroy_special_obj(game_t *game)
 {
 	sfClock_destroy(game->character->char_clock->clock);
 	sfSprite_destroy(game->character->char_obj->sprite);
+	free(game->character->char_obj);
+	free(game->character->char_clock);
+	free(game->character);
+	for (int i = 0; i < NB_MOBS; i++) {
+		sfClock_destroy(game->mobs[i]->mob_clock->clock);
+		sfSprite_destroy(game->mobs[i]->mob_obj->sprite);
+		free(game->mobs[i]->mob_obj);
+		free(game->mobs[i]->mob_clock);
+		free(game->mobs[i]);
+	}
+	free(game->mobs);
 	sfSprite_destroy(game->weapons->sprite);
+	free(game->weapons);
 	sfText_destroy(game->texts->health);
 	sfText_destroy(game->texts->attack);
 	sfText_destroy(game->texts->defense);
@@ -43,12 +55,12 @@ static void destroy_special_obj(game_t *game)
 
 void quit_game(game_t *game, particules_t *particules)
 {
-	for (int i = 0; i < NB_SCENES; i++)
+	for (int i = 0; i < NB_SCENES; i++) {
 		destroy_scene(game->scenes[i]);
+		free(game->scenes[i]);
+	}
 	free(game->scenes);
 	destroy_special_obj(game);
-	free(game->character);
-	free(game->weapons);
 	free(game->keys);
 	free(game->texts);
 	sfFont_destroy(game->font);
