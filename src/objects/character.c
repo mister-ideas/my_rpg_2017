@@ -52,7 +52,7 @@ void character_clock(character_t *character)
 		else
 			character->char_obj->rect.left = 240;
 		sfSprite_setTextureRect(character->char_obj->sprite,
-					character->char_obj->rect);
+		character->char_obj->rect);
 		sfClock_restart(character->char_clock->clock);
 	}
 }

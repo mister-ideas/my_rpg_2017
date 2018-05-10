@@ -25,6 +25,10 @@
 
 enum TYPE {
 	BG,
+	ARROW_UP,
+	ARROW_LEFT,
+	ARROW_DOWN,
+	ARROW_RIGHT,
 	TEXT,
 	SFTEXT,
 	SLOT,
@@ -211,10 +215,17 @@ void check_weapon(game_t *game);
 
 int init_texts(game_t *game);
 void update_text(game_t *game, sfText *text, char str[], sfVector2f pos);
+void check_text_type(game_t *game, object_t *data);
 
 mob_t *init_mob(mob_t *mob);
 void check_mobs(game_t *game);
 void mob_clock(mob_t *mob);
+
+int add_arrow_up(game_t *game, dll_t *list);
+int add_arrow_left(game_t *game, dll_t *list);
+int add_arrow_down(game_t *game, dll_t *list);
+int add_arrow_right(game_t *game, dll_t *list);
+void check_arrow_type(object_t *data);
 
 /* display.c */
 void display_game(game_t *game);

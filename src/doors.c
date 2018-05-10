@@ -9,9 +9,9 @@
 
 static void left_doors(game_t *game)
 {
-	if (game->current_scene != 3 && game->current_scene != 7 &&
-	game->current_scene != 10 && game->current_scene != 11 &&
-	game->character->cur_pos.x < 255 &&
+	if (game->current_scene != 3 && game->current_scene != 4 &&
+	game->current_scene != 7 && game->current_scene != 10 &&
+	game->current_scene != 11 && game->character->cur_pos.x < 255 &&
 	(game->character->cur_pos.y >= 435 &&
 	game->character->cur_pos.y <= 545)) {
 		game->current_scene -= 1;

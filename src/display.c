@@ -86,10 +86,8 @@ void display_game(game_t *game)
 	}
 	for (; obj != NULL; obj = obj->next) {
 		data = (object_t *)obj->data;
-		if (data->type == TEXT && game->current_text < 10) {
-			data->rect.top = 2625 + game->current_text / 2 * 40;
-			sfSprite_setTextureRect(data->sprite, data->rect);
-		}
+		check_text_type(game, data);
+		check_arrow_type(data);
 		sfRenderWindow_drawSprite(game->window->window,
 		data->sprite, NULL);
 	}

@@ -1,0 +1,15 @@
+/*
+** EPITECH PROJECT, 2018
+** my_rpg
+** File description:
+** objects/check_arrows.c
+*/
+
+#include <stdio.h>
+#include <stdlib.h>
+#include "my_rpg.h"
+
+int check_arrow_up(void)
+{
+
+}

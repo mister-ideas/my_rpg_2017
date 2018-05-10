@@ -32,3 +32,11 @@ int init_texts(game_t *game)
 		return (84);
 	return (0);
 }
+
+void check_text_type(game_t *game, object_t *data)
+{
+	if (data->type == TEXT && game->current_text < 10) {
+		data->rect.top = 2625 + game->current_text / 2 * 40;
+		sfSprite_setTextureRect(data->sprite, data->rect);
+	}
+}
