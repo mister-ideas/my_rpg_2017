@@ -40,18 +40,18 @@ void check_mobs(game_t *game)
 		game->mobs[i]->cur_pos =
 			sfSprite_getPosition(game->mobs[i]->mob_obj->sprite);
 		if (game->mobs[i]->cur_pos.x < 275) {
-			game->mobs[i]->move.x = rand() % 2 + 1;
-			game->mobs[i]->move.y = (rand() % 2 - rand() % 4) + 1;
+			game->mobs[i]->move.x = rand() % 2;
+			game->mobs[i]->move.y = rand() % 2 - rand() % 4;
 		} else if (game->mobs[i]->cur_pos.x > 1570) {
-			game->mobs[i]->move.x = (rand() % 2 + 1) * -1;
-			game->mobs[i]->move.y = (rand() % 2 - rand() % 4) + 1;
+			game->mobs[i]->move.x = rand() % 2 * -1;
+			game->mobs[i]->move.y = rand() % 2 - rand() % 4;
 		}
 		if (game->mobs[i]->cur_pos.y < 160) {
-			game->mobs[i]->move.x = (rand() % 2 - rand() % 4) + 1;
-			game->mobs[i]->move.y = rand() % 2 + 1;
+			game->mobs[i]->move.x = rand() % 2 - rand() % 4;
+			game->mobs[i]->move.y = rand() % 2;
 		} else if (game->mobs[i]->cur_pos.y > 840) {
-			game->mobs[i]->move.x = (rand() % 2 - rand() % 4) + 1;
-			game->mobs[i]->move.y = (rand() % 2 + 1) * -1;
+			game->mobs[i]->move.x = rand() % 2 - rand() % 4;
+			game->mobs[i]->move.y = rand() % 2 * -1;
 		}
 	}
 }
