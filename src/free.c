@@ -68,6 +68,7 @@ void quit_game(game_t *game, particules_t *particules)
 	sfImage_destroy(game->atlas);
 	sfRenderWindow_destroy(game->window->window);
 	free(game->window);
+	free(particules->buffer);
 	free(particules);
 	free(game);
 }

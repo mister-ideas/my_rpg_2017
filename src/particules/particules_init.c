@@ -43,10 +43,10 @@ int init_particules(particules_t *particules, int type)
 	for (int i = 0; i <= part_nb; i += 1) {
 		if (type == 1)
 			set_part_type1(particules->buffer, i,
-			(sfVector2f){10, 10});
+			(sfVector2f){960, 538});
 		if (type == 2)
 			set_part_type2(particules->buffer, i,
-			(sfVector2f){250, 250},
+			(sfVector2f){960, 538},
 			(sfColor){rand() % 255, rand() % 255,
 			rand() % 255, 255});
 	}
@@ -64,10 +64,10 @@ void display_particules(particules_t *particules, game_t *game, int type)
 			break;
 		if (type == 1)
 			set_part_type1(particules->buffer, id,
-			(sfVector2f){10, 10});
+			(sfVector2f){960, 538});
 		if (type == 2)
 			set_part_type2(particules->buffer, id,
-			(sfVector2f){250, 250},
+			(sfVector2f){960, 538},
 			(sfColor){rand() % 255, rand() % 255,
 			rand() % 255, 255});
 	}

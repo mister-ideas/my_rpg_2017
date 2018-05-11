@@ -27,7 +27,7 @@ int init_window(game_t *game, sfVideoMode video)
 	return (0);
 }
 
-static void check_character(game_t *game, int i)
+static void check_character(game_t *game, particules_t *particules, int i)
 {
 	sfColor color;
 
@@ -43,17 +43,19 @@ static void check_character(game_t *game, int i)
 		sfSprite_setColor(game->character->char_obj->sprite, color);
 		sfSprite_setPosition(game->character->
 		char_obj->sprite, (sfVector2f){890, 460});
-		if (game->character->health <= 0)
+		if (game->character->health <= 0) {
 			game->current_scene = 6;
+			init_particules(particules, 1);
+		}
 	}
 }
 
-static void check_mobs(game_t *game)
+static void check_mobs(game_t *game, particules_t *particules)
 {
 	for (int i = 0; i < NB_MOBS; i++) {
 		game->mobs[i]->cur_pos =
 			sfSprite_getPosition(game->mobs[i]->mob_obj->sprite);
-		check_character(game, i);
+		check_character(game, particules, i);
 		if (game->mobs[i]->cur_pos.x < 275) {
 			game->mobs[i]->move.x = rand() % 2;
 			game->mobs[i]->move.y = rand() % 2 - rand() % 4;
@@ -102,10 +104,12 @@ int display_window(game_t *game, particules_t *particules)
 		sfSprite_getPosition(game->character->char_obj->sprite);
 		check_doors(game);
 		check_walls(game);
-		check_mobs(game);
+		check_mobs(game, particules);
 		check_projectiles(game);
 		sfRenderWindow_clear(game->window->window, sfBlack);
 		display_game(game);
+		if (game->current_scene == 6)
+			display_particules(particules, game, 1);
 		sfRenderWindow_display(game->window->window);
 	}
 	quit_game(game, particules);
