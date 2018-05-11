@@ -18,7 +18,7 @@ int init_window(game_t *game, sfVideoMode video)
 		return (84);
 	game->window = window;
 	game->window->window = sfRenderWindow_create(video,
-					"Initiation Quest", sfClose, NULL);
+	"Initiation Quest", sfClose, NULL);
 	if (game->window->window == NULL)
 		return (84);
 	game->window->mouse_pos = mouse_pos;
@@ -26,7 +26,7 @@ int init_window(game_t *game, sfVideoMode video)
 	return (0);
 }
 
-static void check_arrows(game_t *game)
+static void check_projectiles(game_t *game)
 {
 	struct node *obj;
 	object_t *data;
@@ -39,7 +39,12 @@ static void check_arrows(game_t *game)
 		data->type == ARROW_DOWN || data->type == ARROW_RIGHT) {
 			cur_pos = sfSprite_getPosition(data->sprite);
 			check_arrow_type(data, cur_pos);
-			check_arrow_hit(game, data, cur_pos);
+			check_projectile_hit(game, data, cur_pos);
+		} else if (data->type == SPELL_UP || data->type == SPELL_LEFT ||
+		data->type == SPELL_DOWN || data->type == SPELL_RIGHT) {
+			cur_pos = sfSprite_getPosition(data->sprite);
+			check_spell_type(data, cur_pos);
+			check_projectile_hit(game, data, cur_pos);
 		}
 	}
 }
@@ -50,11 +55,11 @@ int display_window(game_t *game, particules_t *particules)
 	while (sfRenderWindow_isOpen(game->window->window)) {
 		game_events(game);
 		game->character->cur_pos =
-			sfSprite_getPosition(game->character->char_obj->sprite);
+		sfSprite_getPosition(game->character->char_obj->sprite);
 		check_doors(game);
 		check_walls(game);
 		check_mobs(game);
-		check_arrows(game);
+		check_projectiles(game);
 		sfRenderWindow_clear(game->window->window, sfBlack);
 		display_game(game);
 		sfRenderWindow_display(game->window->window);

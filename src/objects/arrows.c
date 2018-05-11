@@ -80,3 +80,27 @@ int add_arrow_right(game_t *game, dll_t *list)
 	put_end_list(list, arrow);
 	return (0);
 }
+
+void check_arrow_type(object_t *data, sfVector2f cur_pos)
+{
+	if (data->type == ARROW_UP) {
+		if (cur_pos.y < 160)
+			delete_projectile(data);
+		sfSprite_move(data->sprite, (sfVector2f){0, -20});
+	}
+	if (data->type == ARROW_LEFT) {
+		if (cur_pos.x < 245)
+			delete_projectile(data);
+		sfSprite_move(data->sprite, (sfVector2f){-20, 0});
+	}
+	if (data->type == ARROW_DOWN) {
+		if (cur_pos.y > 790)
+			delete_projectile(data);
+		sfSprite_move(data->sprite, (sfVector2f){0, 20});
+	}
+	if (data->type == ARROW_RIGHT) {
+		if (cur_pos.x > 1550)
+			delete_projectile(data);
+		sfSprite_move(data->sprite, (sfVector2f){20, 0});
+	}
+}

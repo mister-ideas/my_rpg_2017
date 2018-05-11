@@ -29,6 +29,10 @@ enum TYPE {
 	ARROW_LEFT,
 	ARROW_DOWN,
 	ARROW_RIGHT,
+	SPELL_UP,
+	SPELL_LEFT,
+	SPELL_DOWN,
+	SPELL_RIGHT,
 	TEXT,
 	SFTEXT,
 	SLOT,
@@ -230,7 +234,16 @@ int add_arrow_down(game_t *game, dll_t *list);
 int add_arrow_right(game_t *game, dll_t *list);
 
 void check_arrow_type(object_t *data, sfVector2f cur_pos);
-void check_arrow_hit(game_t *game, object_t *data, sfVector2f cur_pos);
+
+int add_spell_up(game_t *game, dll_t *list);
+int add_spell_left(game_t *game, dll_t *list);
+int add_spell_down(game_t *game, dll_t *list);
+int add_spell_right(game_t *game, dll_t *list);
+
+void check_spell_type(object_t *data, sfVector2f cur_pos);
+
+void delete_projectile(object_t *data);
+void check_projectile_hit(game_t *game, object_t *data, sfVector2f cur_pos);
 
 /* display.c */
 void display_game(game_t *game);
