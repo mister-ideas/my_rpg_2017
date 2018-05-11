@@ -86,21 +86,21 @@ void check_spell_type(object_t *data, sfVector2f cur_pos)
 	if (data->type == SPELL_UP) {
 		if (cur_pos.y < 160)
 			delete_projectile(data);
-		sfSprite_move(data->sprite, (sfVector2f){0, -10});
+		sfSprite_move(data->sprite, (sfVector2f){0, -5});
 	}
 	if (data->type == SPELL_LEFT) {
 		if (cur_pos.x < 245)
 			delete_projectile(data);
-		sfSprite_move(data->sprite, (sfVector2f){-10, 0});
+		sfSprite_move(data->sprite, (sfVector2f){-5, 0});
 	}
 	if (data->type == SPELL_DOWN) {
 		if (cur_pos.y > 790)
 			delete_projectile(data);
-		sfSprite_move(data->sprite, (sfVector2f){0, 10});
+		sfSprite_move(data->sprite, (sfVector2f){0, 5});
 	}
 	if (data->type == SPELL_RIGHT) {
 		if (cur_pos.x > 1550)
 			delete_projectile(data);
-		sfSprite_move(data->sprite, (sfVector2f){10, 0});
+		sfSprite_move(data->sprite, (sfVector2f){5, 0});
 	}
 }

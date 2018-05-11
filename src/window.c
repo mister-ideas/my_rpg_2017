@@ -21,6 +21,7 @@ int init_window(game_t *game, sfVideoMode video)
 	"Initiation Quest", sfClose, NULL);
 	if (game->window->window == NULL)
 		return (84);
+	sfRenderWindow_setFramerateLimit(game->window->window, 60);
 	game->window->mouse_pos = mouse_pos;
 	game->window->click = 2;
 	return (0);
@@ -95,7 +96,6 @@ static void check_projectiles(game_t *game)
 
 int display_window(game_t *game, particules_t *particules)
 {
-	sfRenderWindow_setFramerateLimit(game->window->window, 60);
 	while (sfRenderWindow_isOpen(game->window->window)) {
 		game_events(game);
 		game->character->cur_pos =

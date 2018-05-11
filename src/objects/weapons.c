@@ -27,7 +27,7 @@ void check_weapon(game_t *game)
 	case 2:
 		game->weapons->rect.top = 2432;
 		game->character->attack = 1;
-		game->character->defense = 1;
+		game->character->defense = 2;
 		game->character->speed = 2;
 		break;
 	}
