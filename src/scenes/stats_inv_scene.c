@@ -62,5 +62,6 @@ scene_t *stats_inv_scene(game_t *game)
 	put_end_list(stats_inv->objects, slot);
 	stats_inv->buttons = NULL;
 	stats_inv->mobs_nb = 0;
+	stats_inv->kills = 0;
 	return (stats_inv);
 }

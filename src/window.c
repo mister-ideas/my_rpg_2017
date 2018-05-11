@@ -26,6 +26,24 @@ int init_window(game_t *game, sfVideoMode video)
 	return (0);
 }
 
+static void check_arrows(game_t *game)
+{
+	struct node *obj;
+	object_t *data;
+	sfVector2f cur_pos;
+
+	obj = game->scenes[game->current_scene]->objects->start;
+	for (; obj != NULL; obj = obj->next) {
+		data = (object_t *)obj->data;
+		if (data->type == ARROW_UP || data->type == ARROW_LEFT ||
+		data->type == ARROW_DOWN || data->type == ARROW_RIGHT) {
+			cur_pos = sfSprite_getPosition(data->sprite);
+			check_arrow_type(data, cur_pos);
+			check_arrow_hit(game, data, cur_pos);
+		}
+	}
+}
+
 int display_window(game_t *game, particules_t *particules)
 {
 	sfRenderWindow_setFramerateLimit(game->window->window, 60);
@@ -36,6 +54,7 @@ int display_window(game_t *game, particules_t *particules)
 		check_doors(game);
 		check_walls(game);
 		check_mobs(game);
+		check_arrows(game);
 		sfRenderWindow_clear(game->window->window, sfBlack);
 		display_game(game);
 		sfRenderWindow_display(game->window->window);

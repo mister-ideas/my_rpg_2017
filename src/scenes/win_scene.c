@@ -50,9 +50,7 @@ scene_t *win_scene(game_t *game)
 	object_t *background;
 	button_t *quit = quit_button();
 
-	if (win == NULL)
-		return (NULL);
-	if (win_scene_init_buttons(quit) == 84)
+	if (win == NULL || win_scene_init_buttons(quit) == 84)
 		return (NULL);
 	background = win_scene_background();
 	background = create_object(background, game);
@@ -63,5 +61,6 @@ scene_t *win_scene(game_t *game)
 		return (NULL);
 	put_end_list(win->objects, background);
 	win->mobs_nb = 0;
+	win->kills = 0;
 	return (win);
 }

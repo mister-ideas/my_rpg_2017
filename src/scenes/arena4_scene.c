@@ -42,5 +42,6 @@ scene_t *arena4_scene(game_t *game)
 	put_end_list(arena4->objects, background);
 	arena4->buttons = NULL;
 	arena4->mobs_nb = 4;
+	arena4->kills = 0;
 	return (arena4);
 }

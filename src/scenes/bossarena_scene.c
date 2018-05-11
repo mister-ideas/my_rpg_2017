@@ -42,5 +42,6 @@ scene_t *bossarena_scene(game_t *game)
 	put_end_list(bossarena->objects, background);
 	bossarena->buttons = NULL;
 	bossarena->mobs_nb = 0;
+	bossarena->kills = 0;
 	return (bossarena);
 }

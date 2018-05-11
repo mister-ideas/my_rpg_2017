@@ -55,9 +55,7 @@ scene_t *pause_scene(game_t *game)
 	button_t *resume = resume_button();
 	button_t *quit = quit_button();
 
-	if (pause == NULL)
-		return (NULL);
-	if (pause_scene_init_buttons(resume, quit) == 84)
+	if (pause == NULL || pause_scene_init_buttons(resume, quit) == 84)
 		return (NULL);
 	background = pause_scene_background();
 	background = create_object(background, game);
@@ -69,5 +67,6 @@ scene_t *pause_scene(game_t *game)
 		return (NULL);
 	put_end_list(pause->objects, background);
 	pause->mobs_nb = 0;
+	pause->kills = 0;
 	return (pause);
 }

@@ -90,5 +90,6 @@ scene_t *intro_scene(game_t *game)
 		return (NULL);
 	intro->buttons = NULL;
 	intro->mobs_nb = 0;
+	intro->kills = 0;
 	return (intro);
 }

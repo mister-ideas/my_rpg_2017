@@ -13,6 +13,28 @@ int mouse_is_in_area(sfVector2f pos, sfVector2f size, sfVector2i clickPos)
 		clickPos.y < pos.y + size.y && clickPos.y > pos.y);
 }
 
+int check_collision(object_t *obj, sfVector2f obj_pos,
+		sfVector2f mob_pos)
+{
+	if ((obj_pos.x > mob_pos.x && obj_pos.x < mob_pos.x + 65) &&
+	(obj_pos.y > mob_pos.y && obj_pos.y < mob_pos.y + 65))
+		return (1);
+	if ((obj_pos.x + obj->rect.width > mob_pos.x &&
+	obj_pos.x + obj->rect.width < mob_pos.x + 65) &&
+	(obj_pos.y > mob_pos.y && obj_pos.y < mob_pos.y + 65))
+		return (1);
+	if ((obj_pos.x > mob_pos.x && obj_pos.x < mob_pos.x + 65) &&
+	(obj_pos.y + obj->rect.height > mob_pos.y &&
+	obj_pos.y + obj->rect.height < mob_pos.y + 65))
+		return (1);
+	if ((obj_pos.x + obj->rect.width > mob_pos.x &&
+	obj_pos.x + obj->rect.width < mob_pos.x + 65) &&
+	(obj_pos.y + obj->rect.height > mob_pos.y &&
+	obj_pos.y + obj->rect.height < mob_pos.y + 65))
+		return (1);
+	return (0);
+}
+
 void check_button_state(button_t *but, game_t *game, int in_area)
 {
 	if (in_area == 1)

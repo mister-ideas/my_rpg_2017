@@ -48,6 +48,7 @@ typedef struct scene_s
 	dll_t *buttons;
 	dll_t *objects;
 	int mobs_nb;
+	int kills;
 } scene_t;
 
 typedef struct clock_s
@@ -177,6 +178,8 @@ scene_t *arena4_scene(game_t *game);
 scene_t *bossarena_scene(game_t *game);
 
 /* tools */
+int check_collision(object_t *obj, sfVector2f obj_pos,
+		sfVector2f mob_pos);
 void check_button_state(button_t *but, game_t *game, int in_area);
 int mouse_is_in_area(sfVector2f pos, sfVector2f size, sfVector2i clickPos);
 void int_to_text(int num, char str[]);
@@ -225,7 +228,9 @@ int add_arrow_up(game_t *game, dll_t *list);
 int add_arrow_left(game_t *game, dll_t *list);
 int add_arrow_down(game_t *game, dll_t *list);
 int add_arrow_right(game_t *game, dll_t *list);
-void check_arrow_type(object_t *data);
+
+void check_arrow_type(object_t *data, sfVector2f cur_pos);
+void check_arrow_hit(game_t *game, object_t *data, sfVector2f cur_pos);
 
 /* display.c */
 void display_game(game_t *game);

@@ -80,15 +80,3 @@ int add_arrow_right(game_t *game, dll_t *list)
 	put_end_list(list, arrow);
 	return (0);
 }
-
-void check_arrow_type(object_t *data)
-{
-	if (data->type == ARROW_UP)
-		sfSprite_move(data->sprite, (sfVector2f){0, -10});
-	if (data->type == ARROW_LEFT)
-		sfSprite_move(data->sprite, (sfVector2f){-10, 0});
-	if (data->type == ARROW_DOWN)
-		sfSprite_move(data->sprite, (sfVector2f){0, 10});
-	if (data->type == ARROW_RIGHT)
-		sfSprite_move(data->sprite, (sfVector2f){10, 0});
-}

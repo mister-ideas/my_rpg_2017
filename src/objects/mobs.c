@@ -68,7 +68,7 @@ void mob_clock(mob_t *mob)
 		else
 			mob->mob_obj->rect.top = 2202;
 		sfSprite_setTextureRect(mob->mob_obj->sprite,
-					mob->mob_obj->rect);
+		mob->mob_obj->rect);
 		sfClock_restart(mob->mob_clock->clock);
 	}
 }

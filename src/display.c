@@ -24,11 +24,13 @@ static void display_but(struct node *but, game_t *game)
 
 static void display_mob(mob_t *mob, game_t *game)
 {
-	mob_clock(mob);
-	sfRenderWindow_drawSprite(game->window->window,
-	mob->mob_obj->sprite, NULL);
-	sfSprite_move(mob->mob_obj->sprite,
-	mob->move);
+	if (mob->health > 0) {
+		mob_clock(mob);
+		sfRenderWindow_drawSprite(game->window->window,
+		mob->mob_obj->sprite, NULL);
+		sfSprite_move(mob->mob_obj->sprite,
+		mob->move);
+	}
 }
 
 static void display_special_obj(game_t *game)
@@ -87,7 +89,6 @@ void display_game(game_t *game)
 	for (; obj != NULL; obj = obj->next) {
 		data = (object_t *)obj->data;
 		check_text_type(game, data);
-		check_arrow_type(data);
 		sfRenderWindow_drawSprite(game->window->window,
 		data->sprite, NULL);
 	}

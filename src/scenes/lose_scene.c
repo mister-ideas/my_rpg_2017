@@ -50,9 +50,7 @@ scene_t *lose_scene(game_t *game)
 	object_t *background;
 	button_t *quit = quit_button();
 
-	if (lose == NULL)
-		return (NULL);
-	if (lose_scene_init_buttons(quit) == 84)
+	if (lose == NULL || lose_scene_init_buttons(quit) == 84)
 		return (NULL);
 	background = lose_scene_background();
 	background = create_object(background, game);
@@ -63,5 +61,6 @@ scene_t *lose_scene(game_t *game)
 		return (NULL);
 	put_end_list(lose->objects, background);
 	lose->mobs_nb = 0;
+	lose->kills = 0;
 	return (lose);
 }

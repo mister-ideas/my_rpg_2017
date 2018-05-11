@@ -60,9 +60,7 @@ scene_t *menu_scene(game_t *game)
 	button_t *quit = quit_button();
 	button_t *htp = htp_button();
 
-	if (menu == NULL)
-		return (NULL);
-	if (menu_scene_init_buttons(play, quit, htp) == 84)
+	if (menu == NULL || menu_scene_init_buttons(play, quit, htp) == 84)
 		return (NULL);
 	background = menu_scene_background();
 	background = create_object(background, game);
@@ -74,5 +72,6 @@ scene_t *menu_scene(game_t *game)
 		return (NULL);
 	put_end_list(menu->objects, background);
 	menu->mobs_nb = 0;
+	menu->kills = 0;
 	return (menu);
 }

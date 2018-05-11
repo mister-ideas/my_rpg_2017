@@ -55,9 +55,7 @@ scene_t *htp_scene(game_t *game)
 	button_t *play = play_button();
 	button_t *back = return_button();
 
-	if (htp == NULL)
-		return (NULL);
-	if (htp_scene_init_buttons(play, back) == 84)
+	if (htp == NULL || htp_scene_init_buttons(play, back) == 84)
 		return (NULL);
 	background = htp_scene_background();
 	background = create_object(background, game);
@@ -69,5 +67,6 @@ scene_t *htp_scene(game_t *game)
 		return (NULL);
 	put_end_list(htp->objects, background);
 	htp->mobs_nb = 0;
+	htp->kills = 0;
 	return (htp);
 }
