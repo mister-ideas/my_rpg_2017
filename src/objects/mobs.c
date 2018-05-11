@@ -19,8 +19,8 @@ mob_t *init_mob(mob_t *mob)
 		return (NULL);
 	mob->mob_obj = mob_obj;
 	mob->mob_clock = mob_clock;
-	mob->mob_obj->pos.x = 890;
-	mob->mob_obj->pos.y = 460;
+	mob->mob_obj->pos.x = 0;
+	mob->mob_obj->pos.y = 0;
 	mob->mob_obj->rect.height = 65;
 	mob->mob_obj->rect.left = 2082;
 	mob->mob_obj->rect.top = 2202;
@@ -32,28 +32,6 @@ mob_t *init_mob(mob_t *mob)
 	if (mob->mob_clock->clock == NULL)
 		return (NULL);
 	return (mob);
-}
-
-void check_mobs(game_t *game)
-{
-	for (int i = 0; i < NB_MOBS; i++) {
-		game->mobs[i]->cur_pos =
-			sfSprite_getPosition(game->mobs[i]->mob_obj->sprite);
-		if (game->mobs[i]->cur_pos.x < 275) {
-			game->mobs[i]->move.x = rand() % 2;
-			game->mobs[i]->move.y = rand() % 2 - rand() % 4;
-		} else if (game->mobs[i]->cur_pos.x > 1570) {
-			game->mobs[i]->move.x = rand() % 2 * -1;
-			game->mobs[i]->move.y = rand() % 2 - rand() % 4;
-		}
-		if (game->mobs[i]->cur_pos.y < 160) {
-			game->mobs[i]->move.x = rand() % 2 - rand() % 4;
-			game->mobs[i]->move.y = rand() % 2;
-		} else if (game->mobs[i]->cur_pos.y > 840) {
-			game->mobs[i]->move.x = rand() % 2 - rand() % 4;
-			game->mobs[i]->move.y = rand() % 2 * -1;
-		}
-	}
 }
 
 void mob_clock(mob_t *mob)
@@ -95,6 +73,23 @@ int set_mobs(game_t *game)
 		game->mobs[i]->mob_obj->type = MISC;
 		if (game->mobs[i] == NULL)
 			return (84);
+	}
+	return (0);
+}
+
+int check_spear(game_t *game, int i)
+{
+	sfColor color;
+
+	if (game->keys->up == sfTrue || game->keys->left == sfTrue ||
+	    game->keys->down == sfTrue || game->keys->right == sfTrue) {
+		game->mobs[i]->health -= game->character->attack;
+		color = sfSprite_getColor(game->mobs[i]->mob_obj->sprite);
+		color.a -= 64;
+		sfSprite_setColor(game->mobs[i]->
+		mob_obj->sprite, color);
+		check_kill(game, i);
+		return (1);
 	}
 	return (0);
 }

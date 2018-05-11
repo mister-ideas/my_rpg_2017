@@ -24,16 +24,12 @@ void check_projectile_hit(game_t *game, object_t *data, sfVector2f cur_pos)
 		color = sfSprite_getColor(game->mobs[i]->mob_obj->sprite);
 		if (check_collision(data, cur_pos,
 		game->mobs[i]->cur_pos) == 1 && game->mobs[i]->health > 0) {
-			color.a -= 64;
 			game->mobs[i]->health -= game->character->attack;
-			if (game->mobs[i]->health <= 0) {
-				game->scenes[game->current_scene]->kills++;
-				game->mobs[i]->move.x = 0;
-				game->mobs[i]->move.y = 0;
-			}
+			color.a -= 64;
 			sfSprite_setColor(game->mobs[i]->
 			mob_obj->sprite, color);
 			delete_projectile(data);
+			check_kill(game, i);
 		}
 	}
 }

@@ -182,6 +182,7 @@ scene_t *arena4_scene(game_t *game);
 scene_t *bossarena_scene(game_t *game);
 
 /* tools */
+void check_kill(game_t *game, int i);
 int check_collision(object_t *obj, sfVector2f obj_pos,
 		sfVector2f mob_pos);
 void check_button_state(button_t *but, game_t *game, int in_area);
@@ -225,7 +226,6 @@ void update_text(game_t *game, sfText *text, char str[], sfVector2f pos);
 void check_text_type(game_t *game, object_t *data);
 
 mob_t *init_mob(mob_t *mob);
-void check_mobs(game_t *game);
 void mob_clock(mob_t *mob);
 
 int add_arrow_up(game_t *game, dll_t *list);
@@ -244,6 +244,7 @@ void check_spell_type(object_t *data, sfVector2f cur_pos);
 
 void delete_projectile(object_t *data);
 void check_projectile_hit(game_t *game, object_t *data, sfVector2f cur_pos);
+int check_spear(game_t *game, int i);
 
 /* display.c */
 void display_game(game_t *game);

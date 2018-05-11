@@ -13,6 +13,15 @@ int mouse_is_in_area(sfVector2f pos, sfVector2f size, sfVector2i clickPos)
 		clickPos.y < pos.y + size.y && clickPos.y > pos.y);
 }
 
+void check_kill(game_t *game, int i)
+{
+	if (game->mobs[i]->health <= 0) {
+		game->scenes[game->current_scene]->kills++;
+		game->mobs[i]->move.x = 0;
+		game->mobs[i]->move.y = 0;
+	}
+}
+
 int check_collision(object_t *obj, sfVector2f obj_pos,
 		sfVector2f mob_pos)
 {
