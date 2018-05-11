@@ -48,10 +48,7 @@ static void space_shift_events(game_t *game)
 		game->current_text++;
 	if (game->keys->shift == sfTrue && game->current_scene == 3) {
 		game->current_scene = 7;
-		game->character->char_obj->pos.x = 285;
-		game->character->char_obj->pos.y = 455;
-		sfSprite_setPosition(game->character->char_obj->sprite,
-		game->character->char_obj->pos);
+		reset_map(game, (sfVector2f){265, 455});
 	} else if (game->keys->shift == sfTrue && game->current_scene != 3) {
 		if (game->current_weapon != 2)
 			game->current_weapon++;

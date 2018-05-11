@@ -7,23 +7,6 @@
 
 #include "my_rpg.h"
 
-static void reset_map(game_t *game, sfVector2f pos)
-{
-	sfColor color;
-
-	sfSprite_setPosition(game->character->char_obj->sprite, pos);
-	for (int i = 0; i < game->scenes[game->current_scene]->mobs_nb; i++) {
-		color = sfSprite_getColor(game->mobs[i]->mob_obj->sprite);
-		color.a = 255;
-		sfSprite_setColor(game->mobs[i]->mob_obj->sprite, color);
-		sfSprite_setPosition(game->mobs[i]->mob_obj->sprite,
-		(sfVector2f){890, 460});
-		game->mobs[i]->move.x = rand() % 4;
-		game->mobs[i]->move.y = rand() % 4;
-		game->mobs[i]->health = 4;
-	}
-}
-
 static void right_doors(game_t *game)
 {
 	if (game->current_scene != 9 && game->current_scene != 10 &&
@@ -82,5 +65,22 @@ void check_doors(game_t *game)
 		right_doors(game);
 		up_doors(game);
 		down_doors(game);
+	}
+}
+
+void reset_map(game_t *game, sfVector2f pos)
+{
+	sfColor color;
+
+	sfSprite_setPosition(game->character->char_obj->sprite, pos);
+	for (int i = 0; i < game->scenes[game->current_scene]->mobs_nb; i++) {
+		color = sfSprite_getColor(game->mobs[i]->mob_obj->sprite);
+		color.a = 255;
+		sfSprite_setColor(game->mobs[i]->mob_obj->sprite, color);
+		sfSprite_setPosition(game->mobs[i]->mob_obj->sprite,
+		(sfVector2f){890, 460});
+		game->mobs[i]->move.x = rand() % 4;
+		game->mobs[i]->move.y = rand() % 4;
+		game->mobs[i]->health = 4;
 	}
 }

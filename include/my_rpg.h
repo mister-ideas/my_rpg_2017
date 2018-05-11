@@ -160,6 +160,7 @@ int display_window(game_t *game, particules_t *particules);
 /* events.c */
 void game_events(game_t *game);
 void check_doors(game_t *game);
+void reset_map(game_t *game, sfVector2f pos);
 
 /* scene.c */
 int set_scenes(game_t *game);
