@@ -81,6 +81,9 @@ void reset_map(game_t *game, sfVector2f pos)
 		(sfVector2f){890, 460});
 		game->mobs[i]->move.x = rand() % 4;
 		game->mobs[i]->move.y = rand() % 4;
-		game->mobs[i]->health = 4;
+		if (game->mobs[i]->mob_obj->type == BOSS)
+			game->mobs[i]->health = 256;
+		else
+			game->mobs[i]->health = 4;
 	}
 }

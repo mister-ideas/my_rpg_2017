@@ -17,7 +17,7 @@
 #include "linked_list.h"
 
 #define NB_SCENES 12
-#define NB_MOBS 4
+#define NB_MOBS 5
 #define NB_SOUNDS 0
 
 #define ATLAS_PATH "./ressources/img/atlas.png"
@@ -25,6 +25,7 @@
 
 enum TYPE {
 	BG,
+	BOSS,
 	ARROW_UP,
 	ARROW_LEFT,
 	ARROW_DOWN,
@@ -184,8 +185,8 @@ scene_t *bossarena_scene(game_t *game);
 
 /* tools */
 void check_kill(game_t *game, int i);
-int check_collision(object_t *obj, sfVector2f obj_pos,
-		sfVector2f mob_pos);
+int check_collision(object_t *obj, object_t *mob,
+		sfVector2f obj_pos, sfVector2f mob_pos);
 void check_button_state(button_t *but, game_t *game, int in_area);
 int mouse_is_in_area(sfVector2f pos, sfVector2f size, sfVector2i clickPos);
 void int_to_text(int num, char str[]);
@@ -245,13 +246,14 @@ void check_spell_type(object_t *data, sfVector2f cur_pos);
 
 void delete_projectile(object_t *data);
 void check_projectile_hit(game_t *game, object_t *data, sfVector2f cur_pos);
-int check_spear(game_t *game, int i);
+int check_spear_hit(game_t *game, int i);
 
 /* display.c */
 void display_game(game_t *game);
 
 /* free.c */
 void quit_game(game_t *game, particules_t *particules);
+void check_end(game_t *game, particules_t *particules);
 
 /* linked_list.c */
 dll_t *list_init(void);

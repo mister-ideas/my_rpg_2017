@@ -17,22 +17,22 @@ typedef struct info_s
 	sfVector2f speed;
 } info_t;
 
-typedef struct partBuffer_s
+typedef struct partbuffer_s
 {
 	sfVertex *vertex;
 	uint size;
 	info_t *info;
-} partBuffer_t;
+} partbuffer_t;
 
 typedef struct particules_s
 {
-	partBuffer_t *buffer;
+	partbuffer_t *buffer;
 } particules_t;
 
-uint new_part(partBuffer_t *this);
-partBuffer_t *partbuffer_init(int size);
-void set_part_type1(partBuffer_t *this, uint id, sfVector2f pos);
-void set_part_type2(partBuffer_t *this, uint id, sfVector2f pos, sfColor color);
-void draw_partbuffer(partBuffer_t *this, sfRenderWindow *window);
-void update_partbuffer(partBuffer_t *this);
-void update_partbuffer_set(partBuffer_t *this, uint id);
+uint new_part(partbuffer_t *this);
+partbuffer_t *partbuffer_init(int size);
+void set_part_type1(partbuffer_t *this, uint id, sfVector2f pos);
+void set_part_type2(partbuffer_t *this, uint id, sfVector2f pos, sfColor color);
+void draw_partbuffer(partbuffer_t *this, sfRenderWindow *window);
+void update_partbuffer(partbuffer_t *this);
+void update_partbuffer_set(partbuffer_t *this, uint id);

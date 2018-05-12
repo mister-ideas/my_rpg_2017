@@ -34,6 +34,27 @@ mob_t *init_mob(mob_t *mob)
 	return (mob);
 }
 
+static mob_t *init_boss(mob_t *boss)
+{
+	object_t *boss_obj = malloc(sizeof(*boss_obj));
+
+	boss = malloc(sizeof(*boss));
+	if (boss == NULL || boss_obj == NULL)
+		return (NULL);
+	boss->mob_obj = boss_obj;
+	boss->mob_clock = NULL;
+	boss->mob_obj->pos.x = 0;
+	boss->mob_obj->pos.y = 0;
+	boss->mob_obj->rect.height = 130;
+	boss->mob_obj->rect.left = 1395;
+	boss->mob_obj->rect.top = 2860;
+	boss->mob_obj->rect.width = 270;
+	boss->move.x = rand() % 3;
+	boss->move.y = 0;
+	boss->health = 256;
+	return (boss);
+}
+
 void mob_clock(mob_t *mob)
 {
 	mob->mob_clock->time =
@@ -51,7 +72,7 @@ void mob_clock(mob_t *mob)
 	}
 }
 
-static void init_mobs(game_t *game)
+void init_mobs(game_t *game)
 {
 	game->mobs[0] = init_mob(game->mobs[0]);
 	game->mobs[0]->mob_obj = create_object(game->mobs[0]->mob_obj, game);
@@ -61,6 +82,8 @@ static void init_mobs(game_t *game)
 	game->mobs[2]->mob_obj = create_object(game->mobs[2]->mob_obj, game);
 	game->mobs[3] = init_mob(game->mobs[3]);
 	game->mobs[3]->mob_obj = create_object(game->mobs[3]->mob_obj, game);
+	game->mobs[4] = init_boss(game->mobs[4]);
+	game->mobs[4]->mob_obj = create_object(game->mobs[4]->mob_obj, game);
 }
 
 int set_mobs(game_t *game)
@@ -74,22 +97,6 @@ int set_mobs(game_t *game)
 		if (game->mobs[i] == NULL)
 			return (84);
 	}
-	return (0);
-}
-
-int check_spear(game_t *game, int i)
-{
-	sfColor color;
-
-	if (game->keys->up == sfTrue || game->keys->left == sfTrue ||
-	    game->keys->down == sfTrue || game->keys->right == sfTrue) {
-		game->mobs[i]->health -= game->character->attack;
-		color = sfSprite_getColor(game->mobs[i]->mob_obj->sprite);
-		color.a -= 64;
-		sfSprite_setColor(game->mobs[i]->
-		mob_obj->sprite, color);
-		check_kill(game, i);
-		return (1);
-	}
+	game->mobs[4]->mob_obj->type = BOSS;
 	return (0);
 }

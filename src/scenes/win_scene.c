@@ -14,7 +14,7 @@ static int win_scene_init_buttons(button_t *quit)
 	if (quit == NULL)
 		return (84);
 	quit->pos.x = 842;
-	quit->pos.y = 498;
+	quit->pos.y = 495;
 	return (0);
 }
 

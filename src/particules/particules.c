@@ -7,7 +7,7 @@
 
 #include "my_rpg.h"
 
-void update_partbuffer_set(partBuffer_t *this, uint id)
+void update_partbuffer_set(partbuffer_t *this, uint id)
 {
 	this->vertex[(id * 4) + 0].position.x += this->info[id].speed.x;
 	this->vertex[(id * 4) + 1].position.x += this->info[id].speed.x;
@@ -27,13 +27,13 @@ void update_partbuffer_set(partBuffer_t *this, uint id)
 	(int)(this->info[id].life * 255);
 }
 
-void draw_partbuffer(partBuffer_t *this, sfRenderWindow *window)
+void draw_partbuffer(partbuffer_t *this, sfRenderWindow *window)
 {
 	sfRenderWindow_drawPrimitives(window, this->vertex,
 	this->size * 4, sfQuads, NULL);
 }
 
-void set_part_type1(partBuffer_t *this, uint id, sfVector2f size)
+void set_part_type1(partbuffer_t *this, uint id, sfVector2f size)
 {
 	if (id >= this->size)
 		return;
@@ -54,7 +54,7 @@ void set_part_type1(partBuffer_t *this, uint id, sfVector2f size)
 	this->info[id].life = 1;
 }
 
-void set_part_type2(partBuffer_t *this, uint id, sfVector2f size, sfColor color)
+void set_part_type2(partbuffer_t *this, uint id, sfVector2f size, sfColor color)
 {
 	if (id >= this->size)
 		return;
@@ -75,7 +75,7 @@ void set_part_type2(partBuffer_t *this, uint id, sfVector2f size, sfColor color)
 	this->info[id].life = 1;
 }
 
-void update_partbuffer(partBuffer_t *this)
+void update_partbuffer(partbuffer_t *this)
 {
 	for (uint id = 0; id < this->size; id += 1) {
 		if (this->info[id].life <= 0)

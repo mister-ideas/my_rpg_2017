@@ -25,7 +25,8 @@ static void display_but(struct node *but, game_t *game)
 static void display_mob(mob_t *mob, game_t *game)
 {
 	if (mob->health > 0) {
-		mob_clock(mob);
+		if (mob->mob_obj->type == MISC)
+			mob_clock(mob);
 		sfRenderWindow_drawSprite(game->window->window,
 		mob->mob_obj->sprite, NULL);
 		sfSprite_move(mob->mob_obj->sprite,

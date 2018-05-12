@@ -8,6 +8,17 @@
 #include <stdlib.h>
 #include "my_rpg.h"
 
+void check_end(game_t *game, particules_t *particules)
+{
+	if (game->scenes[11]->kills == 5 && game->current_scene == 11) {
+		init_particules(particules, 2);
+		game->current_scene = 5;
+	} else if (game->character->health <= 0 && game->current_scene != 6) {
+		init_particules(particules, 1);
+		game->current_scene = 6;
+	}
+}
+
 static void destroy_scene(scene_t *scene)
 {
 	struct node *search;
@@ -37,13 +48,13 @@ static void destroy_special_obj(game_t *game)
 	free(game->character->char_clock);
 	free(game->character);
 	for (int i = 0; i < NB_MOBS; i++) {
-		sfClock_destroy(game->mobs[i]->mob_clock->clock);
+		if (game->mobs[i]->mob_clock)
+			sfClock_destroy(game->mobs[i]->mob_clock->clock);
 		sfSprite_destroy(game->mobs[i]->mob_obj->sprite);
 		free(game->mobs[i]->mob_obj);
 		free(game->mobs[i]->mob_clock);
 		free(game->mobs[i]);
 	}
-	free(game->mobs);
 	sfSprite_destroy(game->weapons->sprite);
 	free(game->weapons);
 	sfText_destroy(game->texts->health);
@@ -62,6 +73,7 @@ void quit_game(game_t *game, particules_t *particules)
 	free(game->scenes);
 	destroy_special_obj(game);
 	free(game->keys);
+	free(game->mobs);
 	free(game->texts);
 	sfFont_destroy(game->font);
 	sfTexture_destroy(game->texture);

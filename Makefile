@@ -50,7 +50,7 @@ SRC=		$(SRC_DIR)my_rpg.c				\
 		$(SRC_DIR)objects/mobs.c			\
 		$(SRC_DIR)objects/arrows.c			\
 		$(SRC_DIR)objects/spells.c			\
-		$(SRC_DIR)objects/check_projectiles.c		\
+		$(SRC_DIR)objects/check_hits.c			\
 		$(SRC_DIR)buttons/play.c   			\
 		$(SRC_DIR)buttons/quit.c             		\
 		$(SRC_DIR)buttons/how_to_play.c      		\

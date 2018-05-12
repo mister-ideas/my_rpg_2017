@@ -7,10 +7,10 @@
 
 #include "my_rpg.h"
 
-partBuffer_t *partbuffer_init(int size)
+partbuffer_t *partbuffer_init(int size)
 {
-	partBuffer_t *this;
-	const size_t size_m = (sizeof(partBuffer_t) +
+	partbuffer_t *this;
+	const size_t size_m = (sizeof(partbuffer_t) +
 	sizeof(sfVertex) * size * 4 +
 	sizeof(info_t) * size);
 	void *ptr = malloc(size_m);
@@ -18,14 +18,14 @@ partBuffer_t *partbuffer_init(int size)
 	if (ptr == NULL)
 		return (NULL);
 	memset(ptr, 0, size_m);
-	this = (partBuffer_t *)(ptr);
+	this = (partbuffer_t *)(ptr);
 	this->size = size;
-	this->vertex = (sfVertex *)(ptr + sizeof(partBuffer_t));
+	this->vertex = (sfVertex *)(ptr + sizeof(partbuffer_t));
 	this->info = (info_t *)(this->vertex + (size * 4));
 	return (this);
 }
 
-uint new_part(partBuffer_t *this)
+uint new_part(partbuffer_t *this)
 {
 	for (uint id = this->size - 1; id; id -= 1)
 		if (this->info[id].life <= 0)
