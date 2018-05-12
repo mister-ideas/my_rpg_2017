@@ -19,7 +19,7 @@ void delete_projectile(object_t *data)
 static sfColor check_mob_type(game_t *game, sfColor color, int i)
 {
 	if (game->mobs[i]->mob_obj->type == BOSS)
-		color.a -= 4;
+		color.a -= 2;
 	else
 		color.a -= 64;
 	return (color);

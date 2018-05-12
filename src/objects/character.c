@@ -33,7 +33,7 @@ int init_character(game_t *game)
 	game->character->general_bonus = 0;
 	game->character->attack_bonus = 0;
 	game->character->health = 12;
-	game->character->level = 0;
+	game->character->level = 1;
 	game->character->clock_max = 240;
 	game->character->char_clock->clock = sfClock_create();
 	game->character->char_obj->type = MISC;

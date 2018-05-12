@@ -60,7 +60,7 @@ SRC=		$(SRC_DIR)my_rpg.c				\
 
 OBJ=		$(SRC:.c=.o)
 
-CFLAGS= 	-W -Wall -Wextra -g3
+CFLAGS= 	-W -Wall -Wextra
 
 CPPFLAGS =	-I include
 

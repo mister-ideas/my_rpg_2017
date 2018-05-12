@@ -17,6 +17,10 @@ static void right_doors(game_t *game)
 			game->current_scene = 7;
 		else
 			game->current_scene += 1;
+		if (game->current_scene == 9) {
+			game->character->general_bonus = 1;
+			game->character->level = 2;
+		}
 		reset_map(game, (sfVector2f){265, 455});
 	}
 }
