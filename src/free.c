@@ -13,9 +13,15 @@ void check_end(game_t *game, particules_t *particules)
 	if (game->scenes[11]->kills == 5 && game->current_scene == 11) {
 		init_particules(particules, 2);
 		game->current_scene = 5;
+		sfMusic_stop(game->musics[0]);
+		sfMusic_play(game->musics[1]);
+		sfMusic_setLoop(game->musics[1], sfTrue);
 	} else if (game->character->health <= 0 && game->current_scene != 6) {
 		init_particules(particules, 1);
 		game->current_scene = 6;
+		sfMusic_stop(game->musics[0]);
+		sfMusic_play(game->musics[1]);
+		sfMusic_setLoop(game->musics[1], sfTrue);
 	}
 }
 
@@ -80,7 +86,8 @@ void quit_game(game_t *game, particules_t *particules)
 	sfImage_destroy(game->atlas);
 	sfRenderWindow_destroy(game->window->window);
 	free(game->window);
-	free(particules->buffer);
+	if (game->current_scene == 5 || game->current_scene == 6)
+		free(particules->buffer);
 	free(particules);
 	free(game);
 }

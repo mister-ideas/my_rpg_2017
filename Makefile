@@ -25,6 +25,7 @@ SRC=		$(SRC_DIR)my_rpg.c				\
 		$(SRC_DIR)display.c				\
 		$(SRC_DIR)button.c				\
 		$(SRC_DIR)object.c				\
+		$(SRC_DIR)sounds.c				\
 		$(SRC_DIR)particules/particules.c		\
 		$(SRC_DIR)particules/particules_init.c		\
 		$(SRC_DIR)controls/bow_spell_walk.c  		\

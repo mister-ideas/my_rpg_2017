@@ -11,10 +11,13 @@ static void check_powerup(game_t *game, object_t *data)
 {
 	if (data->type == POWERUP) {
 		if (check_collision(game->character->char_obj,
-		data, game->character->cur_pos, data->pos) == 1) {
+		data, game->character->cur_pos, data->pos) == 1 &&
+		game->scenes[game->current_scene]->kills ==
+		game->scenes[game->current_scene]->mobs_nb) {
 			game->character->attack_bonus = 1;
 			sfSprite_setColor(data->sprite, sfTransparent);
 			sfSprite_setPosition(data->sprite, (sfVector2f){0, 0});
+			sfSound_play(game->sounds[3]);
 		}
 	}
 }
@@ -23,10 +26,13 @@ static void check_potion(game_t *game, object_t *data)
 {
 	if (data->type == POTION) {
 		if (check_collision(game->character->char_obj,
-		data, game->character->cur_pos, data->pos) == 1) {
+		data, game->character->cur_pos, data->pos) == 1 &&
+		game->scenes[game->current_scene]->kills ==
+		game->scenes[game->current_scene]->mobs_nb) {
 			game->slot_rect = 2343;
 			sfSprite_setColor(data->sprite, sfTransparent);
 			sfSprite_setPosition(data->sprite, (sfVector2f){0, 0});
+			sfSound_play(game->sounds[3]);
 		}
 	}
 }

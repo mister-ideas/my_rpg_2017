@@ -43,6 +43,7 @@ static void check_character(game_t *game, int i)
 		sfSprite_setColor(game->character->char_obj->sprite, color);
 		sfSprite_setPosition(game->character->
 		char_obj->sprite, (sfVector2f){890, 460});
+		sfSound_play(game->sounds[0]);
 	}
 }
 

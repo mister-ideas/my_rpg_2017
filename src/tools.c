@@ -22,6 +22,9 @@ void check_kill(game_t *game, int i)
 		sfSprite_setPosition(game->mobs[i]->
 		mob_obj->sprite, (sfVector2f){0, 0});
 	}
+	if (game->scenes[game->current_scene]->kills ==
+	game->scenes[game->current_scene]->mobs_nb)
+		sfSound_play(game->sounds[1]);
 }
 
 int check_collision(object_t *obj, object_t *mob, sfVector2f obj_pos,

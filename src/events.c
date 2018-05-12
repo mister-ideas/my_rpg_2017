@@ -49,6 +49,9 @@ static void space_shift_events(game_t *game)
 	if (game->keys->shift == sfTrue && game->current_scene == 3) {
 		game->current_scene = 7;
 		reset_map(game, (sfVector2f){265, 455});
+		sfMusic_stop(game->musics[2]);
+		sfMusic_play(game->musics[4]);
+		sfMusic_setLoop(game->musics[4], sfTrue);
 	} else if (game->keys->shift == sfTrue && game->current_scene != 3) {
 		if (game->current_weapon != 2)
 			game->current_weapon++;

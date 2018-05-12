@@ -39,6 +39,7 @@ void check_projectile_hit(game_t *game, object_t *data, sfVector2f cur_pos)
 			mob_obj->sprite, color);
 			delete_projectile(data);
 			check_kill(game, i);
+			sfSound_play(game->sounds[2]);
 		}
 	}
 }
@@ -55,6 +56,7 @@ int check_spear_hit(game_t *game, int i)
 		sfSprite_setColor(game->mobs[i]->
 		mob_obj->sprite, color);
 		check_kill(game, i);
+		sfSound_play(game->sounds[2]);
 		return (1);
 	}
 	return (0);

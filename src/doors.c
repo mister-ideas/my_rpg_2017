@@ -13,13 +13,18 @@ static void right_doors(game_t *game)
 	game->current_scene != 11 && game->character->cur_pos.x > 1540 &&
 	(game->character->cur_pos.y >= 435 &&
 	game->character->cur_pos.y <= 545)) {
-		if (game->current_scene == 3)
+		if (game->current_scene == 3) {
 			game->current_scene = 7;
+			sfMusic_stop(game->musics[2]);
+			sfMusic_play(game->musics[4]);
+			sfMusic_setLoop(game->musics[4], sfTrue);
+		}
 		else
 			game->current_scene += 1;
 		if (game->current_scene == 9) {
 			game->character->general_bonus = 1;
 			game->character->level = 2;
+			sfSound_play(game->sounds[3]);
 		}
 		reset_map(game, (sfVector2f){265, 455});
 	}
@@ -34,6 +39,9 @@ static void up_doors(game_t *game)
 		if (game->current_scene == 9 && game->scenes[11]->kills == 0) {
 			game->current_scene = 11;
 			reset_map(game, (sfVector2f){890, 770});
+			sfMusic_stop(game->musics[4]);
+			sfMusic_play(game->musics[0]);
+			sfMusic_setLoop(game->musics[0], sfTrue);
 		}
 		if (game->current_scene == 10) {
 			game->current_scene = 8;

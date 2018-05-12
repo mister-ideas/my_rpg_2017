@@ -24,6 +24,7 @@ int add_spell_up(game_t *game, dll_t *list)
 	spell->type = SPELL_UP;
 	spell = create_object(spell, game);
 	put_end_list(list, spell);
+	sfSound_play(game->sounds[4]);
 	return (0);
 }
 
@@ -42,6 +43,7 @@ int add_spell_left(game_t *game, dll_t *list)
 	spell->type = SPELL_LEFT;
 	spell = create_object(spell, game);
 	put_end_list(list, spell);
+	sfSound_play(game->sounds[4]);
 	return (0);
 }
 
@@ -60,6 +62,7 @@ int add_spell_down(game_t *game, dll_t *list)
 	spell->type = SPELL_DOWN;
 	spell = create_object(spell, game);
 	put_end_list(list, spell);
+	sfSound_play(game->sounds[4]);
 	return (0);
 }
 
@@ -78,6 +81,7 @@ int add_spell_right(game_t *game, dll_t *list)
 	spell->type = SPELL_RIGHT;
 	spell = create_object(spell, game);
 	put_end_list(list, spell);
+	sfSound_play(game->sounds[4]);
 	return (0);
 }
 

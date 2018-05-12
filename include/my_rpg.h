@@ -18,10 +18,21 @@
 
 #define NB_SCENES 12
 #define NB_MOBS 5
-#define NB_SOUNDS 0
+#define NB_MUSICS 5
+#define NB_SOUNDS 5
 
 #define ATLAS_PATH "./ressources/img/atlas.png"
 #define FONT_PATH "./ressources/font/XpressiveRegular.ttf"
+#define BOSS_SCENE_S "./ressources/sound/boss_scene.ogg"
+#define CHARACTER_HIT_S "./ressources/sound/character_hit.ogg"
+#define EMPTY_SCENE_S "./ressources/sound/empty_scene.ogg"
+#define END_GAME_S "./ressources/sound/end_game.ogg"
+#define INTRO_SCENE_S "./ressources/sound/intro_scene.ogg"
+#define MENU_SCENE_S "./ressources/sound/menu_scene.ogg"
+#define MOB_HIT_S "./ressources/sound/mob_hit.ogg"
+#define MOB_SCENE_S "./ressources/sound/mob_scene.ogg"
+#define POWERUP_S "./ressources/sound/powerup.ogg"
+#define SPELL_S "./ressources/sound/spell.ogg"
 
 enum TYPE {
 	BG,
@@ -130,7 +141,9 @@ typedef struct game_s
 {
 	scene_t **scenes;
 	mob_t **mobs;
-	sfMusic *sounds[NB_SOUNDS];
+	sfMusic *musics[NB_MUSICS];
+	sfSound *sounds[NB_SOUNDS];
+	sfSoundBuffer *buffer;
 	int current_scene;
 	int last_scene;
 	int current_weapon;
@@ -163,6 +176,9 @@ extern const sfIntRect atlas_rect;
 /* window.c */
 int init_window(game_t *game, sfVideoMode video);
 int display_window(game_t *game, particules_t *particules);
+
+/* sounds */
+int init_sounds(game_t *game);
 
 /* events.c */
 void game_events(game_t *game);

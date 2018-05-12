@@ -50,6 +50,7 @@ static int init_objects(game_t *game)
 	if (game->font == NULL)
 		return (84);
 	init_weapons(game);
+	game->slot_rect = 2253;
 	return (0);
 }
 
@@ -61,11 +62,11 @@ static int init_game(game_t *game)
 	if (game->keys == NULL)
 		return (84);
 	init_keys(game);
+	init_sounds(game);
 	init_window(game, video);
 	game->current_scene = 0;
 	game->current_weapon = 0;
 	game->current_text = 1;
-	game->slot_rect = 2253;
 	if (init_objects(game) == 84)
 		return (84);
 	game->character->char_obj =
@@ -93,6 +94,8 @@ int main(void)
 		return (84);
 	if (init_game(game) == 84)
 		return (84);
+	sfMusic_play(game->musics[3]);
+	sfMusic_setLoop(game->musics[3], sfTrue);
 	if (display_window(game, particules) == 84)
 		return (84);
 	return (0);

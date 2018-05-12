@@ -12,6 +12,9 @@
 void play_function(game_t *game)
 {
 	game->current_scene = 3;
+	sfMusic_stop(game->musics[3]);
+	sfMusic_play(game->musics[2]);
+	sfMusic_setLoop(game->musics[2], sfTrue);
 }
 
 static button_t *play_button_active(button_t *play)
