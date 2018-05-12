@@ -14,19 +14,19 @@ void check_weapon(game_t *game)
 	switch (game->current_weapon) {
 	case 0:
 		game->weapons->rect.top = 2252;
-		game->character->attack = 2;
+		game->character->attack = 2 + game->character->attack_bonus;
 		game->character->defense = 1;
 		game->character->speed = 5;
 		break;
 	case 1:
 		game->weapons->rect.top = 2342;
-		game->character->attack = 3;
+		game->character->attack = 3 + game->character->attack_bonus;
 		game->character->defense = 0;
 		game->character->speed = 5;
 		break;
 	case 2:
 		game->weapons->rect.top = 2432;
-		game->character->attack = 1;
+		game->character->attack = 1 + game->character->attack_bonus;
 		game->character->defense = 2;
 		game->character->speed = 2;
 		break;

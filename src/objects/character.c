@@ -30,6 +30,8 @@ int init_character(game_t *game)
 	game->character->cur_pos.y = 0;
 	game->character->move.x = 0;
 	game->character->move.y = 0;
+	game->character->general_bonus = 0;
+	game->character->attack_bonus = 0;
 	game->character->health = 12;
 	game->character->level = 0;
 	game->character->clock_max = 240;

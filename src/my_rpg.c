@@ -18,6 +18,7 @@ static void init_keys(game_t *game)
 	game->keys->q = sfFalse;
 	game->keys->s = sfFalse;
 	game->keys->d = sfFalse;
+	game->keys->e = sfFalse;
 	game->keys->up = sfFalse;
 	game->keys->left = sfFalse;
 	game->keys->down = sfFalse;
@@ -64,6 +65,7 @@ static int init_game(game_t *game)
 	game->current_scene = 0;
 	game->current_weapon = 0;
 	game->current_text = 1;
+	game->slot_rect = 2253;
 	if (init_objects(game) == 84)
 		return (84);
 	game->character->char_obj =

@@ -36,6 +36,8 @@ enum TYPE {
 	SPELL_RIGHT,
 	TEXT,
 	SFTEXT,
+	POWERUP,
+	POTION,
 	SLOT,
 	MISC
 };
@@ -79,8 +81,10 @@ typedef struct character_s
 	int clock_max;
 	sfVector2f move;
 	sfVector2f cur_pos;
+	int general_bonus;
 	int health;
 	int attack;
+	int attack_bonus;
 	int defense;
 	int speed;
 	int level;
@@ -111,6 +115,7 @@ typedef struct keys_s
 	sfBool q;
 	sfBool s;
 	sfBool d;
+	sfBool e;
 	sfBool up;
 	sfBool left;
 	sfBool down;
@@ -130,6 +135,7 @@ typedef struct game_s
 	int last_scene;
 	int current_weapon;
 	int current_text;
+	int slot_rect;
 	sfFont *font;
 	sfImage *atlas;
 	sfTexture *texture;
@@ -247,6 +253,7 @@ void check_spell_type(object_t *data, sfVector2f cur_pos);
 void delete_projectile(object_t *data);
 void check_projectile_hit(game_t *game, object_t *data, sfVector2f cur_pos);
 int check_spear_hit(game_t *game, int i);
+void check_items(game_t *game, object_t *data);
 
 /* display.c */
 void display_game(game_t *game);

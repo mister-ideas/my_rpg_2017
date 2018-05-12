@@ -90,6 +90,7 @@ void display_game(game_t *game)
 	for (; obj != NULL; obj = obj->next) {
 		data = (object_t *)obj->data;
 		check_text_type(game, data);
+		check_items(game, data);
 		sfRenderWindow_drawSprite(game->window->window,
 		data->sprite, NULL);
 	}
