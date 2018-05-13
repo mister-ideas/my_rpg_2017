@@ -6,7 +6,6 @@
 */
 
 #include <stdio.h>
-#include <stdlib.h>
 #include "my_rpg.h"
 
 void update_text(game_t *game, sfText *text, char str[], sfVector2f pos)

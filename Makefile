@@ -19,8 +19,6 @@ SRC=		$(SRC_DIR)my_rpg.c				\
 		$(SRC_DIR)events.c				\
 		$(SRC_DIR)doors.c				\
 		$(SRC_DIR)walls.c				\
-		$(SRC_DIR)pressed_keys.c			\
-		$(SRC_DIR)released_keys.c			\
 		$(SRC_DIR)free.c				\
 		$(SRC_DIR)display.c				\
 		$(SRC_DIR)button.c				\
@@ -58,6 +56,8 @@ SRC=		$(SRC_DIR)my_rpg.c				\
 		$(SRC_DIR)buttons/how_to_play.c      		\
 		$(SRC_DIR)buttons/resume.c			\
 		$(SRC_DIR)buttons/return.c			\
+		$(SRC_DIR)keys/pressed_keys.c                   \
+		$(SRC_DIR)keys/released_keys.c                  \
 
 OBJ=		$(SRC:.c=.o)
 

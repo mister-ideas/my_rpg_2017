@@ -5,10 +5,6 @@
 ** particules.h
 */
 
-#include <string.h>
-#include <stdlib.h>
-#include <SFML/Graphics.h>
-
 typedef unsigned int uint;
 
 typedef struct info_s

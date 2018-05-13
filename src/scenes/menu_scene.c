@@ -10,20 +10,23 @@
 #include "my_rpg.h"
 
 static int menu_scene_init_buttons(button_t *play,
-				button_t *quit, button_t *htp)
+		button_t *quit, button_t *htp, game_t *game)
 {
-	if (play == NULL || quit == NULL || htp == NULL)
-		return (84);
 	play->pos.x = 664;
 	play->pos.y = 582;
+	play = create_button(play, game);
 	quit->pos.x = 1016;
 	quit->pos.y = 582;
+	quit = create_button(quit, game);
 	htp->pos.x = 843;
 	htp->pos.y = 451;
+	htp = create_button(htp, game);
+	if (play == NULL || quit == NULL || htp == NULL)
+		return (84);
 	return (0);
 }
 
-static object_t *menu_scene_background(void)
+static object_t *menu_scene_background(game_t *game)
 {
 	object_t *background = malloc(sizeof(*background));
 
@@ -36,6 +39,7 @@ static object_t *menu_scene_background(void)
 	background->rect.top = 0;
 	background->rect.width = 1920;
 	background->type = BG;
+	background = create_object(background, game);
 	return (background);
 }
 
@@ -60,14 +64,11 @@ scene_t *menu_scene(game_t *game)
 	button_t *quit = quit_button();
 	button_t *htp = htp_button();
 
-	if (menu == NULL || menu_scene_init_buttons(play, quit, htp) == 84)
+	if (menu == NULL || play == NULL || quit == NULL || htp == NULL ||
+	menu_scene_init_buttons(play, quit, htp, game) == 84)
 		return (NULL);
-	background = menu_scene_background();
-	background = create_object(background, game);
-	play = create_button(play, game);
-	quit = create_button(quit, game);
-	htp = create_button(htp, game);
-	if (play == NULL || quit == NULL || htp == NULL || background == NULL ||
+	background = menu_scene_background(game);
+	if (background == NULL ||
 	menu_scene_lists(menu, play, quit, htp) == 84)
 		return (NULL);
 	put_end_list(menu->objects, background);

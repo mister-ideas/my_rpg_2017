@@ -9,7 +9,7 @@
 #include <stdlib.h>
 #include "my_rpg.h"
 
-static object_t *intro_scene_background(void)
+static object_t *intro_scene_background(game_t *game)
 {
 	object_t *background = malloc(sizeof(*background));
 
@@ -22,10 +22,11 @@ static object_t *intro_scene_background(void)
 	background->rect.top = 1080;
 	background->rect.width = 1920;
 	background->type = BG;
+	background = create_object(background, game);
 	return (background);
 }
 
-static object_t *intro_scene_text(void)
+static object_t *intro_scene_text(game_t *game)
 {
 	object_t *text = malloc(sizeof(*text));
 
@@ -38,10 +39,11 @@ static object_t *intro_scene_text(void)
 	text->rect.top = 2625;
 	text->rect.width = 1200;
 	text->type = TEXT;
+	text = create_object(text, game);
 	return (text);
 }
 
-static object_t *intro_scene_master(void)
+static object_t *intro_scene_master(game_t *game)
 {
 	object_t *master = malloc(sizeof(*master));
 
@@ -54,6 +56,7 @@ static object_t *intro_scene_master(void)
 	master->rect.top = 2315;
 	master->rect.width = 140;
 	master->type = MISC;
+	master = create_object(master, game);
 	return (master);
 }
 
@@ -78,12 +81,9 @@ scene_t *intro_scene(game_t *game)
 
 	if (intro == NULL)
 		return (NULL);
-	background = intro_scene_background();
-	text = intro_scene_text();
-	master = intro_scene_master();
-	background = create_object(background, game);
-	text = create_object(text, game);
-	master = create_object(master, game);
+	background = intro_scene_background(game);
+	text = intro_scene_text(game);
+	master = intro_scene_master(game);
 	if (background == NULL || text == NULL || master == NULL)
 		return (NULL);
 	if (intro_scene_lists(intro, background, text, master) == 84)

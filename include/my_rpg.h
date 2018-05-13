@@ -23,6 +23,7 @@
 
 #define ATLAS_PATH "./ressources/img/atlas.png"
 #define FONT_PATH "./ressources/font/XpressiveRegular.ttf"
+
 #define BOSS_SCENE_S "./ressources/sound/boss_scene.ogg"
 #define CHARACTER_HIT_S "./ressources/sound/character_hit.ogg"
 #define EMPTY_SCENE_S "./ressources/sound/empty_scene.ogg"
@@ -37,6 +38,9 @@
 enum TYPE {
 	BG,
 	BOSS,
+	POWERUP,
+	POTION,
+	SLOT,
 	ARROW_UP,
 	ARROW_LEFT,
 	ARROW_DOWN,
@@ -47,9 +51,6 @@ enum TYPE {
 	SPELL_RIGHT,
 	TEXT,
 	SFTEXT,
-	POWERUP,
-	POTION,
-	SLOT,
 	MISC
 };
 
@@ -174,24 +175,30 @@ typedef struct button_s
 extern const sfIntRect atlas_rect;
 
 /* window.c */
+
 int init_window(game_t *game, sfVideoMode video);
 int display_window(game_t *game, particules_t *particules);
 
 /* sounds */
+
 int init_sounds(game_t *game);
 
 /* events.c */
+
 void game_events(game_t *game);
 void check_doors(game_t *game);
 void reset_map(game_t *game, sfVector2f pos);
 
 /* scene.c */
+
 int set_scenes(game_t *game);
 
 /* mob.c */
+
 int set_mobs(game_t *game);
 
 /* scenes */
+
 scene_t *menu_scene(game_t *game);
 scene_t *htp_scene(game_t *game);
 scene_t *intro_scene(game_t *game);
@@ -206,6 +213,7 @@ scene_t *arena4_scene(game_t *game);
 scene_t *bossarena_scene(game_t *game);
 
 /* tools */
+
 void check_kill(game_t *game, int i);
 int check_collision(object_t *obj, object_t *mob,
 		sfVector2f obj_pos, sfVector2f mob_pos);
@@ -214,6 +222,7 @@ int mouse_is_in_area(sfVector2f pos, sfVector2f size, sfVector2i clickPos);
 void int_to_text(int num, char str[]);
 
 /* buttons */
+
 button_t *play_button(void);
 button_t *quit_button(void);
 button_t *htp_button(void);
@@ -221,50 +230,61 @@ button_t *resume_button(void);
 button_t *return_button(void);
 
 /* particules */
+
 int init_particules(particules_t *particules, int type);
 void display_particules(particules_t *particules, game_t *game, int type);
 
 /* keys */
+
 void check_pressed_keys(game_t *game);
 void check_released_keys(game_t *game);
 int check_all_keys_released(game_t *game);
 
 /* controls */
+
 void bow_spell_walk(game_t *game);
 void spear_walk(game_t *game);
 void spell_attack(game_t *game);
 void spear_attack(game_t *game);
 void bow_attack(game_t *game);
 
-/* objects */
+/* character */
+
 void default_character(game_t *game);
 int init_character(game_t *game);
 void check_walls(game_t *game);
 void character_clock(character_t *character);
 
+/* weapons */
+
 void init_weapons(game_t *game);
 void check_weapon(game_t *game);
+
+/* texts */
 
 int init_texts(game_t *game);
 void update_text(game_t *game, sfText *text, char str[], sfVector2f pos);
 void check_text_type(game_t *game, object_t *data);
 
-mob_t *init_mob(mob_t *mob);
+/* mobs */
+
 void mob_clock(mob_t *mob);
 
+/* arrows */
 int add_arrow_up(game_t *game, dll_t *list);
 int add_arrow_left(game_t *game, dll_t *list);
 int add_arrow_down(game_t *game, dll_t *list);
 int add_arrow_right(game_t *game, dll_t *list);
-
 void check_arrow_type(object_t *data, sfVector2f cur_pos);
 
+/* spells */
 int add_spell_up(game_t *game, dll_t *list);
 int add_spell_left(game_t *game, dll_t *list);
 int add_spell_down(game_t *game, dll_t *list);
 int add_spell_right(game_t *game, dll_t *list);
-
 void check_spell_type(object_t *data, sfVector2f cur_pos);
+
+/* check_projectiles */
 
 void delete_projectile(object_t *data);
 void check_projectile_hit(game_t *game, object_t *data, sfVector2f cur_pos);

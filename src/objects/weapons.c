@@ -5,8 +5,6 @@
 ** objects/weapons.c
 */
 
-#include <stdio.h>
-#include <stdlib.h>
 #include "my_rpg.h"
 
 void check_weapon(game_t *game)
@@ -17,14 +15,14 @@ void check_weapon(game_t *game)
 		+ game->character->general_bonus;
 		game->character->defense = 1 + game->character->general_bonus;
 		game->character->speed = 5 + game->character->general_bonus;
-	} else if (game->current_weapon == 1) {
+	}
+	if (game->current_weapon == 1) {
 		game->weapons->rect.top = 2342;
 		game->character->attack = 3 + game->character->attack_bonus
 		+ game->character->general_bonus;
 		game->character->defense = 0 + game->character->general_bonus;
 		game->character->speed = 5 + game->character->general_bonus;
-	}
-	if (game->current_weapon == 2) {
+	} else if (game->current_weapon == 2) {
 		game->weapons->rect.top = 2432;
 		game->character->attack = 1 + game->character->attack_bonus
 		+ game->character->general_bonus;

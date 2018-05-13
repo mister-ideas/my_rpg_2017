@@ -32,7 +32,6 @@ static void check_potion(game_t *game, object_t *data)
 			game->slot_rect = 2343;
 			sfSprite_setColor(data->sprite, sfTransparent);
 			sfSprite_setPosition(data->sprite, (sfVector2f){0, 0});
-			sfSound_play(game->sounds[3]);
 		}
 	}
 }

@@ -5,12 +5,15 @@
 ** particules_init.c
 */
 
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
 #include "my_rpg.h"
 
 partbuffer_t *partbuffer_init(int size)
 {
 	partbuffer_t *this;
-	const size_t size_m = (sizeof(partbuffer_t) +
+	size_t size_m = (sizeof(partbuffer_t) +
 	sizeof(sfVertex) * size * 4 +
 	sizeof(info_t) * size);
 	void *ptr = malloc(size_m);

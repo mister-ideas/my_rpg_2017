@@ -9,7 +9,7 @@
 #include <stdlib.h>
 #include "my_rpg.h"
 
-static object_t *arena3_scene_background(void)
+static object_t *arena3_scene_background(game_t *game)
 {
 	object_t *background = malloc(sizeof(*background));
 
@@ -22,10 +22,11 @@ static object_t *arena3_scene_background(void)
 	background->rect.top = 2160;
 	background->rect.width = 1920;
 	background->type = BG;
+	background = create_object(background, game);
 	return (background);
 }
 
-static object_t *arena3_scene_powerup(void)
+static object_t *arena3_scene_powerup(game_t *game)
 {
 	object_t *powerup = malloc(sizeof(*powerup));
 
@@ -38,6 +39,7 @@ static object_t *arena3_scene_powerup(void)
 	powerup->rect.top = 2370;
 	powerup->rect.width = 45;
 	powerup->type = POWERUP;
+	powerup = create_object(powerup, game);
 	return (powerup);
 }
 
@@ -49,10 +51,8 @@ scene_t *arena3_scene(game_t *game)
 
 	if (arena3 == NULL)
 		return (NULL);
-	background = arena3_scene_background();
-	powerup = arena3_scene_powerup();
-	background = create_object(background, game);
-	powerup = create_object(powerup, game);
+	background = arena3_scene_background(game);
+	powerup = arena3_scene_powerup(game);
 	if (background == NULL || powerup == NULL)
 		return (NULL);
 	arena3->objects = list_init();

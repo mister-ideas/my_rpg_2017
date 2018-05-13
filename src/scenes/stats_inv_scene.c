@@ -9,7 +9,7 @@
 #include <stdlib.h>
 #include "my_rpg.h"
 
-static object_t *stats_inv_scene_background(void)
+static object_t *stats_inv_scene_background(game_t *game)
 {
 	object_t *background = malloc(sizeof(*background));
 
@@ -22,10 +22,11 @@ static object_t *stats_inv_scene_background(void)
 	background->rect.top = 2160;
 	background->rect.width = 1920;
 	background->type = BG;
+	background = create_object(background, game);
 	return (background);
 }
 
-static object_t *stats_inv_scene_slot(void)
+static object_t *stats_inv_scene_slot(game_t *game)
 {
 	object_t *slot = malloc(sizeof(*slot));
 
@@ -38,6 +39,7 @@ static object_t *stats_inv_scene_slot(void)
 	slot->rect.top = 2253;
 	slot->rect.width = 90;
 	slot->type = SLOT;
+	slot = create_object(slot, game);
 	return (slot);
 }
 
@@ -49,10 +51,8 @@ scene_t *stats_inv_scene(game_t *game)
 
 	if (stats_inv == NULL)
 		return (NULL);
-	background = stats_inv_scene_background();
-	slot = stats_inv_scene_slot();
-	background = create_object(background, game);
-	slot = create_object(slot, game);
+	background = stats_inv_scene_background(game);
+	slot = stats_inv_scene_slot(game);
 	if (background == NULL || slot == NULL)
 		return (NULL);
 	stats_inv->objects = list_init();

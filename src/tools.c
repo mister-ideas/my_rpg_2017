@@ -17,10 +17,16 @@ void check_kill(game_t *game, int i)
 {
 	if (game->mobs[i]->health <= 0) {
 		game->scenes[game->current_scene]->kills++;
+		game->character->exp += 50;
 		game->mobs[i]->move.x = 0;
 		game->mobs[i]->move.y = 0;
 		sfSprite_setPosition(game->mobs[i]->
 		mob_obj->sprite, (sfVector2f){0, 0});
+	}
+	if (game->character->exp == 500) {
+		game->character->general_bonus = 1;
+		game->character->level = 2;
+		sfSound_play(game->sounds[3]);
 	}
 	if (game->scenes[game->current_scene]->kills ==
 	game->scenes[game->current_scene]->mobs_nb)

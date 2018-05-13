@@ -9,18 +9,20 @@
 #include <stdlib.h>
 #include "my_rpg.h"
 
-static int htp_scene_init_buttons(button_t *play, button_t *back)
+static int htp_scene_init_buttons(button_t *play, button_t *back, game_t *game)
 {
-	if (play == NULL || back == NULL)
-		return (84);
 	play->pos.x = 1214;
 	play->pos.y = 877;
+	play = create_button(play, game);
 	back->pos.x = 1521;
 	back->pos.y = 877;
+	back = create_button(back, game);
+	if (play == NULL || back == NULL)
+		return (84);
 	return (0);
 }
 
-static object_t *htp_scene_background(void)
+static object_t *htp_scene_background(game_t *game)
 {
 	object_t *background = malloc(sizeof(*background));
 
@@ -33,11 +35,12 @@ static object_t *htp_scene_background(void)
 	background->rect.top = 0;
 	background->rect.width = 1920;
 	background->type = BG;
+	background = create_object(background, game);
 	return (background);
 }
 
 static int htp_scene_lists(scene_t *htp, button_t *play,
-		button_t *back)
+		button_t *back, object_t *background)
 {
 	htp->buttons = list_init();
 	htp->objects = list_init();
@@ -45,6 +48,7 @@ static int htp_scene_lists(scene_t *htp, button_t *play,
 		return (84);
 	put_end_list(htp->buttons, play);
 	put_end_list(htp->buttons, back);
+	put_end_list(htp->objects, background);
 	return (0);
 }
 
@@ -55,17 +59,14 @@ scene_t *htp_scene(game_t *game)
 	button_t *play = play_button();
 	button_t *back = return_button();
 
-	if (htp == NULL || htp_scene_init_buttons(play, back) == 84)
+	if (htp == NULL || play == NULL || back == NULL ||
+	htp_scene_init_buttons(play, back, game) == 84)
 		return (NULL);
-	background = htp_scene_background();
-	background = create_object(background, game);
-	play = create_button(play, game);
-	back = create_button(back, game);
-	if (play == NULL || back == NULL || background == NULL)
+	background = htp_scene_background(game);
+	if (background == NULL)
 		return (NULL);
-	if (htp_scene_lists(htp, play, back) == 84)
+	if (htp_scene_lists(htp, play, back, background) == 84)
 		return (NULL);
-	put_end_list(htp->objects, background);
 	htp->mobs_nb = 0;
 	htp->kills = 0;
 	return (htp);

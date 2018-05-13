@@ -5,8 +5,6 @@
 ** events.c
 */
 
-#include <stdio.h>
-#include <stdlib.h>
 #include "my_rpg.h"
 
 static void general_events(game_t *game)
@@ -15,8 +13,7 @@ static void general_events(game_t *game)
 		sfRenderWindow_close(game->window->window);
 	if (game->window->event.type == sfEvtMouseMoved)
 		game->window->mouse_pos =
-			sfMouse_getPositionRenderWindow
-			(game->window->window);
+		sfMouse_getPositionRenderWindow(game->window->window);
 	if (game->window->event.type == sfEvtMouseButtonPressed)
 		game->window->click = 1;
 	if (game->window->event.type == sfEvtMouseButtonReleased)
@@ -80,7 +77,7 @@ static void controls_events(game_t *game)
 void game_events(game_t *game)
 {
 	while (sfRenderWindow_pollEvent(game->window->window,
-					&(game->window->event))) {
+	&(game->window->event))) {
 		general_events(game);
 		if (game->window->event.type == sfEvtKeyPressed)
 			check_pressed_keys(game);

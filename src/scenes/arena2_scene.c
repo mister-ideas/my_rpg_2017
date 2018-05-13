@@ -9,7 +9,7 @@
 #include <stdlib.h>
 #include "my_rpg.h"
 
-static object_t *arena2_scene_background(void)
+static object_t *arena2_scene_background(game_t *game)
 {
 	object_t *background = malloc(sizeof(*background));
 
@@ -22,6 +22,7 @@ static object_t *arena2_scene_background(void)
 	background->rect.top = 1080;
 	background->rect.width = 1920;
 	background->type = BG;
+	background = create_object(background, game);
 	return (background);
 }
 
@@ -32,8 +33,7 @@ scene_t *arena2_scene(game_t *game)
 
 	if (arena2 == NULL)
 		return (NULL);
-	background = arena2_scene_background();
-	background = create_object(background, game);
+	background = arena2_scene_background(game);
 	if (background == NULL)
 		return (NULL);
 	arena2->objects = list_init();

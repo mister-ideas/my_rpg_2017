@@ -5,6 +5,7 @@
 ** doors.c
 */
 
+#include <stdlib.h>
 #include "my_rpg.h"
 
 static void right_doors(game_t *game)
@@ -21,11 +22,6 @@ static void right_doors(game_t *game)
 		}
 		else
 			game->current_scene += 1;
-		if (game->current_scene == 9) {
-			game->character->general_bonus = 1;
-			game->character->level = 2;
-			sfSound_play(game->sounds[3]);
-		}
 		reset_map(game, (sfVector2f){265, 455});
 	}
 }

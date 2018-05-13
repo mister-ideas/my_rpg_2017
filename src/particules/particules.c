@@ -5,6 +5,9 @@
 ** particules.c
 */
 
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
 #include "my_rpg.h"
 
 void update_partbuffer_set(partbuffer_t *this, uint id)

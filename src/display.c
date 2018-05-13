@@ -5,6 +5,7 @@
 ** display.c
 */
 
+#include <stdio.h>
 #include "my_rpg.h"
 
 static void display_but(struct node *but, game_t *game)

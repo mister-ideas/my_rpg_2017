@@ -15,9 +15,9 @@ struct node {
 };
 
 typedef struct linked_list {
-	int nb_elems;
 	struct node *start;
 	struct node *end;
+	int nb_elems;
 } dll_t;
 
 #endif

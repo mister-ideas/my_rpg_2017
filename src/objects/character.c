@@ -6,7 +6,6 @@
 */
 
 #include <stdio.h>
-#include <stdlib.h>
 #include "my_rpg.h"
 
 void default_character(game_t *game)
@@ -34,9 +33,9 @@ int init_character(game_t *game)
 	game->character->attack_bonus = 0;
 	game->character->health = 12;
 	game->character->level = 1;
+	game->character->exp = 0;
 	game->character->clock_max = 240;
 	game->character->char_clock->clock = sfClock_create();
-	game->character->char_obj->type = MISC;
 	if (game->character->char_clock->clock == NULL)
 		return (84);
 	return (0);

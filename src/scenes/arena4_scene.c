@@ -2,14 +2,14 @@
 ** EPITECH PROJECT, 2018
 ** my_rpg
 ** File description:
-** scenes/arena1_scene.c
+** scenes/arena4_scene.c
 */
 
 #include <stdio.h>
 #include <stdlib.h>
 #include "my_rpg.h"
 
-static object_t *arena4_scene_background(void)
+static object_t *arena4_scene_background(game_t *game)
 {
 	object_t *background = malloc(sizeof(*background));
 
@@ -22,10 +22,11 @@ static object_t *arena4_scene_background(void)
 	background->rect.top = 1080;
 	background->rect.width = 1920;
 	background->type = BG;
+	background = create_object(background, game);
 	return (background);
 }
 
-static object_t *arena4_scene_potion(void)
+static object_t *arena4_scene_potion(game_t *game)
 {
 	object_t *potion = malloc(sizeof(*potion));
 
@@ -38,6 +39,7 @@ static object_t *arena4_scene_potion(void)
 	potion->rect.top = 2281;
 	potion->rect.width = 50;
 	potion->type = POTION;
+	potion = create_object(potion, game);
 	return (potion);
 }
 
@@ -49,10 +51,8 @@ scene_t *arena4_scene(game_t *game)
 
 	if (arena4 == NULL)
 		return (NULL);
-	background = arena4_scene_background();
-	potion = arena4_scene_potion();
-	background = create_object(background, game);
-	potion = create_object(potion, game);
+	background = arena4_scene_background(game);
+	potion = arena4_scene_potion(game);
 	if (background == NULL || potion == NULL)
 		return (NULL);
 	arena4->objects = list_init();

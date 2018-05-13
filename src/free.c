@@ -54,20 +54,29 @@ static void destroy_special_obj(game_t *game)
 	free(game->character->char_clock);
 	free(game->character);
 	for (int i = 0; i < NB_MOBS; i++) {
-		if (game->mobs[i]->mob_clock)
+		if (game->mobs[i]->mob_clock) {
 			sfClock_destroy(game->mobs[i]->mob_clock->clock);
+			free(game->mobs[i]->mob_clock);
+		}
 		sfSprite_destroy(game->mobs[i]->mob_obj->sprite);
 		free(game->mobs[i]->mob_obj);
-		free(game->mobs[i]->mob_clock);
 		free(game->mobs[i]);
 	}
-	sfSprite_destroy(game->weapons->sprite);
-	free(game->weapons);
 	sfText_destroy(game->texts->health);
 	sfText_destroy(game->texts->attack);
 	sfText_destroy(game->texts->defense);
 	sfText_destroy(game->texts->speed);
 	sfText_destroy(game->texts->level);
+	sfSprite_destroy(game->weapons->sprite);
+}
+
+static void destroy_sounds(game_t *game)
+{
+	sfSoundBuffer_destroy(game->buffer);
+	for (int i = 0; i < NB_SOUNDS; i++)
+		sfSound_destroy(game->sounds[i]);
+	for (int i = 0; i < NB_MUSICS; i++)
+		sfMusic_destroy(game->musics[i]);
 }
 
 void quit_game(game_t *game, particules_t *particules)
@@ -78,9 +87,11 @@ void quit_game(game_t *game, particules_t *particules)
 	}
 	free(game->scenes);
 	destroy_special_obj(game);
-	free(game->keys);
+	free(game->weapons);
 	free(game->mobs);
 	free(game->texts);
+	free(game->keys);
+	destroy_sounds(game);
 	sfFont_destroy(game->font);
 	sfTexture_destroy(game->texture);
 	sfImage_destroy(game->atlas);
