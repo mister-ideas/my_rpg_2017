@@ -12,6 +12,17 @@
 void return_function(game_t *game)
 {
 	game->current_scene = 0;
+	sfSprite_setPosition(game->character->
+	char_obj->sprite, (sfVector2f){890, 460});
+	for (int i = 0; i < NB_MOBS; i++) {
+		sfSprite_setPosition(game->mobs[i]->
+		mob_obj->sprite, (sfVector2f){0, 0});
+	}
+	sfMusic_stop(game->musics[0]);
+	sfMusic_stop(game->musics[2]);
+	sfMusic_stop(game->musics[4]);
+	sfMusic_play(game->musics[3]);
+	sfMusic_setLoop(game->musics[3], sfTrue);
 }
 
 static button_t *return_button_active(button_t *back)
